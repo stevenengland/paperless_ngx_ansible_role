@@ -1,0 +1,24 @@
+- name: Determine version infos
+  block:
+    - name: Get latest release info from github
+      ansible.builtin.uri:
+        url: "https://api.github.com/repos/paperless-ngx/paperless-ngx/releases/latest"
+        method: GET
+        return_content: true
+        status_code: 200
+        body_format: json
+        user: "{{ lookup('env', 'GH_USER') | default(omit) }}"
+        password: "{{ lookup('env', 'GH_TOKEN') | default(omit) }}"
+      no_log: "{{ not lookup('env', 'MOLECULE_DEBUG') | bool }}"
+      register: _version__latest_release
+      until: _version__latest_release.status == 200
+      retries: 5
+
+    - name: "Set paperless version to {{ _version__latest_release.json.tag_name[1:] }}"
+      ansible.builtin.set_fact:
+        paperless_ngx_version: "{{ _version__latest_release.json.tag_name[1:] }}"
+        
+  when:
+    - paperless_ngx_version == "latest"
+  delegate_to: localhost
+  run_once: true

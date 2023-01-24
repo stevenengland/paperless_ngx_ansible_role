@@ -1,2 +1,3 @@
 ---
-# tasks file for paperless_ngx_ansible_role
+- name: Do preparatory work
+  ansible.builtin.import_tasks: preparation/main.yml

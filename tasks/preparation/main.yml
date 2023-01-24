@@ -1,0 +1,2 @@
+- name: Gather infos about paperless-ngx versions
+  ansible.builtin.import_tasks: preparation_version.yml
