@@ -26,5 +26,6 @@ galaxy_info:
   galaxy_tags:
     - paperless
     - ngx
+    - dms
 
 dependencies: []
