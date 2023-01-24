@@ -1,2 +1,6 @@
+---
+- name: Gather infos about the operating system
+  ansible.builtin.import_tasks: preparation_os.yml
+
 - name: Gather infos about paperless-ngx versions
   ansible.builtin.import_tasks: preparation_version.yml
