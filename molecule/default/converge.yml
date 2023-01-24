@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include stevenengland.paperless_ngx_ansible_role"
+      include_role:
+        name: "stevenengland.paperless_ngx_ansible_role"
