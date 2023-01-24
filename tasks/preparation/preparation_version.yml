@@ -1,3 +1,4 @@
+---
 - name: Determine version infos
   block:
     - name: Get latest release info from github
