@@ -28,7 +28,7 @@
     - name: Set download link
       ansible.builtin.set_fact:
         _release__download_url: "https://github.com/paperless-ngx/paperless-ngx/releases/download/v{{ paperless_ngx_version }}/paperless-ngx-v{{ paperless_ngx_version }}.tar.xz"
-    
+
     - name: Probe download link is valid
       ansible.builtin.uri:
         url: "{{ _release__download_url }}"
@@ -44,4 +44,3 @@
 
   delegate_to: localhost
   run_once: true
-    
