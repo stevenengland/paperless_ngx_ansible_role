@@ -1,0 +1,57 @@
+---
+name: Tests
+
+"on":
+  pull_request:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 7 * * 5"  # At 07:00 on Friday
+
+defaults:
+  run:
+    working-directory: "stevenengland.paperless_ngx_ansible_role"
+
+jobs:
+  molecule:
+    name: Molecule
+    runs-on: ubuntu-latest
+    needs:
+      - yamllint
+      - ansible-lint
+    strategy:
+      matrix:
+        include:
+          - { distro: "debian11" }
+          - { distro: "debian10" }
+          - { distro: "ubuntu2204" }
+          - { distro: "ubuntu2004" }
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+        with:
+          path: "stevenengland.paperless_ngx_ansible_role"
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Upgrade pip
+        run: |
+          python3 -m pip install --constraint=.github/workflows/constraints.txt pip
+          python3 -m pip --version
+
+      - name: Install test dependencies
+        run: |
+          python3 -m pip install --constraint=.github/workflows/constraints.txt ansible molecule[docker] docker
+
+      - name: Run Molecule tests
+        run: molecule test
+        env:
+          TEST_RUN_MOLECULE_LINT: false
+          PY_COLORS: "1"
+          ANSIBLE_FORCE_COLOR: "1"
+          MOLECULE_DISTRO: ${{ matrix.distro }}
+          MOLECULE_NC: ${{ matrix.nc_version }}
