@@ -6,3 +6,5 @@
     - name: "Include stevenengland.paperless_ngx_ansible_role"
       ansible.builtin.include_role:
         name: "stevenengland.paperless_ngx_ansible_role"
+      tags:
+        - preparation

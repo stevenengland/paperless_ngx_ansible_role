@@ -1,3 +1,7 @@
 ---
 - name: Do preparatory work
-  ansible.builtin.import_tasks: preparation/main.yml
+  ansible.builtin.include_tasks:
+    file: preparation/main.yml
+    apply:
+      tags: preparation_all
+  tags: preparation
