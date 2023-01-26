@@ -1,9 +1,9 @@
 ---
 ## Source: https://github.com/marketplace/actions/ansible-lint
 name: Ansible Lint
+
 "on":
-  pull_request:
-  push:
+  workflow_call:
 
 jobs:
   ansible-lint:

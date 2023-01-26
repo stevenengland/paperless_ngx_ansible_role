@@ -14,12 +14,14 @@ defaults:
     working-directory: "stevenengland.paperless_ngx_ansible_role"
 
 jobs:
-  molecule:
-    name: Molecule
+  linting:
+    uses: ./.github/workflows/linting.yml
+
+  molecule_test:
+    name: Molecule Test
     runs-on: ubuntu-latest
     needs:
-      - yamllint
-      - ansible-lint
+      - linting
     strategy:
       matrix:
         include:

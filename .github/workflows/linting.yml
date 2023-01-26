@@ -1,0 +1,13 @@
+---
+name: Yaml Lint
+
+"on":
+  push:
+    branches-ignore:
+      - 'main'
+
+jobs:
+  call_yaml_lint:
+    uses: ./.github/workflows/yaml-lint.yml
+  call_ansible_lint:
+    uses: ./.github/workflows/ansible-lint.yml
