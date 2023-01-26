@@ -5,7 +5,7 @@ driver:
   name: docker
 platforms:
   - name: instance
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-debian11}-ansible:latest"
+    image: "geerlingguy/docker-${TEST_MOLECULE_DISTRO:-debian11}-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
@@ -17,7 +17,7 @@ verifier:
   name: ansible
 lint: |
   set -e
-  if [ -z "${TEST_RUN_MOLECULE_LINT}" ] || [ "${TEST_RUN_MOLECULE_LINT}" = true  ]
+  if [ -z "${TEST_MOLECULE_LINT}" ] || [ "${TEST_MOLECULE_LINT}" = true  ]
   then
     echo "Molecule linting requested: true"
     yamllint -c=.yamllint.yml .
