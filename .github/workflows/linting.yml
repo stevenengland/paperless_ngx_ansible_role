@@ -5,7 +5,7 @@ name: Linting
   workflow_call:
   push:
     branches-ignore:
-      - 'main'
+      - master
 
 jobs:
   linting:
