@@ -1,2 +1,13 @@
 ---
 paperless_ngx_version: latest
+
+# REDIS DB
+paperless_ngx_redis_host: localhost
+paperless_ngx_redis_port: 6379
+
+# DATA DB
+paperless_ngx_db_type: sqlite  # or postgresql
+
+# OCR
+paperless_ngx_ocr_languages:
+  - eng

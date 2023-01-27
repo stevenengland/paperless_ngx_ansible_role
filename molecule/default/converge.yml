@@ -8,3 +8,4 @@
         name: "stevenengland.paperless_ngx_ansible_role"
       tags:
         - preparation
+        - base_dependencies

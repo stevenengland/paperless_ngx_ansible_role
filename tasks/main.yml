@@ -5,3 +5,17 @@
     apply:
       tags: preparation_all
   tags: preparation
+
+- name: Install and configure base dependencies
+  ansible.builtin.include_tasks:
+    file: base_dependencies/main.yml
+    apply:
+      tags: base_dependencies_all
+  tags: base_dependencies
+
+- name: Install and configure paperless-ngx
+  ansible.builtin.include_tasks:
+    file: paperless_ngx/main.yml
+    apply:
+      tags: paperless_ngx_all
+  tags: paperless_ngx

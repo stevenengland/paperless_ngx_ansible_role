@@ -1,0 +1,66 @@
+---
+- name: Update all packages to the latest version
+  ansible.builtin.apt:  # noqa package-latest
+    upgrade: true
+    state: latest
+
+- name: Install base dependencies
+  ansible.builtin.apt:
+    update_cache: true
+    pkg:
+      # paperless-ngx
+      - python3-pip
+      - python3-dev
+      - default-libmysqlclient-dev
+      - fonts-liberation
+      - imagemagick
+      - optipng
+      - gnupg
+      - libpq-dev
+      - libmagic-dev
+      - mariadb-client
+      - mime-support
+      - libzbar0
+      - poppler-utils
+      # OCRmyPDF
+      - unpaper
+      - ghostscript
+      - icc-profiles-free
+      - qpdf
+      - liblept5
+      - libxml2
+      - pngquant
+      - zlib1g
+      - tesseract-ocr
+      # Dev
+      - build-essential
+      - git
+      - python3-setuptools
+      - python3-wheel
+      - python3-venv
+      - python3-jmespath
+      - sudo
+
+- name: Install ocr languages
+  ansible.builtin.apt:
+    pkg: "{{ paperless_ngx_ocr_languages | map('regex_replace', '^(.*)$', 'tesseract-ocr-\\1') | map('replace', '_', '-') | list }}"
+
+- name: Install redis
+  ansible.builtin.apt:
+    pkg: redis-server
+  when: paperless_ngx_redis_host == 'localhost' or paperless_ngx_redis_host == '127.0.0.1'
+
+- name: Enable redis
+  ansible.builtin.systemd:
+    name: redis-server
+    enabled: true
+    masked: false
+    state: started
+  when: paperless_ngx_redis_host == 'localhost' or paperless_ngx_redis_host == '127.0.0.1'
+
+# upstream virtualenv in Ubuntu 20.04 is broken
+# https://github.com/pypa/virtualenv/issues/1873
+- name: Install python virtualenv
+  ansible.builtin.pip:
+    name: virtualenv
+    extra_args: --upgrade
