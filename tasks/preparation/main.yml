@@ -1,14 +1,14 @@
 ---
 - name: Gather infos about the operating system
   ansible.builtin.include_tasks:
-    file: preparation_os.yml
+    file: os.yml
     apply:
-      tags: preparation_os
-  tags: preparation_os
+      tags: os
+  tags: os
 
 - name: Gather infos about paperless-ngx versions
   ansible.builtin.include_tasks:
-    file: preparation_version.yml
+    file: version.yml
     apply:
-      tags: preparation_version
-  tags: preparation_version
+      tags: version
+  tags: version
