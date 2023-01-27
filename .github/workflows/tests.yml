@@ -11,13 +11,7 @@ name: Tests
 
 jobs:
   linting:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out the repository
-        uses: actions/checkout@v3
-
-      - name: Check linting
-        uses: ./.github/workflows/linting.yml
+    uses: ./.github/workflows/linting.yml
 
   molecule_test:
     name: Molecule Test
@@ -34,8 +28,6 @@ jobs:
     steps:
       - name: Check out the repository
         uses: actions/checkout@v3
-        with:
-          path: "stevenengland.paperless_ngx_ansible_role"
 
       - name: Set up Python
         uses: actions/setup-python@v4
