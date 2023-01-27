@@ -23,7 +23,8 @@ jobs:
         include:
           - { distro: "debian11" }
           - { distro: "debian10" }
-          - { distro: "ubuntu2204" }
+          # https://github.com/geerlingguy/docker-ubuntu2204-ansible/issues/6
+          # - { distro: "ubuntu2204" }
           - { distro: "ubuntu2004" }
     steps:
       - name: Check out the repository

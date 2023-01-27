@@ -21,7 +21,7 @@ lint: |
   then
     echo "Molecule linting requested: true"
     yamllint -c=.yamllint.yml .
-    ansible-lint -c .ansible-lint.yml
+    ansible-lint -c .ansible-lint
   else
     echo "Molecule linting requested: false"
   fi

@@ -9,5 +9,5 @@ repos:
     rev: v6.11.0
     hooks:
       - id: ansible-lint
-        args: ["-c", ".ansible-lint.yml"]
+        args: ["-c", ".ansible-lint"]
         files: \.(yaml|yml)$
