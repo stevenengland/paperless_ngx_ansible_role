@@ -1,13 +1,25 @@
 ---
-name: Yaml Lint
+name: Linting
 
 "on":
+  workflow_call:
   push:
     branches-ignore:
       - 'main'
 
 jobs:
-  call_yaml_lint:
-    uses: ./.github/workflows/yaml-lint.yml
-  call_ansible_lint:
-    uses: ./.github/workflows/ansible-lint.yml
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      ## Source: https://github.com/marketplace/actions/yaml-lint
+      - name: Run yaml-lint
+        uses: ibiqlik/action-yamllint@v3
+        with:
+          config_file: .yamllint.yml
+          format: github
+
+      ## Source: https://github.com/marketplace/actions/ansible-lint
+      - name: Run ansible-lint
+        uses: ansible-community/ansible-lint-action@v6

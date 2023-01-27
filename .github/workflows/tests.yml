@@ -15,7 +15,15 @@ defaults:
 
 jobs:
   linting:
-    uses: ./.github/workflows/linting.yml
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+        with:
+          path: "stevenengland.paperless_ngx_ansible_role"
+
+      - name: Check linting
+        uses: ./.github/workflows/linting.yml
 
   molecule_test:
     name: Molecule Test
