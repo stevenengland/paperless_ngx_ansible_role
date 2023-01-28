@@ -46,3 +46,9 @@ molecule converge -- --tags=base_dependencies,repo_packages
 ```
 molecule test --platform-name=debian11
 ```
+
+### Login to a container after converge step
+
+```
+molecule login --host debian11
+```
