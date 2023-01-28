@@ -2,13 +2,16 @@
 - name: Check if jbig2enc is already installed with correct version
   ansible.builtin.command:
     cmd: jbig2 --version
-  register: _jbig2enc_version_installed
-  changed_when:
-    _jbig2enc_version_installed.rc != 0 or
-    (_jbig2enc_version_installed.stderr.split(' ')[-1] != paperless_ngx_jbig2enc_version | string) | default(true)
+  register: _jbig2enc_version_installed_response
+  changed_when: false
   failed_when: false
   ignore_errors: true
 
-# - name: Install jbig2encode from source
-#   include_tasks: install-jbig2enc.yml
-#   when: _jbig2enc_version_installed.changed
+- name: Setting host facts using complex arguments  # noqa jinja[spacing]
+  ansible.builtin.set_fact:
+    _jbig2enc_wanted_version_installed: >-
+      {%- if _jbig2enc_version_installed_response.rc != 0 or _jbig2enc_version_installed_response.stdout.split(' ')[-1] != paperless_ngx_jbig2enc_version -%}
+      false
+      {%- else -%}
+      true
+      {%- endif -%}
