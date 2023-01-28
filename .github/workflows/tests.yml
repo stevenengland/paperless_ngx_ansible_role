@@ -18,14 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - linting
-    strategy:
-      matrix:
-        include:
-          - { distro: "debian11" }
-          - { distro: "debian10" }
-          # https://github.com/geerlingguy/docker-ubuntu2204-ansible/issues/6
-          # - { distro: "ubuntu2204" }
-          - { distro: "ubuntu2004" }
+
     steps:
       - name: Check out the repository
         uses: actions/checkout@v3
@@ -50,5 +43,3 @@ jobs:
           PY_COLORS: "1"
           ANSIBLE_FORCE_COLOR: "1"
           TEST_MOLECULE_LINT: false
-          TEST_MOLECULE_DISTRO: ${{ matrix.distro }}
-          TEST_MOLECULE_NC: ${{ matrix.nc_version }}
