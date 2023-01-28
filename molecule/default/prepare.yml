@@ -1,0 +1,11 @@
+---
+- name: Prepare
+  hosts: all
+  any_errors_fatal: true
+  tasks:
+    - name: Update all packages to the latest version
+      become: true
+      ansible.builtin.apt:  # noqa package-latest
+        upgrade: dist
+        state: latest
+        update_cache: true
