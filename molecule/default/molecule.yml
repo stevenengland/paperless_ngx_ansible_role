@@ -7,7 +7,7 @@ platforms:
   - name: debian10
     image: "geerlingguy/docker-debian11-ansible:latest"
     cgroupns_mode: host
-    command: /lib/systemd/systemd
+    override_command: false
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
@@ -15,7 +15,7 @@ platforms:
   - name: debian11
     image: "geerlingguy/docker-debian10-ansible:latest"
     cgroupns_mode: host
-    command: /lib/systemd/systemd
+    override_command: false
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
@@ -23,7 +23,7 @@ platforms:
   - name: ubuntu2004
     image: "geerlingguy/docker-ubuntu2004-ansible:latest"
     cgroupns_mode: host
-    command: /lib/systemd/systemd
+    override_command: false
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
@@ -32,7 +32,7 @@ platforms:
     # - name: ubuntu2204
     #   image: "geerlingguy/docker-ubuntu2204-ansible:latest"
     #   cgroupns_mode: host
-    #   command: /lib/systemd/systemd
+    #   override_command: false
     #   volumes:
     #     - /sys/fs/cgroup:/sys/fs/cgroup:ro
     #   privileged: true
