@@ -6,6 +6,7 @@ driver:
 platforms:
   - name: debian10
     image: "geerlingguy/docker-debian11-ansible:latest"
+    cgroupns_mode: host
     command: /lib/systemd/systemd
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
@@ -13,6 +14,7 @@ platforms:
     pre_build_image: false
   - name: debian11
     image: "geerlingguy/docker-debian10-ansible:latest"
+    cgroupns_mode: host
     command: /lib/systemd/systemd
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
@@ -20,6 +22,7 @@ platforms:
     pre_build_image: false
   - name: ubuntu2004
     image: "geerlingguy/docker-ubuntu2004-ansible:latest"
+    cgroupns_mode: host
     command: /lib/systemd/systemd
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
@@ -28,6 +31,7 @@ platforms:
     # https://github.com/geerlingguy/docker-ubuntu2204-ansible/issues/6
     # - name: ubuntu2204
     #   image: "geerlingguy/docker-ubuntu2204-ansible:latest"
+    #   cgroupns_mode: host
     #   command: /lib/systemd/systemd
     #   volumes:
     #     - /sys/fs/cgroup:/sys/fs/cgroup:ro
