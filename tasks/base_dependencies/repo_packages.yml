@@ -1,12 +1,4 @@
 ---
-- name: Update all packages to the latest version
-  become: true
-  ansible.builtin.apt:  # noqa package-latest
-    upgrade: true
-    state: latest
-  register: _apt_update_result
-  changed_when: not "0 upgraded, 0 newly installed" in _apt_update_result.stdout
-
 - name: Install base dependencies
   become: true
   ansible.builtin.apt:
