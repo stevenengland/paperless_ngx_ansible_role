@@ -1,0 +1,7 @@
+---
+- name: Install paperless-ngx
+  ansible.builtin.include_tasks:
+    file: installation.yml
+    apply:
+      tags: installation
+  tags: installation
