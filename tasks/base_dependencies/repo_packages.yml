@@ -1,5 +1,6 @@
 ---
 - name: Update all packages to the latest version
+  become: true
   ansible.builtin.apt:  # noqa package-latest
     upgrade: true
     state: latest
@@ -7,6 +8,7 @@
   changed_when: not "0 upgraded, 0 newly installed" in _apt_update_result.stdout
 
 - name: Install base dependencies
+  become: true
   ansible.builtin.apt:
     update_cache: true
     pkg:
@@ -44,15 +46,18 @@
       - sudo
 
 - name: Install ocr languages
+  become: true
   ansible.builtin.apt:
     pkg: "{{ paperless_ngx_ocr_languages | map('regex_replace', '^(.*)$', 'tesseract-ocr-\\1') | map('replace', '_', '-') | list }}"
 
 - name: Install redis
+  become: true
   ansible.builtin.apt:
     pkg: redis-server
   when: paperless_ngx_redis_host == 'localhost' or paperless_ngx_redis_host == '127.0.0.1'
 
 - name: Enable redis
+  become: true
   ansible.builtin.systemd:
     name: redis-server
     enabled: true
@@ -63,6 +68,7 @@
 # upstream virtualenv in Ubuntu 20.04 is broken
 # https://github.com/pypa/virtualenv/issues/1873
 - name: Install python virtualenv
+  become: true
   ansible.builtin.pip:
     name: virtualenv
     extra_args: --upgrade
