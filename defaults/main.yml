@@ -11,3 +11,9 @@ paperless_ngx_db_type: sqlite  # or postgresql
 # OCR
 paperless_ngx_ocr_languages:
   - eng
+
+# jbig2encode
+paperless_ngx_jbig2enc_enabled: true
+paperless_ngx_jbig2enc_lossy: false
+paperless_ngx_jbig2enc_version: 0.29
+paperless_ngx_jbig2enc_tmp_dir: "/opt/"
