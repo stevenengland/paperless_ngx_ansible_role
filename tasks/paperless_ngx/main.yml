@@ -1,4 +1,11 @@
 ---
+- name: Add paperless-ngx user(s) and group(s)
+  ansible.builtin.include_tasks:
+    file: user.yml
+    apply:
+      tags: user
+  tags: user
+
 - name: Install paperless-ngx
   ansible.builtin.include_tasks:
     file: installation.yml

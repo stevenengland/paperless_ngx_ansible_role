@@ -1,5 +1,9 @@
 ---
+# PAPERLESS SYSTEM
 paperless_ngx_version: latest
+paperless_ngx_system_group: paperlessngx
+paperless_ngx_system_user: paperlessngx
+paperless_ngx_directory: /opt/paperless-ngx
 
 # REDIS DB
 paperless_ngx_redis_host: localhost

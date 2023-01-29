@@ -1,0 +1,15 @@
+---
+- name: Create paperless system group
+  become: true
+  ansible.builtin.group:
+    name: "{{ paperless_ngx_system_group }}"
+
+- name: Create paperless system user
+  become: true
+  ansible.builtin.user:
+    name: "{{ paperless_ngx_system_user }}"
+    groups:
+      - "{{ paperless_ngx_system_group }}"
+    shell: /usr/sbin/nologin
+    # GNUPG_HOME required due to paperless db.py
+    create_home: true
