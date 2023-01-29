@@ -44,3 +44,11 @@
 
   delegate_to: localhost
   run_once: true
+
+- name: Get major, minor and patch level of target version
+  ansible.builtin.set_fact:
+    _paperless_ngx_version_major: "{{ paperless_ngx_version.split('.')[0] | int }}"
+    _paperless_ngx_version_minor: "{{ paperless_ngx_version.split('.')[1] | int }}"
+    _paperless_ngx_version_patch: "{{ paperless_ngx_version.split('.')[2] | int }}"
+  delegate_to: localhost
+  run_once: true
