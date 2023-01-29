@@ -16,4 +16,4 @@ paperless_ngx_ocr_languages:
 paperless_ngx_jbig2enc_enabled: true
 paperless_ngx_jbig2enc_lossy: false
 paperless_ngx_jbig2enc_version: 0.29
-paperless_ngx_jbig2enc_tmp_dir: "/opt/"
+paperless_ngx_jbig2enc_tmp_dir: "/tmp/"
