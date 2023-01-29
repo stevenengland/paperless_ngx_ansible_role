@@ -1,0 +1,30 @@
+---
+- name: Check for existing paperless-ngx version file
+  ansible.builtin.stat:
+    path: "{{ paperless_ngx_directory }}/.installed_version"
+  register: _paperless_ngx_version_file_object
+
+- name: Detect installation strategy
+  when: _paperless_ngx_version_file_object.stat.exists
+  block:
+    - name: Get the current installed version
+      ansible.builtin.command:
+        cmd: cat {{ paperless_ngx_directory }}/.installed_version
+      register: _paperless_ngx_version_installed_object
+      changed_when: _paperless_ngx_version_installed_object.stdout != paperless_ngx_version | string
+      # failed_when: false
+      # ignore_errors: true
+
+    - name: Get major, minor and patch level of installed version
+      ansible.builtin.set_fact:
+        _paperless_ngx_installed_version: "{{ _paperless_ngx_version_installed_object.stdout }}"
+        _paperless_ngx_installed_version_major: "{{ _paperless_ngx_version_installed_object.stdout.split('.')[0] | int }}"
+        _paperless_ngx_installed_version_minor: "{{ _paperless_ngx_version_installed_object.stdout.split('.')[1] | int }}"
+        _paperless_ngx_installed_version_patch: "{{ _paperless_ngx_version_installed_object.stdout.split('.')[2] | int }}"
+
+- name: Print the current installation state detected
+  ansible.builtin.debug:
+    msg:
+      - "Paperless-ngx installed version:  {{ _paperless_ngx_installed_version if _paperless_ngx_installed_version is defined else '-' }}"
+      - "Paperless-ngx target version:     {{ paperless_ngx_version }}"
+      - "Detected strategy:                {{ 'fresh install' if not _paperless_ngx_installed_version is defined else '-' }}"
