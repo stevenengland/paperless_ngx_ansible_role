@@ -1,5 +1,5 @@
 ---
 - name: Remove current paperless release directory
   ansible.builtin.file:
-    path: "{{ paperless_ngx_directory }}/"
+    path: "{{ paperless_ngx_dir_installation }}/"
     state: absent

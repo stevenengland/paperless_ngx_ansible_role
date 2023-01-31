@@ -53,7 +53,7 @@
 - name: Check for existing paperless-ngx version file
   become: true
   ansible.builtin.stat:
-    path: "{{ paperless_ngx_directory }}/.installed_version"
+    path: "{{ paperless_ngx_dir_installation }}/.installed_version"
   register: _paperless_ngx_version_file_object
 
 - name: Set current installed version variable
@@ -61,7 +61,7 @@
   block:
     - name: Get the current installed version
       ansible.builtin.command:
-        cmd: cat {{ paperless_ngx_directory }}/.installed_version
+        cmd: cat {{ paperless_ngx_dir_installation }}/.installed_version
       register: _paperless_ngx_version_installed_object
       changed_when: _paperless_ngx_version_installed_object.stdout != paperless_ngx_version | string
       # failed_when: false

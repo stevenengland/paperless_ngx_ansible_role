@@ -1,24 +1,37 @@
 ---
-# PAPERLESS SYSTEM
-paperless_ngx_version: latest
-paperless_ngx_system_group: paperlessngx
-paperless_ngx_system_user: paperlessngx
-paperless_ngx_directory: /opt/paperless-ngx
+# Role specific variables
 paperless_ngx_backup_on_upgrade: true
-
-# REDIS DB
-paperless_ngx_redis_host: localhost
-paperless_ngx_redis_port: 6379
-
-# DATA DB
+## Data db
 paperless_ngx_db_type: sqlite  # or postgresql
-
-# OCR
-paperless_ngx_ocr_languages:
-  - eng
-
-# jbig2encode
+## Directories
+paperless_ngx_dir_export: "{{ paperless_ngx_dir_runtime_data }}/export"
+paperless_ngx_dir_installation: /opt/paperless-ngx
+paperless_ngx_dir_runtime_data: /var/lib/paperless-ngx
+paperless_ngx_dir_tmp: /tmp/paperless-ngx
+paperless_ngx_dir_virtualenv: "{{ paperless_ngx_dir_installation }}/.venv"
+## jbig2encode
 paperless_ngx_jbig2enc_enabled: true
 paperless_ngx_jbig2enc_lossy: false
-paperless_ngx_jbig2enc_version: 0.29
 paperless_ngx_jbig2enc_tmp_dir: "/tmp/"
+paperless_ngx_jbig2enc_version: 0.29
+## OCR
+paperless_ngx_ocr_languages:
+  - eng
+## Redis db
+paperless_ngx_redis_host: localhost
+paperless_ngx_redis_port: 6379
+## paperless-ngx user
+paperless_ngx_system_group: paperlessngx
+paperless_ngx_system_user: paperlessngx
+## paperless meta data
+paperless_ngx_version: latest
+
+# paperless-ngx configuration variables
+## Paths and folders
+paperless_ngx_conf_consumption_dir: "{{ paperless_ngx_dir_runtime_data }}/consumption"
+paperless_ngx_conf_data_dir: "{{ paperless_ngx_dir_runtime_data }}/data"
+paperless_ngx_conf_trash_dir: "{{ paperless_ngx_dir_runtime_data }}/trash"
+paperless_ngx_conf_media_root: "{{ paperless_ngx_dir_runtime_data }}/media"
+paperless_ngx_conf_staticdir: "{{ paperless_ngx_dir_runtime_data }}/static"
+paperless_ngx_conf_filename_format:
+paperless_ngx_conf_logging_dir: "{{ paperless_ngx_dir_runtime_data }}/log"
