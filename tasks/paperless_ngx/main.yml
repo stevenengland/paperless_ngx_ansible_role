@@ -6,9 +6,30 @@
       tags: user
   tags: user
 
+- name: Backup existing installation
+  ansible.builtin.include_tasks:
+    file: backup.yml
+    apply:
+      tags: backup
+  tags: backup
+  when:
+    - _paperless_ngx_installation_strategy_upgrade
+    - paperless_ngx_backup_on_upgrade
+
 - name: Install paperless-ngx
   ansible.builtin.include_tasks:
     file: installation.yml
     apply:
       tags: installation
   tags: installation
+  when: >-
+    _paperless_ngx_installation_strategy_upgrade
+    or
+    _paperless_ngx_installation_strategy_fresh
+
+- name: Configure paperless-ngx
+  ansible.builtin.include_tasks:
+    file: configuration.yml
+    apply:
+      tags: configuration
+  tags: configuration
