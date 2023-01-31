@@ -8,3 +8,9 @@
   ansible.builtin.assert:
     that: ansible_service_mgr == 'systemd'
     msg: "This role only works with systemd"
+
+- name: Verify Ansible meets version requirements.
+  ansible.builtin.assert:
+    that: "ansible_version.full is version_compare('2.7', '>=')"
+    msg: >
+      "You must update Ansible to at least 2.7 to use this role."
