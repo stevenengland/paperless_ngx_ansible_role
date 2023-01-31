@@ -215,6 +215,12 @@ Example Playbooks
         ...
 ```
 
+Contributing
+-------
+
+We encourage you to contribute to this role! Please check out the
+[contributing guide](CONTRIBUTE.md) for guidelines about how to proceed.
+
 License
 -------
 
