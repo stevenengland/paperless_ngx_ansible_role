@@ -23,6 +23,11 @@
   delegate_to: localhost
   run_once: true
 
+- name: Fail if version is detected that is not supported
+  ansible.builtin.fail:
+    msg: Unsupported version detected. Please use a version >= {{ paperless_ngx_version_minimum }}
+  when: paperless_ngx_version is ansible.builtin.version(paperless_ngx_version_minimum, '<', version_type='semver')
+
 - name: Set and check download URL
   block:
     - name: Set download link

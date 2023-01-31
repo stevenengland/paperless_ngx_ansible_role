@@ -1,2 +1,2 @@
 ---
-# vars file for paperless_ngx_ansible_role
+paperless_ngx_version_minimum: '1.10.0'
