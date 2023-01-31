@@ -1,4 +1,11 @@
 ---
+- name: Check variables for logical errors
+  ansible.builtin.include_tasks:
+    file: vars.yml
+    apply:
+      tags: vars
+  tags: vars
+
 - name: Gather infos about the operating system
   ansible.builtin.include_tasks:
     file: os.yml

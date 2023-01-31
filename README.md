@@ -21,7 +21,6 @@ For a full listing including explanations and allowed values, see the current [d
 Additional variables available in this role are listed below, along with default values:
 ```paperless_ngx_version: latest```
 
-
 ### Role specific variables
 
 | Name           | Default Value | Description                        |
@@ -68,7 +67,6 @@ Additional variables available in this role are listed below, along with default
 | `paperless_ngx_conf_data_dir` | "{{ paperless_ngx_dir_runtime_data }}/data" |
 | `paperless_ngx_conf_trash_dir` | "{{ paperless_ngx_dir_runtime_data }}/trash" |
 | `paperless_ngx_conf_media_root` | "{{ paperless_ngx_dir_runtime_data }}/media" |
-| `paperless_ngx_conf_staticdir` | "{{ paperless_ngx_dir_runtime_data }}/static" |
 | `paperless_ngx_conf_filename_format` | "" |
 | `paperless_ngx_conf_filename_format_remove_none` | not implemented |
 | `paperless_ngx_conf_logging_dir` | "{{ paperless_ngx_dir_runtime_data }}/log" |
@@ -193,6 +191,12 @@ Additional variables available in this role are listed below, along with default
 | Name           | Default Value |
 | -------------- | ------------- |
 | `paperless_ngx_conf_enable_update_check` |  |
+
+### Usage advice
+
+#### Separation of static (~ installation) and dynamic (~ runtime) data
+
+This role checks that you do not set one of the data dirs (like consumption etc.) as a subdirectory of the installation path. For making my life easier this role deletes the installation folder and creates a complete new one when upgrading. This is fresh and clean. Also this way you are kept from unwanted deletions of your data during upgrades.
 
 Dependencies
 ------------
