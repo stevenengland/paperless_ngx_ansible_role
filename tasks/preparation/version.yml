@@ -60,6 +60,7 @@
   when: _paperless_ngx_version_file_object.stat.exists
   block:
     - name: Get the current installed version
+      become: true
       ansible.builtin.command:
         cmd: cat {{ paperless_ngx_dir_installation }}/.installed_version
       register: _paperless_ngx_version_installed_object
