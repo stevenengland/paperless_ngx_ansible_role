@@ -41,6 +41,11 @@ molecule converge -- --tags=base_dependencies,base_dependencies_all
 molecule converge -- --tags=base_dependencies,repo_packages
 ```
 
+### Run converge against specific scenario
+```
+molecule converge --scenario-name foo
+```
+
 ### Run test step only against specific platform(s) (in default scenario)
 
 ```
