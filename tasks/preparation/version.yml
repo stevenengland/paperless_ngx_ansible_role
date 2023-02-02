@@ -27,6 +27,7 @@
   ansible.builtin.fail:
     msg: Unsupported version detected. Please use a version >= {{ paperless_ngx_version_minimum }}
   when: paperless_ngx_version is ansible.builtin.version(paperless_ngx_version_minimum, '<', version_type='semver')
+  register: _exception
 
 - name: Set and check download URL
   block:
@@ -102,3 +103,4 @@
   ansible.builtin.fail:
     msg: Downgrade detected - Downgrades are not allowed.
   when: _paperless_ngx_installation_strategy_downgrade
+  register: _exception
