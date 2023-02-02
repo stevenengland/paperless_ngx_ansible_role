@@ -8,7 +8,7 @@ A brief description of the role goes here.
 Requirements
 ------------
 
-No special system requirements. Ansible 2.7 or newer is required.
+No special system requirements. Ansible 2.8 or newer is required.
 
 Role Variables
 --------------
@@ -28,9 +28,9 @@ Additional variables available in this role are listed below, along with default
 | `paperless_ngx_backup_on_upgrade` | true | Whether to backup old installation files before upgrade. |
 | `paperless_ngx_db_type` | sqlite | Available db types are sqlite and postgresql. If postrgresql is chosen then the other db_ vars must be configured too. |
 | `paperless_ngx_dir_export` | "{{ paperless_ngx_dir_runtime_data }}/export" | The dir where the exports are written to. |
+| `paperless_ngx_dir_force_permission_exclude` | [] | Which directories should be skipped from permission check/setting. See [docs](docs/DIRECTORY_PERMISSION_CHECK.md). |
 | `paperless_ngx_dir_installation` | /opt/paperless-ngx | The directory where paperless-ngx static installation files are written to. |
 | `paperless_ngx_dir_runtime_data` | /var/lib/paperless-ngx | The directory where the runtime data will be stored. |
-| `paperless_ngx_dir_tmp` | /tmp/paperless-ngx | The dir for temporary installation files |
 | `paperless_ngx_dir_virtualenv` | "{{ paperless_ngx_dir_installation }}/.venv" | The directory for the needed python venv. |
 | `paperless_ngx_jbig2enc_enabled` | true | Whether to install and use jbig2enc for OCRmyPDF. |
 | `paperless_ngx_jbig2enc_lossy` | false | Run jbig2enc in lossy mode or not. |

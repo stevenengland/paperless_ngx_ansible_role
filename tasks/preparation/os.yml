@@ -11,6 +11,6 @@
 
 - name: Verify Ansible meets version requirements.
   ansible.builtin.assert:
-    that: "ansible_version.full is version_compare('2.7', '>=')"
+    that: "ansible_version.full is version_compare(ansible_version_minimum, '>=')"
     msg: >
-      "You must update Ansible to at least 2.7 to use this role."
+      "You must update Ansible to at least {{ ansible_version_minimum }} to use this role."

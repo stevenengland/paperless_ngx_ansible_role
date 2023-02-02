@@ -1,2 +1,14 @@
 ---
+# Vars that shouldn't be altered by the user
+ansible_version_minimum: "2.8"
+paperless_ngx_dir_force_permission_include:
+  - "{{ paperless_ngx_dir_export }}"
+  - "{{ paperless_ngx_dir_installation }}"
+  - "{{ paperless_ngx_dir_runtime_data }}"
+  - "{{ paperless_ngx_conf_consumption_dir }}"
+  - "{{ paperless_ngx_conf_data_dir }}"
+  - "{{ paperless_ngx_conf_trash_dir }}"
+  - "{{ paperless_ngx_conf_media_root }}"
+  - "{{ paperless_ngx_conf_logging_dir }}"
+paperless_ngx_dir_tmp: /tmp/paperless-ngx
 paperless_ngx_version_minimum: '1.10.0'
