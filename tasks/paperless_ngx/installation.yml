@@ -73,6 +73,22 @@
     mode: preserve
     directory_mode: preserve
 
+- name: Deploy paperless-ngx configuration
+  become: true
+  ansible.builtin.copy:
+    src: "{{ paperless_ngx_dir_installation }}/paperless.conf"
+    remote_src: true
+    dest: /etc/paperless.conf
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Delete paperless-ngx configuration from installation dir
+  become: true
+  ansible.builtin.copy:
+    src: "{{ paperless_ngx_dir_installation }}/paperless.conf"
+    state: absent
+
 - name: Remove temporary directory
   become: true
   ansible.builtin.file:
