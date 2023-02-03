@@ -4,6 +4,8 @@
   ansible.builtin.apt:
     update_cache: true
     pkg:
+      # ansible
+      - acl
       # paperless-ngx
       - python3-pip
       - python3-dev
