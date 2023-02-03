@@ -16,20 +16,43 @@
     - _paperless_ngx_installation_strategy_upgrade
     - paperless_ngx_backup_on_upgrade
 
-- name: Install paperless-ngx
+- name: Get paperless-ngx release
   ansible.builtin.include_tasks:
-    file: installation.yml
+    file: release_get.yml
     apply:
-      tags: installation
-  tags: installation
+      tags: release_get
+  tags: release_get
   when: >-
     _paperless_ngx_installation_strategy_upgrade
     or
     _paperless_ngx_installation_strategy_fresh
 
+# Before moving on, configure pngx to make ENV vars available to next steps
 - name: Configure paperless-ngx
   ansible.builtin.include_tasks:
     file: configuration.yml
     apply:
       tags: configuration
   tags: configuration
+
+- name: Prepare paperless-ngx release
+  ansible.builtin.include_tasks:
+    file: release_setup.yml
+    apply:
+      tags: release_setup
+  tags: release_setup
+  when: >-
+    _paperless_ngx_installation_strategy_upgrade
+    or
+    _paperless_ngx_installation_strategy_fresh
+
+- name: Finish paperless-ngx release
+  ansible.builtin.include_tasks:
+    file: release_finish.yml
+    apply:
+      tags: release_finish
+  tags: release_finish
+  when: >-
+    _paperless_ngx_installation_strategy_upgrade
+    or
+    _paperless_ngx_installation_strategy_fresh
