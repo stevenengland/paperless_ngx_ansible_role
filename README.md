@@ -27,7 +27,6 @@ Additional variables available in this role are listed below, along with default
 | -------------- | ------------- | -----------------------------------|
 | `paperless_ngx_backup_on_upgrade` | true | Whether to backup old installation files before upgrade. |
 | `paperless_ngx_db_type` | sqlite | Available db types are sqlite and postgresql. If postrgresql is chosen then the other db_ vars must be configured too. |
-| `paperless_ngx_dir_export` | "{{ paperless_ngx_dir_runtime_data }}/export" | The dir where the exports are written to. |
 | `paperless_ngx_dir_force_permission_exclude` | [] | Which directories should be skipped from permission check/setting. See [docs](docs/DIRECTORY_PERMISSION_CHECK.md). |
 | `paperless_ngx_dir_installation` | /opt/paperless-ngx | The directory where paperless-ngx static installation files are written to. |
 | `paperless_ngx_dir_runtime_data` | /var/lib/paperless-ngx | The directory where the runtime data will be stored. |
@@ -68,6 +67,7 @@ Additional variables available in this role are listed below, along with default
 | -------------- | ------------- |
 | `paperless_ngx_conf_consumption_dir` | "{{ paperless_ngx_dir_runtime_data }}/consumption" |
 | `paperless_ngx_conf_data_dir` | "{{ paperless_ngx_dir_runtime_data }}/data" |
+| `paperless_ngx_conf_export_dir` | "{{ paperless_ngx_dir_runtime_data }}/export" |
 | `paperless_ngx_conf_trash_dir` | "{{ paperless_ngx_dir_runtime_data }}/trash" |
 | `paperless_ngx_conf_media_root` | "{{ paperless_ngx_dir_runtime_data }}/media" |
 | `paperless_ngx_conf_filename_format` | "" |

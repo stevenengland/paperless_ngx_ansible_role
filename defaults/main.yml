@@ -4,7 +4,6 @@ paperless_ngx_backup_on_upgrade: true
 ## Data db
 paperless_ngx_db_type: sqlite  # or postgresql
 ## Directories
-paperless_ngx_dir_export: "{{ paperless_ngx_dir_runtime_data }}/export"
 paperless_ngx_dir_force_permission_exclude: []
 paperless_ngx_dir_installation: /opt/paperless-ngx
 paperless_ngx_dir_runtime_data: /var/lib/paperless-ngx
@@ -33,6 +32,7 @@ paperless_ngx_version: latest
 ## Paths and folders
 paperless_ngx_conf_consumption_dir: "{{ paperless_ngx_dir_runtime_data }}/consumption"
 paperless_ngx_conf_data_dir: "{{ paperless_ngx_dir_runtime_data }}/data"
+paperless_ngx_conf_export_dir: "{{ paperless_ngx_dir_runtime_data }}/export"
 paperless_ngx_conf_trash_dir: "{{ paperless_ngx_dir_runtime_data }}/trash"
 paperless_ngx_conf_media_root: "{{ paperless_ngx_dir_runtime_data }}/media"
 paperless_ngx_conf_filename_format:
