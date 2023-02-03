@@ -23,6 +23,9 @@ paperless_ngx_redis_port: 6379
 ## paperless-ngx user
 paperless_ngx_system_group: paperlessngx
 paperless_ngx_system_user: paperlessngx
+paperless_ngx_superuser_name: paperlessngx
+paperless_ngx_superuser_email: paperlessngx@example.com
+paperless_ngx_superuser_password:
 ## paperless meta data
 paperless_ngx_version: latest
 

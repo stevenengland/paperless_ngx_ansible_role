@@ -40,6 +40,9 @@ Additional variables available in this role are listed below, along with default
 | `paperless_ngx_redis_port` | 6379 | Redis port |
 | `paperless_ngx_system_group` | paperlessngx | The group to which the system user belongs. |
 | `paperless_ngx_system_user` | paperlessngx | The user that will execute the services and own the data. |
+| `paperless_ngx_superuser_name` | paperlessngx | The superuser username. Will be setup during installation. |
+| `paperless_ngx_superuser_email` | paperlessngx@example.com | The superuser mail. |
+| `paperless_ngx_superuser_password` | "" | The superuser password. If left blank a random one will be created and written to the file /root/pnx_superuser.pwd |
 | `paperless_ngx_version` | latest | Sofware version to install. Use `latest` or any specific version in the format `'1.10.0'`. Only versions >= 1.10.x supported. |
 | `` |  |  |
 
