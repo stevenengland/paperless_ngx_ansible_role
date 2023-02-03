@@ -1,6 +1,6 @@
 ---
 # Vars that shouldn't be altered by the user
-ansible_version_minimum: "2.8"
+ansible_version_minimum: "2.11"
 paperless_ngx_dir_force_permission_include:
   - "{{ paperless_ngx_dir_export }}"
   - "{{ paperless_ngx_dir_installation }}"
