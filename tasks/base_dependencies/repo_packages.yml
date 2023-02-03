@@ -1,11 +1,17 @@
 ---
-- name: Install base dependencies
+- name: Install base dependencies for Ansible
   become: true
   ansible.builtin.apt:
     update_cache: true
     pkg:
       # ansible
       - acl
+
+- name: Install base dependencies for pngx
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    pkg:
       # paperless-ngx
       - python3-pip
       - python3-dev
