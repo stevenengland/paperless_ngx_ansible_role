@@ -14,7 +14,7 @@ Role Variables
 --------------
 
 Most configuration variables from paperless-ngx itself are available and accept their respective arguments.
-Every `PAPERLESS_*` configuration variable is lowercased and instead prefixed with `paperless_ngx_conf_*` in `defaults/main.yml`.
+Every **'PAPERLESS_*'** configuration variable is lowercased and instead prefixed with **'paperless_ngx_conf_*'** in **defaults/main.yml**.
 
 For a full listing including explanations and allowed values, see the current [documentation](https://docs.paperless-ngx.com/configuration/).
 
@@ -41,7 +41,9 @@ Additional variables available in this role are listed below, along with default
 | `paperless_ngx_system_user` | paperlessngx | The user that will execute the services and own the data. |
 | `paperless_ngx_superuser_name` | paperlessngx | The superuser username. Will be setup during installation. |
 | `paperless_ngx_superuser_email` | paperlessngx@example.com | The superuser mail. |
-| `paperless_ngx_superuser_password` | "" | The superuser password. If left blank a random one will be created and written to the file /root/pnx_superuser.pwd |
+| `paperless_ngx_superuser_password` | "" | The superuser password. If not defined by the user, a random password will be generated -> see section below about passwords. |
+| `paperless_ngx_webserver_listen_address` | 127.0.0.1 | The webservers address. |
+| `paperless_ngx_webserver_listen_port` | 8000 | The webservers port. |
 | `paperless_ngx_version` | latest | Sofware version to install. Use `latest` or any specific version in the format `'1.10.0'`. Only versions >= 1.10.x supported. |
 | `` |  |  |
 
@@ -53,12 +55,12 @@ Additional variables available in this role are listed below, along with default
 | -------------- | ------------- |
 | `paperless_ngx_conf_redis` | not implemented, see system vars instead |
 | `paperless_ngx_conf_dbengine` | not implemented, see system vars instead |
-| `paperless_ngx_conf_dbhost` |  |
-| `paperless_ngx_conf_dbport` |  |
-| `paperless_ngx_conf_dbname` |  |
-| `paperless_ngx_conf_dbuser` |  |
-| `paperless_ngx_conf_dbpass` |  |
-| `paperless_ngx_conf_dbsslmode` |  |
+| `paperless_ngx_conf_dbhost` | localhost |
+| `paperless_ngx_conf_dbport` | 5432 |
+| `paperless_ngx_conf_dbname` | paperlessngx |
+| `paperless_ngx_conf_dbuser` | paperlessngx |
+| `paperless_ngx_conf_dbpass` | The db password. If not defined by the user, a random password will be generated -> see section below about passwords. |
+| `paperless_ngx_conf_dbsslmode` | prefer |
 | `paperless_ngx_conf_db_timeout` |  |
 
 #### Path and folders
@@ -86,19 +88,19 @@ Additional variables available in this role are listed below, along with default
 
 | Name           | Default Value |
 | -------------- | ------------- |
-| `paperless_ngx_conf_secret_key` |  |
-| `paperless_ngx_conf_url` |  |
+| `paperless_ngx_conf_secret_key` | "" (If not defined by the user, a random password will be generated -> see section below about passwords) |
+| `paperless_ngx_conf_url` | http://localhost:8000 |
 | `paperless_ngx_conf_csrf_trusted_origins` |  |
-| `paperless_ngx_conf_allowed_hosts` |  |
-| `paperless_ngx_conf_cors_allowed_hosts` |  |
-| `paperless_ngx_conf_force_script_name` |  |
-| `paperless_ngx_conf_static_url` |  |
-| `paperless_ngx_conf_auto_login_username` |  |
+| `paperless_ngx_conf_allowed_hosts` | "*" |
+| `paperless_ngx_conf_cors_allowed_hosts` | http://localhost:8000 |
+| `paperless_ngx_conf_force_script_name` | "" |
+| `paperless_ngx_conf_static_url` | /static/ |
+| `paperless_ngx_conf_auto_login_username` | "" |
 | `paperless_ngx_conf_admin_user` |  |
 | `paperless_ngx_conf_admin_mail` |  |
 | `paperless_ngx_conf_admin_password` |  |
-| `paperless_ngx_conf_cookie_prefix` |  |
-| `paperless_ngx_conf_enable_http_remote_user` |  |
+| `paperless_ngx_conf_cookie_prefix` | "" |
+| `paperless_ngx_conf_enable_http_remote_user` | "" |
 | `paperless_ngx_conf_http_remote_user_header_name` |  |
 | `paperless_ngx_conf_logout_redirect_url` |  |
 
@@ -106,25 +108,25 @@ Additional variables available in this role are listed below, along with default
 
 | Name           | Default Value |
 | -------------- | ------------- |
-| `paperless_ngx_conf_ocr_language` | not implemented, see system vars instead |
-| `paperless_ngx_conf_ocr_mode` |  |
-| `paperless_ngx_conf_ocr_clean` |  |
-| `paperless_ngx_conf_ocr_deskew` |  |
-| `paperless_ngx_conf_ocr_rotate_pages` |  |
-| `paperless_ngx_conf_ocr_rotate_pages_threshold` |  |
-| `paperless_ngx_conf_ocr_output_type` |  |
-| `paperless_ngx_conf_ocr_pages` |  |
-| `paperless_ngx_conf_ocr_image_dpi` |  |
-| `paperless_ngx_conf_ocr_max_image_pixels` |  |
-| `paperless_ngx_conf_ocr_user_args` |  |
+| `paperless_ngx_conf_ocr_language` | [eng] |
+| `paperless_ngx_conf_ocr_mode` | skip |
+| `paperless_ngx_conf_ocr_clean` | clean |
+| `paperless_ngx_conf_ocr_deskew` | true |
+| `paperless_ngx_conf_ocr_rotate_pages` | true |
+| `paperless_ngx_conf_ocr_rotate_pages_threshold` | 12 |
+| `paperless_ngx_conf_ocr_output_type` | pdfa |
+| `paperless_ngx_conf_ocr_pages` | 0 |
+| `paperless_ngx_conf_ocr_image_dpi` | "" |
+| `paperless_ngx_conf_ocr_max_image_pixels` | |
+| `paperless_ngx_conf_ocr_user_args` | [optimize=1] |
 
 #### Tika settings
 
 | Name           | Default Value |
 | -------------- | ------------- |
-| `paperless_ngx_conf_tika_enabled` |  |
-| `paperless_ngx_conf_tika_endpoint` |  |
-| `paperless_ngx_conf_tika_gotenberg_endpoint` |  |
+| `paperless_ngx_conf_tika_enabled` | false |
+| `paperless_ngx_conf_tika_endpoint` | http://localhost:9998 |
+| `paperless_ngx_conf_tika_gotenberg_endpoint` | http://localhost:3000 |
 
 #### Software tweaks
 
@@ -134,7 +136,7 @@ Additional variables available in this role are listed below, along with default
 | `paperless_ngx_conf_threads_per_worker` |  |
 | `paperless_ngx_conf_worker_timeout` |  |
 | `paperless_ngx_conf_worker_retry` |  |
-| `paperless_ngx_conf_time_zone` |  |
+| `paperless_ngx_conf_time_zone` | Europe/London |
 | `paperless_ngx_conf_enable_nltk` |  |
 | `paperless_ngx_conf_email_task_cron` |  |
 | `paperless_ngx_conf_train_task_cron` |  |
@@ -145,7 +147,7 @@ Additional variables available in this role are listed below, along with default
 
 | Name           | Default Value |
 | -------------- | ------------- |
-| `paperless_ngx_conf_consumer_polling` |  |
+| `paperless_ngx_conf_consumer_polling` | 0 |
 | `paperless_ngx_conf_consumer_polling_retry_count` |  |
 | `paperless_ngx_conf_consumer_polling_delay` |  |
 
@@ -154,19 +156,19 @@ Additional variables available in this role are listed below, along with default
 | Name           | Default Value |
 | -------------- | ------------- |
 | `paperless_ngx_conf_consumer_inotify_delay` |  |
-| `paperless_ngx_conf_consumer_delete_duplicates` |  |
-| `paperless_ngx_conf_consumer_recursive` |  |
-| `paperless_ngx_conf_consumer_subdirs_as_tags` |  |
+| `paperless_ngx_conf_consumer_delete_duplicates` | false |
+| `paperless_ngx_conf_consumer_recursive` | false |
+| `paperless_ngx_conf_consumer_subdirs_as_tags` | false |
 | `paperless_ngx_conf_consumer_enable_barcodes` |  |
 | `paperless_ngx_conf_consumer_barcode_tiff_support` |  |
 | `paperless_ngx_conf_consumer_enable_asn_barcode` |  |
-| `paperless_ngx_conf_convert_memory_limit` |  |
-| `paperless_ngx_conf_convert_tmpdir` |  |
-| `paperless_ngx_conf_post_consume_script` |  |
-| `paperless_ngx_conf_filename_date_order` |  |
+| `paperless_ngx_conf_convert_memory_limit` | 0 |
+| `paperless_ngx_conf_convert_tmpdir` | "" |
+| `paperless_ngx_conf_post_consume_script` | "" |
+| `paperless_ngx_conf_filename_date_order` | "" |
 | `paperless_ngx_conf_number_of_suggested_dates` |  |
-| `paperless_ngx_conf_thumbnail_font_name` |  |
-| `paperless_ngx_conf_ignore_dates` |  |
+| `paperless_ngx_conf_thumbnail_font_name` | /usr/share/fonts/liberation/LiberationSerif-Regular.ttf |
+| `paperless_ngx_conf_ignore_dates` | "" |
 | `paperless_ngx_conf_date_order` |  |
 | `paperless_ngx_conf_consumer_ignore_patterns` |  |
 
@@ -194,8 +196,18 @@ Additional variables available in this role are listed below, along with default
 | Name           | Default Value |
 | -------------- | ------------- |
 | `paperless_ngx_conf_enable_update_check` |  |
+| `paperless_ngx_conf_test` |  |
 
 ### Usage advice
+
+###x Generated password
+
+The role uses Ansible's password lookup:
+
+-   If a password is generated by the role, ansible stores it **locally** in **pngx_instances/{{ incentory_hostname }}/** (relative to the working directory)
+-   if the file already exist, it reuse its content
+-   see [the ansible password lookup documentation](https://docs.ansible.com/ansible/latest/plugins/lookup/password.html) for more info
+
 
 #### Separation of static (~ installation) and dynamic (~ runtime) data
 

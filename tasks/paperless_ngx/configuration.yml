@@ -1,1 +1,234 @@
 ---
+- name: Write pngx config (sensitive entries)
+  become: true
+  ansible.builtin.lineinfile:
+    path: "{{ paperless_ngx_config_file_template }}"
+    regexp: ^#?{{ item.regexp }}=
+    line: "{{ item.line }}"
+  with_items:
+    # Hosting & Security
+    - regexp: PAPERLESS_SECRET_KEY
+      line: PAPERLESS_SECRET_KEY={{ paperless_ngx_conf_secret_key }}
+  no_log: true
+  tags: pngx_conf_sensitive
+
+- name: Write pngx config (required services)
+  become: true
+  ansible.builtin.lineinfile:
+    path: "{{ paperless_ngx_config_file_template }}"
+    regexp: ^#?{{ item.regexp }}=
+    line: "{{ item.line }}"
+  with_items:
+    # Required services
+    - regexp: PAPERLESS_REDIS
+      line: PAPERLESS_REDIS=redis://{{ paperless_ngx_redis_host }}:{{ paperless_ngx_redis_port }}
+  tags: pngx_conf_required_services
+
+- name: Write pngx config (paths and folders)
+  become: true
+  ansible.builtin.lineinfile:
+    path: "{{ paperless_ngx_config_file_template }}"
+    regexp: ^#?{{ item.regexp }}=
+    line: "{{ item.line }}"
+  with_items:
+    # Paths and folders
+    - regexp: PAPERLESS_CONSUMPTION_DIR
+      line: PAPERLESS_CONSUMPTION_DIR={{ paperless_ngx_conf_consumption_dir }}
+    - regexp: PAPERLESS_EXPORT_DIR
+      line: PAPERLESS_EXPORT_DIR={{ paperless_ngx_conf_export_dir }}
+    - regexp: PAPERLESS_DATA_DIR
+      line: PAPERLESS_DATA_DIR={{ paperless_ngx_conf_data_dir }}
+    - regexp: PAPERLESS_TRASH_DIR
+      line: PAPERLESS_TRASH_DIR={{ paperless_ngx_conf_trash_dir }}
+    - regexp: PAPERLESS_MEDIA_ROOT
+      line: PAPERLESS_MEDIA_ROOT={{ paperless_ngx_conf_media_root }}
+    - regexp: PAPERLESS_STATICDIR
+      line: PAPERLESS_STATICDIR=../static
+    - regexp: PAPERLESS_FILENAME_FORMAT
+      line: PAPERLESS_FILENAME_FORMAT={{ paperless_ngx_conf_filename_format }}
+    - regexp: PAPERLESS_LOGGING_DIR
+      line: PAPERLESS_LOGGING_DIR={{ paperless_ngx_conf_logging_dir }}
+  tags: pngx_conf_folders
+
+- name: Write pngx config (hosting and security)
+  become: true
+  ansible.builtin.lineinfile:
+    path: "{{ paperless_ngx_config_file_template }}"
+    regexp: ^#?{{ item.regexp }}=
+    line: "{{ item.line }}"
+  with_items:
+    # Hosting & Security
+    - regexp: PAPERLESS_ALLOWED_HOSTS
+      line: PAPERLESS_ALLOWED_HOSTS={{ paperless_ngx_conf_allowed_hosts }}
+    - regexp: PAPERLESS_CORS_ALLOWED_HOSTS
+      line: PAPERLESS_CORS_ALLOWED_HOSTS={{ paperless_ngx_conf_cors_allowed_hosts }}
+    - regexp: PAPERLESS_FORCE_SCRIPT_NAME
+      line: PAPERLESS_FORCE_SCRIPT_NAME={{ paperless_ngx_conf_force_script_name }}
+    - regexp: PAPERLESS_STATIC_URL
+      line: PAPERLESS_STATIC_URL={{ paperless_ngx_conf_static_url }}
+    - regexp: PAPERLESS_AUTO_LOGIN_USERNAME
+      line: PAPERLESS_AUTO_LOGIN_USERNAME={{ paperless_ngx_conf_auto_login_username }}
+    - regexp: PAPERLESS_COOKIE_PREFIX
+      line: PAPERLESS_COOKIE_PREFIX={{ paperless_ngx_conf_cookie_prefix }}
+    - regexp: PAPERLESS_ENABLE_HTTP_REMOTE_USER
+      line: PAPERLESS_ENABLE_HTTP_REMOTE_USER={{ paperless_ngx_conf_enable_http_remote_user }}
+    - regexp: PAPERLESS_URL
+      line: PAPERLESS_URL={{ paperless_ngx_conf_url }}
+  tags: pngx_conf_hosting
+
+- name: Write pngx config (OCR settings)
+  become: true
+  ansible.builtin.lineinfile:
+    path: "{{ paperless_ngx_config_file_template }}"
+    regexp: ^#?{{ item.regexp }}=
+    line: "{{ item.line }}"
+  with_items:
+    # OCR settings
+    - regexp: PAPERLESS_OCR_LANGUAGE
+      line: PAPERLESS_OCR_LANGUAGE={{ paperless_ngx_conf_ocr_languages | join('+') | replace('-', '_') }}
+    - regexp: PAPERLESS_OCR_MODE
+      line: PAPERLESS_OCR_MODE={{ paperless_ngx_conf_ocr_mode }}
+    - regexp: PAPERLESS_OCR_CLEAN
+      line: PAPERLESS_OCR_CLEAN={{ paperless_ngx_conf_ocr_clean }}
+    - regexp: PAPERLESS_OCR_DESKEW
+      line: PAPERLESS_OCR_DESKEW={{ paperless_ngx_conf_ocr_deskew }}
+    - regexp: PAPERLESS_OCR_ROTATE_PAGES
+      line: PAPERLESS_OCR_ROTATE_PAGES={{ paperless_ngx_conf_ocr_rotate_pages }}
+    - regexp: PAPERLESS_OCR_ROTATE_PAGES_THRESHOLD
+      line: PAPERLESS_OCR_ROTATE_PAGES_THRESHOLD={{ paperless_ngx_conf_ocr_rotate_pages_threshold }}
+    - regexp: PAPERLESS_OCR_OUTPUT_TYPE
+      line: PAPERLESS_OCR_OUTPUT_TYPE={{ paperless_ngx_conf_ocr_output_type }}
+    - regexp: PAPERLESS_OCR_PAGES
+      line: PAPERLESS_OCR_PAGES={{ paperless_ngx_conf_ocr_pages }}
+    - regexp: PAPERLESS_OCR_IMAGE_DPI
+      line: PAPERLESS_OCR_IMAGE_DPI={{ paperless_ngx_conf_ocr_image_dpi }}
+    - regexp: PAPERLESS_OCR_USER_ARGS
+      line: "PAPERLESS_OCR_USER_ARGS={{ paperless_ngx_conf_ocr_user_args | combine({'jbig2_lossy': true} if paperless_ngx_jbig2enc_lossy else {}) | to_json }}"
+  tags: pngx_conf_ocr
+
+- name: Write pngx config (TIKA settings)
+  become: true
+  ansible.builtin.lineinfile:
+    path: "{{ paperless_ngx_config_file_template }}"
+    regexp: ^#?{{ item.regexp }}=
+    line: "{{ item.line }}"
+  with_items:
+    # Tika settings
+    - regexp: PAPERLESS_TIKA_ENABLED
+      line: PAPERLESS_TIKA_ENABLED={{ paperless_ngx_conf_tika_enabled }}
+    - regexp: PAPERLESS_TIKA_ENDPOINT
+      line: PAPERLESS_TIKA_ENDPOINT={{ paperless_ngx_conf_tika_endpoint }}
+    - regexp: PAPERLESS_TIKA_GOTENBERG_ENDPOINT
+      line: PAPERLESS_TIKA_GOTENBERG_ENDPOINT={{ paperless_ngx_conf_tika_gotenberg_endpoint }}
+  tags: pngx_conf_tika
+
+- name: Write pngx config (software tweaks)
+  become: true
+  ansible.builtin.lineinfile:
+    path: "{{ paperless_ngx_config_file_template }}"
+    regexp: ^#?{{ item.regexp }}=
+    line: "{{ item.line }}"
+  with_items:
+    # Software tweaks
+    - regexp: PAPERLESS_TIME_ZONE
+      line: PAPERLESS_TIME_ZONE={{ paperless_ngx_conf_time_zone }}
+    - regexp: PAPERLESS_CONSUMER_POLLING
+      line: PAPERLESS_CONSUMER_POLLING={{ paperless_ngx_conf_consumer_polling }}
+    - regexp: PAPERLESS_CONSUMER_DELETE_DUPLICATES
+      line: PAPERLESS_CONSUMER_DELETE_DUPLICATES={{ paperless_ngx_conf_consumer_delete_duplicates }}
+    - regexp: PAPERLESS_CONSUMER_RECURSIVE
+      line: PAPERLESS_CONSUMER_RECURSIVE={{ paperless_ngx_conf_consumer_recursive }}
+    - regexp: PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS
+      line: PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS={{ paperless_ngx_conf_consumer_subdirs_as_tags }}
+    - regexp: PAPERLESS_CONVERT_MEMORY_LIMIT
+      line: PAPERLESS_CONVERT_MEMORY_LIMIT={{ paperless_ngx_conf_convert_memory_limit }}
+    - regexp: PAPERLESS_CONVERT_TMPDIR
+      line: PAPERLESS_CONVERT_TMPDIR={{ paperless_ngx_conf_convert_tmpdir }}
+    # - regexp: PAPERLESS_OPTIMIZE_THUMBNAILS
+    #   line: PAPERLESS_OPTIMIZE_THUMBNAILS={{ paperless_ngx_conf_optimize_thumbnails }}
+    # - regexp: PAPERLESS_PRE_CONSUME_SCRIPT
+    #   line: PAPERLESS_PRE_CONSUME_SCRIPT={{ paperless_ngx_conf_pre_consume_script }}
+    - regexp: PAPERLESS_POST_CONSUME_SCRIPT
+      line: PAPERLESS_POST_CONSUME_SCRIPT={{ paperless_ngx_conf_post_consume_script }}
+    - regexp: PAPERLESS_FILENAME_DATE_ORDER
+      line: PAPERLESS_FILENAME_DATE_ORDER={{ paperless_ngx_conf_filename_date_order }}
+    - regexp: PAPERLESS_THUMBNAIL_FONT_NAME
+      line: PAPERLESS_THUMBNAIL_FONT_NAME={{ paperless_ngx_conf_thumbnail_font_name }}
+    - regexp: PAPERLESS_IGNORE_DATES
+      line: PAPERLESS_IGNORE_DATES={{ paperless_ngx_conf_ignore_dates }}
+  tags: pngx_conf_tweaks
+
+- name: Write pngx config (update checking)
+  become: true
+  ansible.builtin.lineinfile:
+    path: "{{ paperless_ngx_config_file_template }}"
+    regexp: ^#?{{ item.regexp }}=
+    line: "{{ item.line }}"
+  with_items:
+    # Update checking
+    - regexp: PAPERLESS_ENABLE_UPDATE_CHECK
+      line: PAPERLESS_ENABLE_UPDATE_CHECK={{ paperless_ngx_conf_enable_update_check }}
+  tags: pngx_conf_updating
+
+- name: Write pngx config (sqlite)
+  become: true
+  ansible.builtin.lineinfile:
+    path: "{{ paperless_ngx_config_file_template }}"
+    regexp: ^#?PAPERLESS_DBHOST=(.*)$
+    line: "#PAPERLESS_DBHOST=\\1"
+    backrefs: true
+  when: paperless_ngx_db_type == 'sqlite'
+  tags: pngx_conf_db
+
+- name: Write pngx config (postgresql)
+  become: true
+  ansible.builtin.lineinfile:
+    path: "{{ paperless_ngx_config_file_template }}"
+    regexp: ^#?{{ item.regexp }}=
+    line: "{{ item.line }}"
+  with_items:
+    - regexp: PAPERLESS_DBHOST
+      line: PAPERLESS_DBHOST={{ paperless_ngx_conf_dbhost }}
+    - regexp: PAPERLESS_DBPORT
+      line: PAPERLESS_DBPORT={{ paperless_ngx_conf_dbport }}
+    - regexp: PAPERLESS_DBNAME
+      line: PAPERLESS_DBNAME={{ paperless_ngx_conf_dbname }}
+    - regexp: PAPERLESS_DBUSER
+      line: PAPERLESS_DBUSER={{ paperless_ngx_conf_dbuser }}
+    - regexp: PAPERLESS_DBPASS
+      line: PAPERLESS_DBPASS={{ paperless_ngx_conf_dbpass }}
+    - regexp: PAPERLESS_DBSSLMODE
+      line: PAPERLESS_DBSSLMODE={{ paperless_ngx_conf_dbsslmode }}
+  when: paperless_ngx_db_type == 'postgresql'
+  no_log: true
+  tags: pngx_conf_db
+
+- name: Deploy paperless-ngx configuration to /etc/
+  become: true
+  ansible.builtin.copy:
+    src: "{{ paperless_ngx_config_file_template }}"
+    remote_src: true
+    dest: "{{ paperless_ngx_config_file }}"
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart paperless completely
+
+- name: Configure ghostscript for PDF
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/ImageMagick-6/policy.xml
+    regexp: (\s+)<policy domain="coder" rights=".*" pattern="PDF" />
+    line: \1<policy domain="coder" rights="read|write" pattern="PDF" />
+    backrefs: true
+  tags: pngx_conf_gs
+  notify: Restart paperless completely
+
+- name: Configure gunicorn web server
+  become: true
+  ansible.builtin.lineinfile:
+    path: "{{ paperless_ngx_dir_installation }}/gunicorn.conf.py"
+    regexp: "^bind = "
+    line: bind = '{{ paperless_ngx_webserver_listen_address }}:{{ paperless_ngx_webserver_listen_port }}'
+  tags: pngx_conf_gunicorn
+  notify: Restart webserver

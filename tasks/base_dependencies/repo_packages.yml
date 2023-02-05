@@ -48,7 +48,7 @@
 - name: Install ocr languages
   become: true
   ansible.builtin.apt:
-    pkg: "{{ paperless_ngx_ocr_languages | map('regex_replace', '^(.*)$', 'tesseract-ocr-\\1') | map('replace', '_', '-') | list }}"
+    pkg: "{{ paperless_ngx_conf_ocr_languages | map('regex_replace', '^(.*)$', 'tesseract-ocr-\\1') | map('replace', '_', '-') | list }}"
 
 - name: Install redis
   become: true

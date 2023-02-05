@@ -12,22 +12,28 @@
     apply:
       tags: backup
   tags: backup
-  when:
-    - _paperless_ngx_installation_strategy_upgrade
-    - paperless_ngx_backup_on_upgrade
+  when: _paperless_ngx_installation_strategy_upgrade
 
-- name: Get paperless-ngx release
-  ansible.builtin.include_tasks:
-    file: release_get.yml
-    apply:
-      tags: release_get
-  tags: release_get
+- name: Pre configuration
+  block:
+    - name: Get paperless-ngx release files
+      ansible.builtin.include_tasks:
+        file: download.yml
+        apply:
+          tags: download
+      tags: download
+
+    - name: Prepare paperless-ngx virtual environment
+      ansible.builtin.include_tasks:
+        file: venv.yml
+        apply:
+          tags: venv
+      tags: venv
   when: >-
     _paperless_ngx_installation_strategy_upgrade
     or
     _paperless_ngx_installation_strategy_fresh
 
-# Before moving on, configure pngx to make ENV vars available to next steps
 - name: Configure paperless-ngx
   ansible.builtin.include_tasks:
     file: configuration.yml
@@ -35,23 +41,28 @@
       tags: configuration
   tags: configuration
 
-- name: Prepare paperless-ngx release
-  ansible.builtin.include_tasks:
-    file: release_setup.yml
-    apply:
-      tags: release_setup
-  tags: release_setup
-  when: >-
-    _paperless_ngx_installation_strategy_upgrade
-    or
-    _paperless_ngx_installation_strategy_fresh
+- name: Post configuration
+  block:
+    - name: Initialize and upgrade paperless-ngx release
+      ansible.builtin.include_tasks:
+        file: upgrade.yml
+        apply:
+          tags: upgrade
+      tags: upgrade
 
-- name: Finish paperless-ngx release
-  ansible.builtin.include_tasks:
-    file: release_finish.yml
-    apply:
-      tags: release_finish
-  tags: release_finish
+    - name: Deploy systemd services
+      ansible.builtin.include_tasks:
+        file: services.yml
+        apply:
+          tags: services
+      tags: services
+
+    - name: Finish paperless-ngx release
+      ansible.builtin.include_tasks:
+        file: finish.yml
+        apply:
+          tags: finish
+      tags: finish
   when: >-
     _paperless_ngx_installation_strategy_upgrade
     or

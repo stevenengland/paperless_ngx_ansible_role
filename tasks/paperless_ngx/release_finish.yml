@@ -1,8 +1,0 @@
----
-- name: Creating version info file with version string as content
-  become: true
-  ansible.builtin.copy:
-    dest: "{{ paperless_ngx_dir_installation }}/.installed_version"
-    content: "{{ paperless_ngx_version }}"
-    owner: "{{ paperless_ngx_system_user }}"
-    group: "{{ paperless_ngx_system_group }}"

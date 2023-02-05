@@ -13,9 +13,6 @@ paperless_ngx_jbig2enc_enabled: true
 paperless_ngx_jbig2enc_lossy: false
 paperless_ngx_jbig2enc_tmp_dir: "/tmp/"
 paperless_ngx_jbig2enc_version: 0.29
-## OCR
-paperless_ngx_ocr_languages:
-  - eng
 ## Redis db
 paperless_ngx_redis_host: localhost
 paperless_ngx_redis_port: 6379
@@ -24,11 +21,21 @@ paperless_ngx_system_group: paperlessngx
 paperless_ngx_system_user: paperlessngx
 paperless_ngx_superuser_name: paperlessngx
 paperless_ngx_superuser_email: paperlessngx@example.com
-paperless_ngx_superuser_password:
+paperless_ngx_superuser_password: "{{ lookup('password', 'pngx_instances/' + inventory_hostname + '/pnx_superuser_password.secret') }}"
 ## paperless meta data
 paperless_ngx_version: latest
+## Webserver
+paperless_ngx_webserver_listen_address: 127.0.0.1
+paperless_ngx_webserver_listen_port: 8000
 
 # paperless-ngx configuration variables
+## Required services
+paperless_ngx_conf_dbhost: localhost
+paperless_ngx_conf_dbport: 5432
+paperless_ngx_conf_dbname: paperlessngx
+paperless_ngx_conf_dbuser: paperlessngx
+paperless_ngx_conf_dbpass: "{{ lookup('password', 'pngx_instances/' + inventory_hostname + '/pnx_db_pass.secret') }}"
+paperless_ngx_conf_dbsslmode: prefer
 ## Paths and folders
 paperless_ngx_conf_consumption_dir: "{{ paperless_ngx_dir_runtime_data }}/consumption"
 paperless_ngx_conf_data_dir: "{{ paperless_ngx_dir_runtime_data }}/data"
@@ -37,3 +44,49 @@ paperless_ngx_conf_trash_dir: "{{ paperless_ngx_dir_runtime_data }}/trash"
 paperless_ngx_conf_media_root: "{{ paperless_ngx_dir_runtime_data }}/media"
 paperless_ngx_conf_filename_format:
 paperless_ngx_conf_logging_dir: "{{ paperless_ngx_dir_runtime_data }}/log"
+## Hosting & Security
+paperless_ngx_conf_url: http://localhost:8000
+paperless_ngx_conf_secret_key: "{{ lookup('password', 'pngx_instances/' + inventory_hostname + '/pnx_secret_key.secret') }}"
+paperless_ngx_conf_allowed_hosts: "*"
+paperless_ngx_conf_cors_allowed_hosts: http://localhost:8000
+paperless_ngx_conf_force_script_name:
+paperless_ngx_conf_static_url: /static/
+paperless_ngx_conf_auto_login_username:
+paperless_ngx_conf_cookie_prefix: ""
+paperless_ngx_conf_enable_http_remote_user: false
+## OCR
+paperless_ngx_conf_ocr_languages:
+  - eng
+paperless_ngx_conf_ocr_mode: skip
+paperless_ngx_conf_ocr_clean: clean
+paperless_ngx_conf_ocr_deskew: true
+paperless_ngx_conf_ocr_rotate_pages: true
+paperless_ngx_conf_ocr_rotate_pages_threshold: 12
+paperless_ngx_conf_ocr_output_type: pdfa
+paperless_ngx_conf_ocr_pages: 0
+paperless_ngx_conf_ocr_image_dpi:
+# see https://ocrmypdf.readthedocs.io/en/latest/api.html#ocrmypdf.ocr
+paperless_ngx_conf_ocr_user_args:
+  - optimize: 1
+## Tika settings
+paperless_ngx_conf_tika_enabled: false
+paperless_ngx_conf_tika_endpoint: http://localhost:9998
+paperless_ngx_conf_tika_gotenberg_endpoint: http://localhost:3000
+## Software tweaks
+paperless_ngx_conf_time_zone: Europe/London
+# paperless_ngx_conf_optimize_thumbnails: true # option seems to not exist
+# paperless_ngx_conf_pre_consume_script: # option seems to not exist
+paperless_ngx_conf_post_consume_script:
+paperless_ngx_conf_filename_date_order:
+paperless_ngx_conf_thumbnail_font_name: /usr/share/fonts/liberation/LiberationSerif-Regular.ttf
+paperless_ngx_conf_ignore_dates: ""
+## Polling
+paperless_ngx_conf_consumer_polling: 0
+## iNotify
+paperless_ngx_conf_consumer_delete_duplicates: false
+paperless_ngx_conf_consumer_recursive: false
+paperless_ngx_conf_consumer_subdirs_as_tags: false
+paperless_ngx_conf_convert_memory_limit: 0
+paperless_ngx_conf_convert_tmpdir:
+## Update checking
+paperless_ngx_conf_enable_update_check: enable

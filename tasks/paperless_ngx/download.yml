@@ -73,15 +73,14 @@
     mode: preserve
     directory_mode: preserve
 
-- name: Deploy paperless-ngx configuration to /etc/
+- name: Make the config file the template file
   become: true
   ansible.builtin.copy:
     src: "{{ paperless_ngx_dir_installation }}/paperless.conf"
     remote_src: true
-    dest: /etc/paperless.conf
-    owner: root
-    group: root
-    mode: "0644"
+    dest: "{{ paperless_ngx_config_file_template }}"
+    owner: "{{ paperless_ngx_system_user }}"
+    group: "{{ paperless_ngx_system_group }}"
 
 - name: Delete paperless-ngx configuration from installation dir
   become: true
