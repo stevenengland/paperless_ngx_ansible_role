@@ -13,4 +13,9 @@ paperless_ngx_dir_force_permission_include:
   - "{{ paperless_ngx_conf_media_root }}"
   - "{{ paperless_ngx_conf_logging_dir }}"
 paperless_ngx_dir_tmp: /tmp/paperless-ngx
+paperless_ngx_services_list:
+  - paperless-consumer.service
+  - paperless-scheduler.service
+  - paperless-webserver.service
+  - paperless-task-queue.service
 paperless_ngx_version_minimum: '1.10.0'

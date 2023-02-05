@@ -5,11 +5,7 @@
     daemon_reload: true
     name: "{{ item }}"
     state: restarted
-  with_items:
-    - paperless-consumer.service
-    - paperless-scheduler.service
-    - paperless-webserver.service
-    - paperless-task-queue.service
+  loop: "{{ paperless_ngx_services_list }}"
 
 - name: Restart webserver
   become: true
@@ -17,5 +13,5 @@
     daemon_reload: true
     name: "{{ item }}"
     state: restarted
-  with_items:
+  loop:
     - paperless-webserver.service

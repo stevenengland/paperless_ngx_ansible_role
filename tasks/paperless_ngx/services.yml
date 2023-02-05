@@ -7,10 +7,7 @@
     option: "{{ item[1].option }}"
     value: "{{ item[1].value }}"
   with_nested:
-    - - paperless-consumer.service
-      - paperless-scheduler.service
-      - paperless-webserver.service
-      - paperless-task-queue.service
+    - "{{ paperless_ngx_services_list }}"
     - - { option: User, value: "{{ paperless_ngx_system_user }}" }
       - { option: Group, value: "{{ paperless_ngx_system_group }}" }
       - { option: WorkingDirectory, value: "{{ paperless_ngx_dir_installation }}/src" }
@@ -44,11 +41,7 @@
     option: Requires
     value: redis.service
     state: absent
-  loop:
-    - paperless-consumer.service
-    - paperless-scheduler.service
-    - paperless-webserver.service
-    - paperless-task-queue.service
+  loop: "{{ paperless_ngx_services_list }}"
   when: paperless_ngx_redis_host != 'localhost' and paperless_ngx_redis_host != '127.0.0.1'
 
 - name: Copy systemd services
@@ -57,11 +50,7 @@
     src: "{{ paperless_ngx_dir_installation }}/scripts/{{ item }}"
     remote_src: true
     dest: /etc/systemd/system/{{ item }}
-  with_items:
-    - paperless-consumer.service
-    - paperless-scheduler.service
-    - paperless-webserver.service
-    - paperless-task-queue.service
+  loop: "{{ paperless_ngx_services_list }}"
   notify: Restart paperless completely
 
 - name: Enable pngx services
@@ -71,8 +60,4 @@
     enabled: true
     masked: false
     state: started
-  with_items:
-    - paperless-consumer.service
-    - paperless-scheduler.service
-    - paperless-webserver.service
-    - paperless-task-queue.service
+  loop: "{{ paperless_ngx_services_list }}"
