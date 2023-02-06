@@ -1,0 +1,10 @@
+---
+- name: Prepare
+  hosts: all
+  any_errors_fatal: true
+  tasks:
+    - name: "Install an older than latest version of pngx"
+      ansible.builtin.include_role:
+        name: "stevenengland.paperless_ngx_ansible_role"
+      vars:
+        paperless_ngx_version: "{{ paperless_ngx_version_minimum }}"
