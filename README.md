@@ -1,9 +1,11 @@
 [![Tests](https://github.com/stevenengland/paperless_ngx_ansible_role/actions/workflows/tests.yml/badge.svg)](https://github.com/stevenengland/paperless_ngx_ansible_role/actions/workflows/tests.yml)
 
-Role Name
+Ansible Role: paperless-ngx
 =========
 
-A brief description of the role goes here.
+Installs and configures paperless-ngx EDMS on Debian/Ubuntu systems.
+
+**NOTE:** This role is based on the role made by the devs of paperless-ngx itself [paperless-ngx/ansible](https://github.com/paperless-ngx/ansible). Because the role seems to be stale and I wanted to dive deeper into ansible as well as paperless-ngx I devided to recreate the role.
 
 Requirements
 ------------
@@ -200,7 +202,7 @@ Additional variables available in this role are listed below, along with default
 
 ### Usage advice
 
-###x Generated password
+#### Generated password
 
 The role uses Ansible's password lookup:
 
