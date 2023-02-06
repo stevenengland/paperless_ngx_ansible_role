@@ -52,6 +52,11 @@ molecule converge --scenario-name foo
 molecule test --platform-name=debian11
 ```
 
+### Run test step against specific scenario
+```
+molecule test --scenario-name foo
+```
+
 ### Login to a container after converge step
 
 ```
