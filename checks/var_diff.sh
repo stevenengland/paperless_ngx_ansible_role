@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Read opts
 while getopts d:v flag
 do
     case "${flag}" in
@@ -8,13 +9,16 @@ do
     esac
 done
 
-echo "$verbose"
-
+# Get global vars
 dir=$(cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)
 
 config_docs_html_body=$(curl -sb -L -H "Accept: text/plain; charset=utf-8" "https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/main/docs/configuration.md")
 config_readme_md_body=$(<$dir/../README.md)
 config_default_vars_yaml_body=$(<$dir/../defaults/main.yml)
+config_vars_yaml_body=$(<$dir/../vars/main.yml)
+config_vars_complete_yaml_body="$config_default_vars_yaml_body"$'\n'"$config_vars_yaml_body"
+
+echo "$config_vars_complete_yaml_body"
 
 # Get vars from docs
 pattern_for_docs="\`(?:PAPERLESS_)?(.*?)=<.*>\`"
