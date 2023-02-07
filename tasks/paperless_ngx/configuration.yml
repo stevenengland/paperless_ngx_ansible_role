@@ -21,7 +21,7 @@
   with_items:
     # Required services
     - regexp: PAPERLESS_REDIS
-      line: PAPERLESS_REDIS=redis://{{ paperless_ngx_redis_host }}:{{ paperless_ngx_redis_port }}
+      line: PAPERLESS_REDIS={{ paperless_ngx_conf_redis }}
   tags: pngx_conf_required_services
 
 - name: Write pngx config (paths and folders)

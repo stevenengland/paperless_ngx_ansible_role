@@ -1,6 +1,7 @@
 ---
 # Vars that shouldn't be altered by the user
 ansible_version_minimum: "2.11"
+paperless_ngx_conf_redis: redis://{{ paperless_ngx_redis_host }}:{{ paperless_ngx_redis_port }}
 paperless_ngx_config_file: /etc/paperless.conf
 paperless_ngx_config_file_template: "{{ paperless_ngx_dir_installation }}/paperless.conf.template"
 paperless_ngx_dir_force_permission_include:
