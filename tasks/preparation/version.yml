@@ -8,9 +8,9 @@
         return_content: true
         status_code: 200
         body_format: json
-        # user: "{{ lookup('env', 'GH_USER') | default(omit) }}"
-        # password: "{{ lookup('env', 'GH_TOKEN') | default(omit) }}"
-      # no_log: "{{ not lookup('env', 'MOLECULE_DEBUG') | bool }}"
+        headers:
+          Authorization: Bearer {{ lookup('env', 'GH_TOKEN') | default(omit) }}
+      no_log: "{{ not lookup('env', 'MOLECULE_DEBUG') | bool }}"
       register: _latest_release_api_response
       until: _latest_release_api_response.status == 200
       retries: 5

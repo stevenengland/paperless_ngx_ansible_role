@@ -45,3 +45,4 @@ jobs:
           PY_COLORS: "1"
           ANSIBLE_FORCE_COLOR: "1"
           TEST_MOLECULE_LINT: false
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
