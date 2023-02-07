@@ -156,6 +156,8 @@
       line: PAPERLESS_THUMBNAIL_FONT_NAME={{ paperless_ngx_conf_thumbnail_font_name }}
     - regexp: PAPERLESS_IGNORE_DATES
       line: PAPERLESS_IGNORE_DATES={{ paperless_ngx_conf_ignore_dates }}
+    - regexp: PAPERLESS_EMAIL_TASK_CRON
+      line: PAPERLESS_EMAIL_TASK_CRON={{ paperless_ngx_conf_email_task_cron }}
   tags: pngx_conf_tweaks
 
 - name: Write pngx config (update checking)

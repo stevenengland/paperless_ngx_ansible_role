@@ -80,6 +80,7 @@ paperless_ngx_conf_post_consume_script:
 paperless_ngx_conf_filename_date_order:
 paperless_ngx_conf_thumbnail_font_name: /usr/share/fonts/liberation/LiberationSerif-Regular.ttf
 paperless_ngx_conf_ignore_dates: ""
+paperless_ngx_conf_email_task_cron: "*/10 * * * *"
 ## Polling
 paperless_ngx_conf_consumer_polling: 0
 ## iNotify

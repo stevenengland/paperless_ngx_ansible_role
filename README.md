@@ -140,7 +140,7 @@ Additional variables available in this role are listed below, along with default
 | `paperless_ngx_conf_worker_retry` |  |
 | `paperless_ngx_conf_time_zone` | Europe/London |
 | `paperless_ngx_conf_enable_nltk` |  |
-| `paperless_ngx_conf_email_task_cron` |  |
+| `paperless_ngx_conf_email_task_cron` | "*/10 * * * *" |
 | `paperless_ngx_conf_train_task_cron` |  |
 | `paperless_ngx_conf_index_task_cron` |  |
 | `paperless_ngx_conf_sanity_task_cron` |  |
