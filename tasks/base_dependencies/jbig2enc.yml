@@ -51,6 +51,9 @@
         version: "{{ paperless_ngx_jbig2enc_version }}"
         recursive: true
       register: _jbig2enc_source
+      until: _jbig2enc_source is succeeded
+      retries: 3
+      delay: 10
 
     - name: Apply patch to fix reported version
       ansible.posix.patch:

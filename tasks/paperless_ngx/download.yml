@@ -51,6 +51,11 @@
     src: "{{ _release__download_url }}"
     remote_src: true
     dest: "{{ _install_tempdir }}"
+  register: _download_and_unarchive_pngx
+  until:
+    - "not 'urlopen error' in _download_and_unarchive_pngx.msg | default('')"
+  retries: 3
+  delay: 10
 
 - name: Set all file & directory permissions
   ansible.builtin.command:

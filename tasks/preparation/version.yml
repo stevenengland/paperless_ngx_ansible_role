@@ -39,9 +39,11 @@
       ansible.builtin.uri:
         url: "{{ _release__download_url }}"
         method: GET
+        status_code: 200
         return_content: false
       register: _release_download_uri_response
-      failed_when: false
+      until: _release_download_uri_response.status == 200
+      retries: 5
 
     - name: Check probes return code
       ansible.builtin.assert:
