@@ -9,7 +9,7 @@
         status_code: 200
         body_format: json
         headers:
-          Authorization: Bearer {{ lookup('env', 'GH_TOKEN') | default(omit) }}
+          Authorization: "{{ 'Bearer ' + github_public_repo_token if github_public_repo_token != '' else omit }}"
       no_log: "{{ not lookup('env', 'MOLECULE_DEBUG') | bool }}"
       register: _latest_release_api_response
       until: _latest_release_api_response.status == 200
