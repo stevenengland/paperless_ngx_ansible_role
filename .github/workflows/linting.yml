@@ -3,9 +3,6 @@ name: Linting
 
 "on":
   workflow_call:
-  push:
-    branches-ignore:
-      - master
 
 jobs:
   linting:
