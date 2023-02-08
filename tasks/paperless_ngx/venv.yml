@@ -17,7 +17,7 @@
     virtualenv_python: python3
     extra_args: --upgrade
   register: _install_python_requirements
-  until: 'not "ReadTimeoutError" in _install_python_requirements.stderr | default("")'
+  until: 'not "ReadTimeoutError" in _install_python_requirements.msg | default("")'
   retries: 3
   delay: 60
 
