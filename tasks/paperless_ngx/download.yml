@@ -54,8 +54,9 @@
   register: _download_and_unarchive_pngx
   until:
     - "not 'urlopen error' in _download_and_unarchive_pngx.msg | default('')"
+    - "not 'The read operation timed out' in _download_and_unarchive_pngx.msg | default('')"
   retries: 3
-  delay: 10
+  delay: 60
 
 - name: Set all file & directory permissions
   ansible.builtin.command:
