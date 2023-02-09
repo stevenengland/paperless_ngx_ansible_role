@@ -17,12 +17,10 @@ name: Autolabel PR
       - synchronize
       - unlabeled
 
-permissions:
-  pull-requests: read
-
 jobs:
   # Check that conventional commit messages are used in the title of the PR
   pr_title_check:
+    name: Check the PR title to be compliant with conventional commits
     permissions:
       statuses: write
     runs-on: ubuntu-latest
@@ -35,6 +33,7 @@ jobs:
 
   # Autogenerate labels based on the PR title
   pr_auto_labeling:  # ToDo: Needs refactoring as far as v6 is released. See https://github.com/release-drafter/release-drafter/issues/1216
+    name: Automatically label the PR
     permissions:
       pull-requests: write
     runs-on: ubuntu-latest
@@ -49,7 +48,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   pr_label_check:
-    name: Check conventional commits labels
+    name: Check that the PR is labled.
+    permissions:
+      pull-requests: read
+      checks: write
     runs-on: ubuntu-latest
     needs:
       - pr_auto_labeling
