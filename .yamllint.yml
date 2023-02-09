@@ -15,20 +15,27 @@ rules:
   commas:
     max-spaces-after: -1
     level: error
-  comments: enable
-  comments-indentation: enable
-  document-start: enable
+  comments:
+    level: error
+  comments-indentation:
+    level: error
+  document-start:
+    level: error
   empty-lines:
     max: 3
     level: error
   hyphens:
     level: error
-  indentation: enable
-  key-duplicates: enable
+  indentation:
+    level: error
+  key-duplicates:
+    level: error
   line-length: {level: error, max: 180}
-  new-line-at-end-of-file: enable
+  new-line-at-end-of-file:
+    level: error
   new-lines:
     type: unix
-  trailing-spaces: enable
+  trailing-spaces:
+    level: error
   truthy:
-    level: warning
+    level: error
