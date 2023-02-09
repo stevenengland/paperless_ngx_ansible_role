@@ -5,9 +5,9 @@ name: Labeler
   push:
     branches:
       - master
-  paths:
-    - '.github/labels.yml'
-    - '.github/workflows/label_creation.yml'
+    paths:
+      - '.github/labels.yml'
+      - '.github/workflows/label_creation.yml'
 
 jobs:
   labeler:
