@@ -12,6 +12,8 @@ name: Labeler
 jobs:
   labeler:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
       - name: Check out the repository
         uses: actions/checkout@v3
