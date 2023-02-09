@@ -3,7 +3,10 @@ name-template: 'v$RESOLVED_VERSION 🌈'
 tag-template: 'v$RESOLVED_VERSION'
 template: |
   ## paperless-ngx ansible role $RESOLVED_VERSION
+
   $CHANGES
+
+  **Full Changelog**: https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
 category-template: '### $TITLE'
 change-template: '- $TITLE @$AUTHOR ([#$NUMBER]($URL))'
 change-title-escapes: '\<*_&#@'
