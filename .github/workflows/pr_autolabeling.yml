@@ -58,8 +58,7 @@ jobs:
     steps:
       - uses: danielchabr/pr-labels-checker@v3.1
         with:
-          hasSome: >
-            "\
+          hasSome: "\
             breaking,\
             bug,\
             build,\
