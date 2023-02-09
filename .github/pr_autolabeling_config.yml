@@ -1,4 +1,5 @@
 ---
+template: "!!! Not needed but mandatory by release drafter action"
 autolabeler:
   # - label: breaking
   - label: bug
