@@ -9,6 +9,9 @@ name: Tests
       - "*.md"
       - "checks/**"
       - "docs/**"
+      - ".github/**"
+      - "!.github/**/*test*.yml"
+      - "!.github/**/*release*.yml"
   push:
     branches:
       - master
@@ -16,6 +19,9 @@ name: Tests
       - "*.md"
       - "checks/**"
       - "docs/**"
+      - ".github/**"
+      - "!.github/**/*test*.yml"
+      - "!.github/**/*release*.yml"
   schedule:
     - cron: "0 7 * * 5"  # At 07:00 on Friday
 
