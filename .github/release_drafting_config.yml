@@ -1,0 +1,72 @@
+---
+name-template: 'v$RESOLVED_VERSION 🌈'
+tag-template: 'v$RESOLVED_VERSION'
+template: |
+  ## paperless-ngx ansible role $RESOLVED_VERSION
+  $CHANGES
+category-template: '### $TITLE'
+change-template: '- $TITLE @$AUTHOR ([#$NUMBER]($URL))'
+change-title-escapes: '\<*_&#@'
+version-resolver:
+  major:
+    labels:
+      - 'breaking'
+  minor:
+    labels:
+      - 'enhancement'
+  patch:
+    labels:
+      - 'bug'
+  default: patch
+include-labels:
+  - 'breaking'
+  - 'bug'
+  - 'build'
+  - 'ci'
+  - 'dependencies'
+  - 'documentation'
+  - 'performance'
+  - 'refactoring'
+  - 'removal'
+  - 'breaking-change'
+  - 'notable'
+  - 'style'
+  - 'security'
+  - 'testing'
+exclude-labels:
+  - 'duplicate'
+  - 'good first issue'
+  - 'help wanted'
+  - 'invalid'
+  - 'question'
+  - 'wontfix'
+  - 'skip-changelog'
+categories:
+  - title: 'Breaking Changes'
+    labels:
+      - 'breaking'
+  - title: 'Features'
+    labels:
+      - 'enhancement'
+  - title: 'Removals'
+    labels:
+      - 'removal'
+  - title: 'Bug Fixes'
+    labels:
+      - 'bug'
+  - title: 'Documentation'
+    labels:
+      - 'documentation'
+  - title: 'Maintenance'
+    labels:
+      - 'build'
+      - 'performance'
+      - 'refactoring'
+      - 'ci'
+      - 'security'
+      - 'testing'
+      - 'style'
+  - title: 'Dependencies'
+    collapse-after: 3
+    labels:
+      - 'dependencies'
