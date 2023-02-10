@@ -1,5 +1,5 @@
 ---
-name: Autolabel PR
+name: PR Labeling
 
 "on":
   pull_request_target:

@@ -1,5 +1,5 @@
 ---
-name: Release Publisher
+name: Release Publishing
 
 "on":
   push:

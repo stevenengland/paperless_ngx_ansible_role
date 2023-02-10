@@ -1,5 +1,5 @@
 ---
-name: Labeler
+name: Label Creation
 
 "on":
   push:
