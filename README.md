@@ -229,7 +229,7 @@ Example Playbooks
 - hosts: all
     become: yes
     roles:
-        - { role: stevenengland.paperless_ngx_ansible_role,  tags: ["paperless"] }
+        - { role: stevenengland.paperless_ngx,  tags: ["paperless"] }
     vars:
         var1:
         var2:

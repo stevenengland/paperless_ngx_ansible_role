@@ -5,6 +5,6 @@
   tasks:
     - name: "Install an older than latest version of pngx"
       ansible.builtin.include_role:
-        name: "stevenengland.paperless_ngx_ansible_role"
+        name: "stevenengland.paperless_ngx"
       vars:
         paperless_ngx_version: "{{ paperless_ngx_version_minimum }}"

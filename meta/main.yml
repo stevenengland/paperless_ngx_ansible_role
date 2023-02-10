@@ -1,7 +1,6 @@
 ---
 galaxy_info:
-  author: Steven England
-  namespace: stevenengland
+  author: stevenengland
   role_name: paperless_ngx
   description: Ansible role to install paperless-ngx
 
