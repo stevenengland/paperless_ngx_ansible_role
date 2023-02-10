@@ -1,0 +1,62 @@
+---
+name: Release Publisher
+
+"on":
+  push:
+    branches:
+      - master
+    paths:
+      - "current-version.txt"
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2  # Last two commits for salsify/action-detect-and-tag-new-version
+
+      - name: Load environment vars
+        id: dotenv
+        uses: falti/dotenv-action@v1.0.2
+        with:
+          path: .github/workflows/env_vars.txt
+          log-variables: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ steps.dotenv.outputs.PYTHON_SETUP_VERSION }}
+
+      - name: Upgrade pip
+        run: |
+          pip install --constraint=.github/workflows/constraints.txt pip
+          pip --version
+
+      - name: Check if there is a parent commit
+        id: check-parent-commit
+        run: |
+          echo "sha=$(git rev-parse --verify --quiet HEAD^)" >> $GITHUB_OUTPUT
+
+      - name: Detect and tag new version
+        id: check-version
+        if: steps.check-parent-commit.outputs.sha
+        uses: salsify/action-detect-and-tag-new-version@v2
+        with:
+          tag-template: "{VERSION}"
+          version-command: |
+            cat current-version.txt
+
+      - name: Install Ansible
+        run: |
+          pip install --constraint=.github/workflows/constraints.txt ansible
+
+      - name: Publish the release notes
+        uses: release-drafter/release-drafter@v5.22.0
+        with:
+          publish: ${{ steps.check-version.outputs.tag != '' }}
+          tag: ${{ steps.check-version.outputs.tag }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
