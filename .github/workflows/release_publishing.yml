@@ -5,6 +5,8 @@ name: Release Publisher
   push:
     branches:
       - master
+    paths:
+      - "current_version.txt"
 
 jobs:
   release:
