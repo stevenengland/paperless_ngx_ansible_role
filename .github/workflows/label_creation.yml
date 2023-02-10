@@ -6,7 +6,7 @@ name: Label Creation
     branches:
       - master
     paths:
-      - '.github/labels.yml'
+      - '.github/label_config.yml'
       - '.github/workflows/label_creation.yml'
 
 jobs:
@@ -23,6 +23,6 @@ jobs:
         uses: crazy-max/ghaction-github-labeler@v4.1.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          yaml-file: .github/labels.yml
+          yaml-file: .github/label_config.yml
           dry-run: false
           skip-delete: false
