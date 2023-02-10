@@ -1,5 +1,5 @@
 ---
-name: Changelog Update
+name: Changelog Updating
 
 "on":
   release:
