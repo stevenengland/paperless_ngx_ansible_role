@@ -2,7 +2,8 @@
 galaxy_info:
   author: Steven England
   namespace: stevenengland
-  description: Ansible role to install Paperless NGX
+  role_name: paperless_ngx
+  description: Ansible role to install paperless-ngx
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
