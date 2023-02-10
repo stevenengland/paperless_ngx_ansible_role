@@ -1,5 +1,5 @@
 ---
-name: Code Test
+name: Code Testing
 
 "on":
   pull_request:
