@@ -6,7 +6,7 @@ name: Release Publisher
     branches:
       - master
     paths:
-      - "current_version.txt"
+      - "current-version.txt"
 
 jobs:
   release:
