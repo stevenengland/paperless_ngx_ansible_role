@@ -29,7 +29,7 @@ name: Code Testing
 
 jobs:
   linting:
-    uses: ./.github/workflows/linting.yml
+    uses: ./.github/workflows/code_linting.yml
 
   molecule_test:
     name: Molecule Test
