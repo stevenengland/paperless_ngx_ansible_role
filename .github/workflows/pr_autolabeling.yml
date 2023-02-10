@@ -2,13 +2,6 @@
 name: Autolabel PR
 
 "on":
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - edited
-      - synchronize
-      - unlabeled
   pull_request_target:
     types:
       - opened
