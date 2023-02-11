@@ -18,6 +18,17 @@ config_default_vars_yaml_body=$(<$dir/../defaults/main.yml)
 config_vars_yaml_body=$(<$dir/../vars/main.yml)
 config_vars_complete_yaml_body="$config_default_vars_yaml_body"$'\n'"$config_vars_yaml_body"
 
+exclude_conf_options=(
+    # Docker container options not affected by paperless.conf
+    "PAPERLESS_WEBSERVER_WORKERS",
+    "PAPERLESS_BIND_ADDR",
+    "PAPERLESS_PORT",
+    "USERMAP_UID",
+    "USERMAP_GID",
+    # "PAPERLESS_OCR_LANGUAGES", # also used in bare metal installation
+    "PAPERLESS_ENABLE_FLOWER"
+)
+
 # README vs. DOCS
 # Get vars from docs (without prefix)
 pattern_for_docs="\`(?:PAPERLESS_)?(.*?)=<.*>\`"
