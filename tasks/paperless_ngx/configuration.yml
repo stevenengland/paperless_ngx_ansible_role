@@ -158,7 +158,7 @@
       line: PAPERLESS_EMAIL_TASK_CRON={{ paperless_ngx_conf_email_task_cron }}
   tags: pngx_conf_tweaks
 
-- name: Write pngx config (software tweaks)
+- name: Write pngx config (Polling)
   become: true
   ansible.builtin.lineinfile:
     path: "{{ paperless_ngx_config_file_template }}"
