@@ -5,12 +5,14 @@ name: Release Publishing
   push:
     branches:
       - master
-    paths:
-      - "current-version.txt"
+      # paths:
+      #   - "current-version.txt"
 
 jobs:
   release:
     name: Release
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
@@ -61,5 +63,7 @@ jobs:
         with:
           publish: ${{ steps.check-version.outputs.tag != '' }}
           tag: ${{ steps.check-version.outputs.tag }}
+          config-name: release_drafting_config.yml
+          disable-autolabeler: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
