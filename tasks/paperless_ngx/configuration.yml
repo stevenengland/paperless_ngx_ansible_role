@@ -132,8 +132,6 @@
     # Software tweaks
     - regexp: PAPERLESS_TIME_ZONE
       line: PAPERLESS_TIME_ZONE={{ paperless_ngx_conf_time_zone }}
-    - regexp: PAPERLESS_CONSUMER_POLLING
-      line: PAPERLESS_CONSUMER_POLLING={{ paperless_ngx_conf_consumer_polling }}
     - regexp: PAPERLESS_CONSUMER_DELETE_DUPLICATES
       line: PAPERLESS_CONSUMER_DELETE_DUPLICATES={{ paperless_ngx_conf_consumer_delete_duplicates }}
     - regexp: PAPERLESS_CONSUMER_RECURSIVE
@@ -168,6 +166,8 @@
     line: "{{ item.line }}"
   with_items:
     # Polling
+    - regexp: PAPERLESS_CONSUMER_POLLING
+      line: PAPERLESS_CONSUMER_POLLING={{ paperless_ngx_conf_consumer_polling }}
     - regexp: PAPERLESS_CONSUMER_POLLING_RETRY_COUNT
       line: PAPERLESS_CONSUMER_POLLING_RETRY_COUNT={{ paperless_ngx_conf_consumer_polling_retry_count }}
   tags: pngx_conf_polling
