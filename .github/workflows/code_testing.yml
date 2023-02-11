@@ -13,17 +13,6 @@ name: Code Testing
       - ".github/**"
       - "!.github/**/*test*.yml"
       # - "!.github/**/*release*.yml"
-  push:
-    branches:
-      - master
-    paths-ignore:
-      - "*.md"
-      - "*version.txt"
-      - "checks/**"
-      - "docs/**"
-      - ".github/**"
-      - "!.github/**/*test*.yml"
-      # - "!.github/**/*release*.yml"
   schedule:
     - cron: "0 7 * * 5"  # At 07:00 on Friday
 
