@@ -21,6 +21,14 @@ jobs:
     uses: ./.github/workflows/code_linting.yml
 
   molecule_test:
+    strategy:
+      matrix:
+        molecule_scenario: [
+          default,
+          check_fails,
+          upgrade
+        ]
+
     name: Molecule Test
     runs-on: ubuntu-latest
     needs:
@@ -54,7 +62,7 @@ jobs:
           docker --version
 
       - name: Run Molecule tests
-        run: molecule test --all
+        run: molecule test --scenario-name ${{ matrix.molecule_scenario }}
         env:
           PY_COLORS: "1"
           ANSIBLE_FORCE_COLOR: "1"
