@@ -83,6 +83,7 @@ paperless_ngx_conf_ignore_dates: ""
 paperless_ngx_conf_email_task_cron: "*/10 * * * *"
 ## Polling
 paperless_ngx_conf_consumer_polling: 0
+paperless_ngx_conf_consumer_polling_retry_count: 5
 ## iNotify
 paperless_ngx_conf_consumer_delete_duplicates: false
 paperless_ngx_conf_consumer_recursive: false

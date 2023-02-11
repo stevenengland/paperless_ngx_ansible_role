@@ -160,6 +160,18 @@
       line: PAPERLESS_EMAIL_TASK_CRON={{ paperless_ngx_conf_email_task_cron }}
   tags: pngx_conf_tweaks
 
+- name: Write pngx config (software tweaks)
+  become: true
+  ansible.builtin.lineinfile:
+    path: "{{ paperless_ngx_config_file_template }}"
+    regexp: ^#?{{ item.regexp }}=
+    line: "{{ item.line }}"
+  with_items:
+    # Polling
+    - regexp: PAPERLESS_CONSUMER_POLLING_RETRY_COUNT
+      line: PAPERLESS_CONSUMER_POLLING_RETRY_COUNT={{ paperless_ngx_conf_consumer_polling_retry_count }}
+  tags: pngx_conf_polling
+
 - name: Write pngx config (update checking)
   become: true
   ansible.builtin.lineinfile:

@@ -150,7 +150,7 @@ Additional variables available in this role are listed below, along with default
 | Name           | Default Value |
 | -------------- | ------------- |
 | `paperless_ngx_conf_consumer_polling` | 0 |
-| `paperless_ngx_conf_consumer_polling_retry_count` |  |
+| `paperless_ngx_conf_consumer_polling_retry_count` | 5 |
 | `paperless_ngx_conf_consumer_polling_delay` |  |
 
 #### iNotify
