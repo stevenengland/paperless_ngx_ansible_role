@@ -22,6 +22,7 @@ def print_scenario_result(a_name: str, a: list, b_name: str, b: list, result1: l
 
     data = [titles] + list(zip(names, matchcount))
     
+    print("\n")
     print ("##### " + a_name + " <-> " + b_name + " ###")
     
     # https://stackoverflow.com/a/39032993/5968749
@@ -30,3 +31,11 @@ def print_scenario_result(a_name: str, a: list, b_name: str, b: list, result1: l
         print(line)
         if i == 0:
             print('-' * len(line))
+
+    print("\n")
+    if len(result1) > 0:
+        print(f"[ERROR] Found {len(result1)} entries that are present in {a_name} but not in {b_name}")
+        print(*result1, sep = "\n")
+    if len(result2) > 0:
+        print(f"[ERROR] Found {len(result2)} entries that are present in {b_name} but not in {a_name}")
+        print(*result2, sep = "\n")
