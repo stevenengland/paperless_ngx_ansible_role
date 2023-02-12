@@ -8,7 +8,7 @@ name: Code Testing
     paths-ignore:
       - "*.md"
       - "*version.txt"
-      - "checks/**"
+      - "maintenance/**"
       - "docs/**"
       - ".github/**"
       - "!.github/**/*test*.yml"
