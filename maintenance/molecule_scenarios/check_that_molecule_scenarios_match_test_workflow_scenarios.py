@@ -18,13 +18,26 @@ scenarios.sort()
 scenarios_enabled.sort()
 
 not_enabled = [x for x in scenarios if x not in scenarios_enabled]
+no_scenario = [x for x in scenarios_enabled if x not in scenarios]
 
 if (scenarios == scenarios_enabled):
+    print("\n")
     print(f"{Fore.GREEN}All available scenarios are activated{Style.RESET_ALL}")
     print(*scenarios, sep = "\n")
 else:
-    print(f"{Fore.RED}[ERROR] Not all scenarios are activated{Style.RESET_ALL}")
-    print(f"{Fore.BLUE}[Available]{Style.RESET_ALL}")
-    print(*scenarios, sep = "\n")
-    print(f"{Fore.BLUE}[Not active]{Style.RESET_ALL}")
-    print(*not_enabled, sep = "\n")
+    if len(not_enabled) > 0:
+        print("\n")
+        print(f"{Fore.RED}[ERROR] Not all scenarios are activated{Style.RESET_ALL}")
+        print("\n")
+        print(f"{Fore.BLUE}[Available]{Style.RESET_ALL}")
+        print(*scenarios, sep = "\n")
+        print(f"{Fore.BLUE}[Not active]{Style.RESET_ALL}")
+        print(*not_enabled, sep = "\n")
+    if len(no_scenario) > 0:
+        print("\n")
+        print(f"{Fore.RED}[ERROR] Invalid scenario names in workflow file{Style.RESET_ALL}")
+        print("\n")
+        print(f"{Fore.BLUE}[Valid scenarios]{Style.RESET_ALL}")
+        print(*scenarios, sep = "\n")
+        print(f"{Fore.BLUE}[Invalid scnarios]{Style.RESET_ALL}")
+        print(*no_scenario, sep = "\n")
