@@ -23,13 +23,20 @@ def default_vars_vs_readme():
     vars_in_readme_all = get_role_readme_configuration_vars(r'\|\s*\`(paperless_ngx_.*?)\`\s*\|')
     vars_in_defaults = get_role_defaults_vars(r'^(paperless_ngx_.*?):')
     in_vars_but_not_in_readme = [item for item in in_a_but_not_in_b(vars_in_defaults, vars_in_readme_all, True)]
-    print_scenario_result("DEFAULTS", vars_in_defaults, "README", vars_in_readme_all, in_vars_but_not_in_readme)
+    print_scenario_result("DEFAULTS/*", vars_in_defaults, "README", vars_in_readme_all, in_vars_but_not_in_readme)
 
 #############################################
 # README vs VARS (defaults and vars)
 # - What:   Every var in README should have a correspondant in either defaults/main.yml or vars/main.yml file
 # - How:    Compare VARS defaults/main.yml + vars/main.yml with roles README complete var set.
 #############################################
+def readme_vs_all_vars():
+    vars_in_readme_all = get_role_readme_configuration_vars(r'\|\s*\`(paperless_ngx_.*?)\`\s*\|')
+    vars_in_defaults = get_role_defaults_vars(r'^(paperless_ngx_.*?):')
+    vars_in_vars = get_role_vars_vars(r'^(paperless_ngx_.*?):')
+    vars_all = vars_in_defaults + vars_in_vars
+    in_readme_but_not_in_all_vars = [item for item in in_a_but_not_in_b(vars_in_readme_all, vars_all, True)]
+    print_scenario_result("README", vars_in_readme_all, "DEFAULTS/* & VARS/*", vars_all, in_readme_but_not_in_all_vars)
 
 def print_scenario_result(a_name: str, a: list, b_name: str, b: list, result1: list, result2: list | None = None):
     titles = ['name', 'count']
@@ -56,6 +63,6 @@ def print_scenario_result(a_name: str, a: list, b_name: str, b: list, result1: l
     if len(result1) > 0:
         print(f"[ERROR] Found {len(result1)} entries that are present in {a_name} but not in {b_name}")
         print(*result1, sep = "\n")
-    if len(result2) > 0:
+    if not result2 is None and len(result2) > 0:
         print(f"[ERROR] Found {len(result2)} entries that are present in {b_name} but not in {a_name}")
         print(*result2, sep = "\n")
