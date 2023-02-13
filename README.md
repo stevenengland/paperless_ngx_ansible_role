@@ -51,19 +51,25 @@ Additional variables available in this role are listed below, along with default
 
 ### paperless-ngx configuration variables
 
+All the upcoming vars correspond with the vars from [paperless-ngx docs](https://docs.paperless-ngx.com/configuration).
+To save reading space a few abbreviations are used in the tables down below:
+* I - Implemented in this role? [Y/N]
+* O - Variable is meant to be overridden? [Y/N] If No it should not be altered.
+* H - Hint
+
 #### Required services
 
-| Name           | Default Value |
-| -------------- | ------------- |
-| `paperless_ngx_conf_redis` | not implemented, see system vars instead |
-| `paperless_ngx_conf_dbengine` | not implemented, see system vars instead |
-| `paperless_ngx_conf_dbhost` | localhost |
-| `paperless_ngx_conf_dbport` | 5432 |
-| `paperless_ngx_conf_dbname` | paperlessngx |
-| `paperless_ngx_conf_dbuser` | paperlessngx |
-| `paperless_ngx_conf_dbpass` | The db password. If not defined by the user, a random password will be generated -> see section below about passwords. |
-| `paperless_ngx_conf_dbsslmode` | prefer |
-| `paperless_ngx_conf_db_timeout` |  |
+| Name           | Default Value | I | O | H |
+| -------------- | ------------- |---|---|---|
+| `paperless_ngx_conf_redis` | redis://{{ paperless_ngx_redis_host }}:{{ paperless_ngx_redis_port }} | Y | N |  |
+| `paperless_ngx_conf_dbengine` | | Y | N | Not used by the role |
+| `paperless_ngx_conf_dbhost` | localhost | Y | Y | |
+| `paperless_ngx_conf_dbport` | 5432 | Y | Y | |
+| `paperless_ngx_conf_dbname` | paperlessngx | Y | Y | |
+| `paperless_ngx_conf_dbuser` | paperlessngx | Y | Y | |
+| `paperless_ngx_conf_dbpass` | "" | Y | Y | The db password. If not defined by the user, a random password will be generated -> see section below about passwords. |
+| `paperless_ngx_conf_dbsslmode` | prefer | Y | Y | |
+| `paperless_ngx_conf_db_timeout` |  | N |   |   |
 
 #### Path and folders
 
