@@ -43,7 +43,7 @@
     - regexp: PAPERLESS_MEDIA_ROOT
       line: PAPERLESS_MEDIA_ROOT={{ paperless_ngx_conf_media_root }}
     - regexp: PAPERLESS_STATICDIR
-      line: PAPERLESS_STATICDIR=../static
+      line: PAPERLESS_STATICDIR={{ paperless_ngx_conf_staticdir }}
     - regexp: PAPERLESS_FILENAME_FORMAT
       line: PAPERLESS_FILENAME_FORMAT={{ paperless_ngx_conf_filename_format }}
     - regexp: PAPERLESS_LOGGING_DIR
@@ -156,6 +156,12 @@
       line: PAPERLESS_IGNORE_DATES={{ paperless_ngx_conf_ignore_dates }}
     - regexp: PAPERLESS_EMAIL_TASK_CRON
       line: PAPERLESS_EMAIL_TASK_CRON={{ paperless_ngx_conf_email_task_cron }}
+    - regexp: PAPERLESS_TRAIN_TASK_CRON
+      line: PAPERLESS_TRAIN_TASK_CRON={{ paperless_ngx_conf_train_task_cron }}
+    - regexp: PAPERLESS_INDEX_TASK_CRON
+      line: PAPERLESS_INDEX_TASK_CRON={{ paperless_ngx_conf_index_task_cron }}
+    - regexp: PAPERLESS_SANITY_TASK_CRON
+      line: PAPERLESS_SANITY_TASK_CRON={{ paperless_ngx_conf_sanity_task_cron }}
   tags: pngx_conf_tweaks
 
 - name: Write pngx config (Polling)
@@ -170,6 +176,8 @@
       line: PAPERLESS_CONSUMER_POLLING={{ paperless_ngx_conf_consumer_polling }}
     - regexp: PAPERLESS_CONSUMER_POLLING_RETRY_COUNT
       line: PAPERLESS_CONSUMER_POLLING_RETRY_COUNT={{ paperless_ngx_conf_consumer_polling_retry_count }}
+    - regexp: PAPERLESS_CONSUMER_POLLING_DELAY
+      line: PAPERLESS_CONSUMER_POLLING_DELAY={{ paperless_ngx_conf_consumer_polling_delay }}
   tags: pngx_conf_polling
 
 - name: Write pngx config (update checking)
