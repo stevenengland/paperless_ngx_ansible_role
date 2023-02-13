@@ -73,139 +73,139 @@ To save reading space a few abbreviations are used in the tables down below:
 
 #### Path and folders
 
-| Name           | Default Value |
-| -------------- | ------------- |
-| `paperless_ngx_conf_consumption_dir` | "{{ paperless_ngx_dir_runtime_data }}/consumption" |
-| `paperless_ngx_conf_data_dir` | "{{ paperless_ngx_dir_runtime_data }}/data" |
-| `paperless_ngx_conf_export_dir` | "{{ paperless_ngx_dir_runtime_data }}/export" |
-| `paperless_ngx_conf_trash_dir` | "{{ paperless_ngx_dir_runtime_data }}/trash" |
-| `paperless_ngx_conf_media_root` | "{{ paperless_ngx_dir_runtime_data }}/media" |
-| `paperless_ngx_conf_staticdir` | ../static, not |
-| `paperless_ngx_conf_filename_format` | "" |
-| `paperless_ngx_conf_filename_format_remove_none` | not implemented |
-| `paperless_ngx_conf_logging_dir` | "{{ paperless_ngx_dir_runtime_data }}/log" |
-| `paperless_ngx_conf_nltk_dir` | not implemented |
+| Name           | Default Value | I | O | H |
+| -------------- | ------------- |---|---|---|
+| `paperless_ngx_conf_consumption_dir` | "{{ paperless_ngx_dir_runtime_data }}/consumption" |   |   |   |
+| `paperless_ngx_conf_data_dir` | "{{ paperless_ngx_dir_runtime_data }}/data" |   |   |   |
+| `paperless_ngx_conf_export_dir` | "{{ paperless_ngx_dir_runtime_data }}/export" |   |   |   |
+| `paperless_ngx_conf_trash_dir` | "{{ paperless_ngx_dir_runtime_data }}/trash" |   |   |   |
+| `paperless_ngx_conf_media_root` | "{{ paperless_ngx_dir_runtime_data }}/media" |   |   |   |
+| `paperless_ngx_conf_staticdir` | ../static, not |   |   |   |
+| `paperless_ngx_conf_filename_format` | "" |   |   |   |
+| `paperless_ngx_conf_filename_format_remove_none` | not implemented |   |   |   |
+| `paperless_ngx_conf_logging_dir` | "{{ paperless_ngx_dir_runtime_data }}/log" |   |   |   |
+| `paperless_ngx_conf_nltk_dir` | not implemented |   |   |   |
 
 #### Logging
 
-| Name           | Default Value |
-| -------------- | ------------- |
-| `paperless_ngx_conf_logrotate_max_size` |  |
-| `paperless_ngx_conf_logrotate_max_backups` |  |
+| Name           | Default Value | I | O | H |
+| -------------- | ------------- |---|---|---|
+| `paperless_ngx_conf_logrotate_max_size` |  |   |   |   |
+| `paperless_ngx_conf_logrotate_max_backups` |  |   |   |   |
 
 #### Hosting & Security
 
-| Name           | Default Value |
-| -------------- | ------------- |
-| `paperless_ngx_conf_secret_key` | "" (If not defined by the user, a random password will be generated -> see section below about passwords) |
-| `paperless_ngx_conf_url` | http://localhost:8000 |
-| `paperless_ngx_conf_csrf_trusted_origins` |  |
-| `paperless_ngx_conf_allowed_hosts` | "*" |
-| `paperless_ngx_conf_cors_allowed_hosts` | http://localhost:8000 |
-| `paperless_ngx_conf_force_script_name` | "" |
-| `paperless_ngx_conf_static_url` | /static/ |
-| `paperless_ngx_conf_auto_login_username` | "" |
-| `paperless_ngx_conf_admin_user` |  |
-| `paperless_ngx_conf_admin_mail` |  |
-| `paperless_ngx_conf_admin_password` |  |
-| `paperless_ngx_conf_cookie_prefix` | "" |
-| `paperless_ngx_conf_enable_http_remote_user` | "" |
-| `paperless_ngx_conf_http_remote_user_header_name` |  |
-| `paperless_ngx_conf_logout_redirect_url` |  |
+| Name           | Default Value | I | O | H |
+| -------------- | ------------- |---|---|---|
+| `paperless_ngx_conf_secret_key` | "" (If not defined by the user, a random password will be generated -> see section below about passwords) |   |   |   |
+| `paperless_ngx_conf_url` | http://localhost:8000 |   |   |   |
+| `paperless_ngx_conf_csrf_trusted_origins` |  |   |   |   |
+| `paperless_ngx_conf_allowed_hosts` | "*" |   |   |   |
+| `paperless_ngx_conf_cors_allowed_hosts` | http://localhost:8000 |   |   |   |
+| `paperless_ngx_conf_force_script_name` | "" |   |   |   |
+| `paperless_ngx_conf_static_url` | /static/ |   |   |   |
+| `paperless_ngx_conf_auto_login_username` | "" |   |   |   |
+| `paperless_ngx_conf_admin_user` |  |   |   |   |
+| `paperless_ngx_conf_admin_mail` |  |   |   |   |
+| `paperless_ngx_conf_admin_password` |  |   |   |   |
+| `paperless_ngx_conf_cookie_prefix` | "" |   |   |   |
+| `paperless_ngx_conf_enable_http_remote_user` | "" |   |   |   |
+| `paperless_ngx_conf_http_remote_user_header_name` |  |   |   |   |
+| `paperless_ngx_conf_logout_redirect_url` |  |   |   |   |
 
 #### OCR settings
 
-| Name           | Default Value |
-| -------------- | ------------- |
-| `paperless_ngx_conf_ocr_language` | [eng] |
-| `paperless_ngx_conf_ocr_mode` | skip |
-| `paperless_ngx_conf_ocr_clean` | clean |
-| `paperless_ngx_conf_ocr_deskew` | true |
-| `paperless_ngx_conf_ocr_rotate_pages` | true |
-| `paperless_ngx_conf_ocr_rotate_pages_threshold` | 12 |
-| `paperless_ngx_conf_ocr_output_type` | pdfa |
-| `paperless_ngx_conf_ocr_pages` | 0 |
-| `paperless_ngx_conf_ocr_image_dpi` | "" |
-| `paperless_ngx_conf_ocr_max_image_pixels` | |
-| `paperless_ngx_conf_ocr_user_args` | [optimize=1] |
+| Name           | Default Value | I | O | H |
+| -------------- | ------------- |---|---|---|
+| `paperless_ngx_conf_ocr_language` | [eng] |   |   |   |
+| `paperless_ngx_conf_ocr_mode` | skip |   |   |   |
+| `paperless_ngx_conf_ocr_clean` | clean |   |   |   |
+| `paperless_ngx_conf_ocr_deskew` | true |   |   |   |
+| `paperless_ngx_conf_ocr_rotate_pages` | true |   |   |   |
+| `paperless_ngx_conf_ocr_rotate_pages_threshold` | 12 |   |   |   |
+| `paperless_ngx_conf_ocr_output_type` | pdfa |   |   |   |
+| `paperless_ngx_conf_ocr_pages` | 0 |   |   |   |
+| `paperless_ngx_conf_ocr_image_dpi` | "" |   |   |   |
+| `paperless_ngx_conf_ocr_max_image_pixels` | |   |   |   |
+| `paperless_ngx_conf_ocr_user_args` | [optimize=1] |   |   |   |
 
 #### Tika settings
 
-| Name           | Default Value |
-| -------------- | ------------- |
-| `paperless_ngx_conf_tika_enabled` | false |
-| `paperless_ngx_conf_tika_endpoint` | http://localhost:9998 |
-| `paperless_ngx_conf_tika_gotenberg_endpoint` | http://localhost:3000 |
+| Name           | Default Value | I | O | H |
+| -------------- | ------------- |---|---|---|
+| `paperless_ngx_conf_tika_enabled` | false |   |   |   |
+| `paperless_ngx_conf_tika_endpoint` | http://localhost:9998 |   |   |   |
+| `paperless_ngx_conf_tika_gotenberg_endpoint` | http://localhost:3000 |   |   |   |
 
 #### Software tweaks
 
-| Name           | Default Value |
-| -------------- | ------------- |
-| `paperless_ngx_conf_task_workers` |  |
-| `paperless_ngx_conf_threads_per_worker` |  |
-| `paperless_ngx_conf_worker_timeout` |  |
-| `paperless_ngx_conf_worker_retry` |  |
-| `paperless_ngx_conf_time_zone` | Europe/London |
-| `paperless_ngx_conf_enable_nltk` |  |
-| `paperless_ngx_conf_email_task_cron` | "*/10 * * * *" |
-| `paperless_ngx_conf_train_task_cron` |  |
-| `paperless_ngx_conf_index_task_cron` |  |
-| `paperless_ngx_conf_sanity_task_cron` |  |
+| Name           | Default Value | I | O | H |
+| -------------- | ------------- |---|---|---|
+| `paperless_ngx_conf_task_workers` |  |   |   |   |
+| `paperless_ngx_conf_threads_per_worker` |  |   |   |   |
+| `paperless_ngx_conf_worker_timeout` |  |   |   |   |
+| `paperless_ngx_conf_worker_retry` |  |   |   |   |
+| `paperless_ngx_conf_time_zone` | Europe/London |   |   |   |
+| `paperless_ngx_conf_enable_nltk` |  |   |   |   |
+| `paperless_ngx_conf_email_task_cron` | "*/10 * * * *" |   |   |   |
+| `paperless_ngx_conf_train_task_cron` |  |   |   |   |
+| `paperless_ngx_conf_index_task_cron` |  |   |   |   |
+| `paperless_ngx_conf_sanity_task_cron` |  |   |   |   |
 
 #### Polling
 
-| Name           | Default Value |
-| -------------- | ------------- |
-| `paperless_ngx_conf_consumer_polling` | 0 |
-| `paperless_ngx_conf_consumer_polling_retry_count` | 5 |
-| `paperless_ngx_conf_consumer_polling_delay` |  |
+| Name           | Default Value | I | O | H |
+| -------------- | ------------- |---|---|---|
+| `paperless_ngx_conf_consumer_polling` | 0 |   |   |   |
+| `paperless_ngx_conf_consumer_polling_retry_count` | 5 |   |   |   |
+| `paperless_ngx_conf_consumer_polling_delay` |  |   |   |   |
 
 #### iNotify
 
-| Name           | Default Value |
-| -------------- | ------------- |
-| `paperless_ngx_conf_consumer_inotify_delay` |  |
-| `paperless_ngx_conf_consumer_delete_duplicates` | false |
-| `paperless_ngx_conf_consumer_recursive` | false |
-| `paperless_ngx_conf_consumer_subdirs_as_tags` | false |
-| `paperless_ngx_conf_consumer_enable_barcodes` |  |
-| `paperless_ngx_conf_consumer_barcode_tiff_support` |  |
-| `paperless_ngx_conf_consumer_enable_asn_barcode` |  |
-| `paperless_ngx_conf_convert_memory_limit` | 0 |
-| `paperless_ngx_conf_convert_tmpdir` | "" |
-| `paperless_ngx_conf_post_consume_script` | "" |
-| `paperless_ngx_conf_filename_date_order` | "" |
-| `paperless_ngx_conf_number_of_suggested_dates` |  |
-| `paperless_ngx_conf_thumbnail_font_name` | /usr/share/fonts/liberation/LiberationSerif-Regular.ttf |
-| `paperless_ngx_conf_ignore_dates` | "" |
-| `paperless_ngx_conf_date_order` |  |
-| `paperless_ngx_conf_consumer_ignore_patterns` |  |
+| Name           | Default Value | I | O | H |
+| -------------- | ------------- |---|---|---|
+| `paperless_ngx_conf_consumer_inotify_delay` |  |   |   |   |
+| `paperless_ngx_conf_consumer_delete_duplicates` | false |   |   |   |
+| `paperless_ngx_conf_consumer_recursive` | false |   |   |   |
+| `paperless_ngx_conf_consumer_subdirs_as_tags` | false |   |   |   |
+| `paperless_ngx_conf_consumer_enable_barcodes` |  |   |   |   |
+| `paperless_ngx_conf_consumer_barcode_tiff_support` |  |   |   |   |
+| `paperless_ngx_conf_consumer_enable_asn_barcode` |  |   |   |   |
+| `paperless_ngx_conf_convert_memory_limit` | 0 |   |   |   |
+| `paperless_ngx_conf_convert_tmpdir` | "" |   |   |   |
+| `paperless_ngx_conf_post_consume_script` | "" |   |   |   |
+| `paperless_ngx_conf_filename_date_order` | "" |   |   |   |
+| `paperless_ngx_conf_number_of_suggested_dates` |  |   |   |   |
+| `paperless_ngx_conf_thumbnail_font_name` | /usr/share/fonts/liberation/LiberationSerif-Regular.ttf |   |   |   |
+| `paperless_ngx_conf_ignore_dates` | "" |   |   |   |
+| `paperless_ngx_conf_date_order` |  |   |   |   |
+| `paperless_ngx_conf_consumer_ignore_patterns` |  |   |   |   |
 
 #### Binaries
 
-| Name           | Default Value |
-| -------------- | ------------- |
-| `paperless_ngx_conf_convert_binary` |  |
-| `paperless_ngx_conf_gs_binary` |  |
+| Name           | Default Value | I | O | H |
+| -------------- | ------------- |---|---|---|
+| `paperless_ngx_conf_convert_binary` |  |   |   |   |
+| `paperless_ngx_conf_gs_binary` |  |   |   |   |
 
 #### Docker specicif options
 
-| Name           | Default Value |
-| -------------- | ------------- |
-| `paperless_ngx_conf_webserver_workers` |  |
-| `paperless_ngx_conf_bind_addr` |  |
-| `paperless_ngx_conf_port` |  |
-| `paperless_ngx_conf_usermap_uid` |  |
-| `paperless_ngx_conf_usermap_gid` |  |
-| `paperless_ngx_conf_ocr_languages` |  |
-| `paperless_ngx_conf_enable_flower` |  |
+| Name           | Default Value | I | O | H |
+| -------------- | ------------- |---|---|---|
+| `paperless_ngx_conf_webserver_workers` |  |   |   |   |
+| `paperless_ngx_conf_bind_addr` |  |   |   |   |
+| `paperless_ngx_conf_port` |  |   |   |   |
+| `paperless_ngx_conf_usermap_uid` |  |   |   |   |
+| `paperless_ngx_conf_usermap_gid` |  |   |   |   |
+| `paperless_ngx_conf_ocr_languages` |  |   |   |   |
+| `paperless_ngx_conf_enable_flower` |  |   |   |   |
 
 #### Update Checking
 
-| Name           | Default Value |
-| -------------- | ------------- |
-| `paperless_ngx_conf_enable_update_check` |  |
-| `paperless_ngx_conf_test` |  |
+| Name           | Default Value | I | O | H |
+| -------------- | ------------- |---|---|---|
+| `paperless_ngx_conf_enable_update_check` |  |   |   |   |
+| `paperless_ngx_conf_test` |  |   |   |   |
 
 ### Usage advice
 
