@@ -6,6 +6,10 @@ TBD
 
 TBD
 
+## Maintenance scripts
+
+In the dir maintenance/ are scripts that shall help to keep the code clean. Like to keep track of new variables introduced by paperless-ngx that are not yet reflected in this role or to check if all molecule scenarios are placed at the corresponding place (matrix) in the test workflow for github.
+
 ## Testing
 
 ### Complete test
