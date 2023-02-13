@@ -43,7 +43,7 @@
     - regexp: PAPERLESS_MEDIA_ROOT
       line: PAPERLESS_MEDIA_ROOT={{ paperless_ngx_conf_media_root }}
     - regexp: PAPERLESS_STATICDIR
-      line: PAPERLESS_STATICDIR=../static
+      line: PAPERLESS_STATICDIR={{ paperless_ngx_conf_staticdir }}
     - regexp: PAPERLESS_FILENAME_FORMAT
       line: PAPERLESS_FILENAME_FORMAT={{ paperless_ngx_conf_filename_format }}
     - regexp: PAPERLESS_LOGGING_DIR

@@ -74,6 +74,7 @@ Additional variables available in this role are listed below, along with default
 | `paperless_ngx_conf_export_dir` | "{{ paperless_ngx_dir_runtime_data }}/export" |
 | `paperless_ngx_conf_trash_dir` | "{{ paperless_ngx_dir_runtime_data }}/trash" |
 | `paperless_ngx_conf_media_root` | "{{ paperless_ngx_dir_runtime_data }}/media" |
+| `paperless_ngx_conf_staticdir` | ../static, not |
 | `paperless_ngx_conf_filename_format` | "" |
 | `paperless_ngx_conf_filename_format_remove_none` | not implemented |
 | `paperless_ngx_conf_logging_dir` | "{{ paperless_ngx_dir_runtime_data }}/log" |
