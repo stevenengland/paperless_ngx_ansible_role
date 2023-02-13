@@ -156,6 +156,12 @@
       line: PAPERLESS_IGNORE_DATES={{ paperless_ngx_conf_ignore_dates }}
     - regexp: PAPERLESS_EMAIL_TASK_CRON
       line: PAPERLESS_EMAIL_TASK_CRON={{ paperless_ngx_conf_email_task_cron }}
+    - regexp: PAPERLESS_TRAIN_TASK_CRON
+      line: PAPERLESS_TRAIN_TASK_CRON={{ paperless_ngx_conf_train_task_cron }}
+    - regexp: PAPERLESS_INDEX_TASK_CRON
+      line: PAPERLESS_INDEX_TASK_CRON={{ paperless_ngx_conf_index_task_cron }}
+    - regexp: PAPERLESS_SANITY_TASK_CRON
+      line: PAPERLESS_SANITY_TASK_CRON={{ paperless_ngx_conf_sanity_task_cron }}
   tags: pngx_conf_tweaks
 
 - name: Write pngx config (Polling)

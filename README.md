@@ -148,9 +148,9 @@ To save reading space a few abbreviations are used in the tables down below:
 | `paperless_ngx_conf_time_zone` | Europe/London | Y | Y |   |
 | `paperless_ngx_conf_enable_nltk` |  | N |   |   |
 | `paperless_ngx_conf_email_task_cron` | "*/10 * * * *" | Y | Y |   |
-| `paperless_ngx_conf_train_task_cron` |  | N |   |   |
-| `paperless_ngx_conf_index_task_cron` |  | N |   |   |
-| `paperless_ngx_conf_sanity_task_cron` |  | N |   |   |
+| `paperless_ngx_conf_train_task_cron` | "5 */1 * * *" | Y | Y |   |
+| `paperless_ngx_conf_index_task_cron` | "0 0 * * *" | Y | Y |   |
+| `paperless_ngx_conf_sanity_task_cron` | "30 0 * * sun" | N |   |   |
 
 #### Polling
 
