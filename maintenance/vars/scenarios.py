@@ -3,7 +3,7 @@ from var_collector import *
 
 #############################################
 # DOCS vs README
-# - What:   Do not miss a new feature or deprecated variable
+# - What:   Do not miss a new feature or deprecated variable. Every var in DOCS should be present in README (_conf_) and vice versa.
 # - How:    Compare DOCS complete var set with roles README conf vars that correspond with DOCS.
 #############################################
 def readme_vs_docs():
@@ -14,11 +14,31 @@ def readme_vs_docs():
     in_readme_but_not_in_docs = ['paperless_ngx_conf_' + item for item in in_a_but_not_in_b(vars_readme_conf, vars_docs_all, False)]
     print_scenario_result("DOCS", vars_docs_all, "README", vars_readme_conf, in_docs_but_not_in_readme, in_readme_but_not_in_docs)
 
+#############################################
+# VARS (defaults only) vs README
+# - What:   Every var in defaults should be documented in README because they are ment to be overridden by the user.
+# - How:    Compare VARS defaults with roles README complete var set.
+#############################################
+def default_vars_vs_readme():
+    vars_in_readme_all = get_role_readme_configuration_vars(r'\|\s*\`(paperless_ngx_.*?)\`\s*\|')
+    vars_in_defaults = get_role_defaults_vars(r'^(paperless_ngx_.*?):')
+    in_vars_but_not_in_readme = [item for item in in_a_but_not_in_b(vars_in_defaults, vars_in_readme_all, True)]
+    print_scenario_result("DEFAULTS", vars_in_defaults, "README", vars_in_readme_all, in_vars_but_not_in_readme)
 
-def print_scenario_result(a_name: str, a: list, b_name: str, b: list, result1: list, result2: list):
+#############################################
+# README vs VARS (defaults and vars)
+# - What:   Every var in README should have a correspondant in either defaults/main.yml or vars/main.yml file
+# - How:    Compare VARS defaults/main.yml + vars/main.yml with roles README complete var set.
+#############################################
+
+def print_scenario_result(a_name: str, a: list, b_name: str, b: list, result1: list, result2: list | None = None):
     titles = ['name', 'count']
     names = ["Matches in " + a_name, "Matches in " + b_name, "In " + a_name + " but not in " + b_name, "in " + b_name + " but not in " + a_name]
-    matchcount = [len(a), len(b), len(result1), len(result2)]
+    matchcount = []
+    if result2 is None:
+        matchcount = [len(a), len(b), len(result1)]
+    else:
+        matchcount = [len(a), len(b), len(result1), len(result2)]
 
     data = [titles] + list(zip(names, matchcount))
     

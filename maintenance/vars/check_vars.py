@@ -1,5 +1,7 @@
 import scenarios
 
-scenario_result = scenarios.readme_vs_docs()
+scenarios.readme_vs_docs()
+
+scenarios.default_vars_vs_readme()
 
 
