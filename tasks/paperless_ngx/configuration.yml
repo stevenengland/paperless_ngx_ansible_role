@@ -176,6 +176,8 @@
       line: PAPERLESS_CONSUMER_POLLING={{ paperless_ngx_conf_consumer_polling }}
     - regexp: PAPERLESS_CONSUMER_POLLING_RETRY_COUNT
       line: PAPERLESS_CONSUMER_POLLING_RETRY_COUNT={{ paperless_ngx_conf_consumer_polling_retry_count }}
+    - regexp: PAPERLESS_CONSUMER_POLLING_DELAY
+      line: PAPERLESS_CONSUMER_POLLING_DELAY={{ paperless_ngx_conf_consumer_polling_delay }}
   tags: pngx_conf_polling
 
 - name: Write pngx config (update checking)

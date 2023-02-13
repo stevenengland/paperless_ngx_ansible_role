@@ -158,7 +158,7 @@ To save reading space a few abbreviations are used in the tables down below:
 | -------------- | ------------- |---|---|---|
 | `paperless_ngx_conf_consumer_polling` | 0 | Y | Y |   |
 | `paperless_ngx_conf_consumer_polling_retry_count` | 5 | Y | Y |   |
-| `paperless_ngx_conf_consumer_polling_delay` |  | N |   |   |
+| `paperless_ngx_conf_consumer_polling_delay` | 5 | Y | Y |   |
 
 #### iNotify
 
