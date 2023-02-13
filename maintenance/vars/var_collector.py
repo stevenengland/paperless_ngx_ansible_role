@@ -12,3 +12,13 @@ def get_role_readme_configuration_vars(pattern: str) -> list:
     file_path = os.path.dirname(__file__) + '/../../README.md'
     content = Path(file_path).read_text()
     return re.findall( pattern, content)
+
+def get_role_defaults_vars(pattern: str) -> list:
+    file_path = os.path.dirname(__file__) + '/../../defaults/main.yml'
+    content = Path(file_path).read_text()
+    return re.findall( pattern, content, re.MULTILINE)
+
+def get_role_vars_vars(pattern: str) -> list:
+    file_path = os.path.dirname(__file__) + '/../../vars/main.yml'
+    content = Path(file_path).read_text()
+    return re.findall( pattern, content)
