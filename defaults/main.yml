@@ -55,8 +55,7 @@ paperless_ngx_conf_auto_login_username:
 paperless_ngx_conf_cookie_prefix: ""
 paperless_ngx_conf_enable_http_remote_user: false
 ## OCR
-paperless_ngx_conf_ocr_languages:
-  - eng
+paperless_ngx_conf_ocr_language: eng
 paperless_ngx_conf_ocr_mode: skip
 paperless_ngx_conf_ocr_clean: clean
 paperless_ngx_conf_ocr_deskew: true
@@ -94,5 +93,12 @@ paperless_ngx_conf_consumer_recursive: false
 paperless_ngx_conf_consumer_subdirs_as_tags: false
 paperless_ngx_conf_convert_memory_limit: 0
 paperless_ngx_conf_convert_tmpdir:
+## Docker (bare metal) specific options
+paperless_ngx_conf_ocr_languages:
+  - eng
+  - deu
+  - fra
+  - ita
+  - spa
 ## Update checking
 paperless_ngx_conf_enable_update_check: enable

@@ -85,7 +85,7 @@
   with_items:
     # OCR settings
     - regexp: PAPERLESS_OCR_LANGUAGE
-      line: PAPERLESS_OCR_LANGUAGE={{ paperless_ngx_conf_ocr_languages | join('+') | replace('-', '_') }}
+      line: PAPERLESS_OCR_LANGUAGE={{ paperless_ngx_conf_ocr_language }}
     - regexp: PAPERLESS_OCR_MODE
       line: PAPERLESS_OCR_MODE={{ paperless_ngx_conf_ocr_mode }}
     - regexp: PAPERLESS_OCR_CLEAN
