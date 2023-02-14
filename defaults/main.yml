@@ -94,8 +94,8 @@ paperless_ngx_conf_consumer_subdirs_as_tags: false
 paperless_ngx_conf_convert_memory_limit: 0
 paperless_ngx_conf_convert_tmpdir:
 ## Docker (bare metal) specific options
-paperless_ngx_conf_usermap_uid:
-paperless_ngx_conf_usermap_gid:
+paperless_ngx_conf_usermap_uid: "{{ default(omit) }}"
+paperless_ngx_conf_usermap_gid: "{{ default(omit) }}"
 paperless_ngx_conf_ocr_languages:
   - eng
   - deu
