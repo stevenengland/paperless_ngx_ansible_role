@@ -24,8 +24,9 @@ jobs:
     strategy:
       matrix:
         molecule_scenario: [
-          default,
+          alternative_installation,
           check_fails,
+          default,
           upgrade
         ]
 
