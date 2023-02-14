@@ -195,8 +195,8 @@ To save reading space a few abbreviations are used in the tables down below:
 | `paperless_ngx_conf_webserver_workers` |  | N |   |   |
 | `paperless_ngx_conf_bind_addr` |  | N |   |   |
 | `paperless_ngx_conf_port` |  | N |   |   |
-| `paperless_ngx_conf_usermap_uid` |  | N |   | Irrelevant for the role |
-| `paperless_ngx_conf_usermap_gid` |  |   |   | Irrelevant for the role |
+| `paperless_ngx_conf_usermap_uid` |  | Y | Y | System users id |
+| `paperless_ngx_conf_usermap_gid` |  | Y | Y | System users gid |
 | `paperless_ngx_conf_ocr_languages` | [eng,deu,fra,ita,spa] | Y | Y |   |
 | `paperless_ngx_conf_enable_flower` |  | N |   |   |
 
