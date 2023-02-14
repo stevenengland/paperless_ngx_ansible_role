@@ -28,6 +28,7 @@ include-labels:
   - 'ci'
   - 'dependencies'
   - 'documentation'
+  - 'enhancement'
   - 'performance'
   - 'refactoring'
   - 'removal'
@@ -58,9 +59,11 @@ categories:
     labels:
       - 'bug'
   - title: 'Documentation'
+    collapse-after: 3
     labels:
       - 'documentation'
   - title: 'Maintenance'
+    collapse-after: 3
     labels:
       - 'build'
       - 'performance'
