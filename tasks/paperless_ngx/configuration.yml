@@ -44,6 +44,8 @@
       line: PAPERLESS_STATICDIR={{ paperless_ngx_conf_staticdir }}
     - regexp: PAPERLESS_FILENAME_FORMAT
       line: PAPERLESS_FILENAME_FORMAT={{ paperless_ngx_conf_filename_format }}
+    - regexp: PAPERLESS_FILENAME_FORMAT_REMOVE_NONE
+      line: PAPERLESS_FILENAME_FORMAT_REMOVE_NONE={{ paperless_ngx_conf_filename_format_remove_none }}
     - regexp: PAPERLESS_LOGGING_DIR
       line: PAPERLESS_LOGGING_DIR={{ paperless_ngx_conf_logging_dir }}
   tags: pngx_conf_folders
