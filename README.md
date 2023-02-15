@@ -83,7 +83,7 @@ To save reading space a few abbreviations are used in the tables down below:
 | `paperless_ngx_conf_filename_format` | "" | Y | Y |   |
 | `paperless_ngx_conf_filename_format_remove_none` | false | Y | Y |   |
 | `paperless_ngx_conf_logging_dir` | "{{ paperless_ngx_dir_runtime_data }}/log" |   |   |   |
-| `paperless_ngx_conf_nltk_dir` |  | N |   |   |
+| `paperless_ngx_conf_nltk_dir` | /usr/share/nltk_data | Y | Y |   |
 
 #### Logging
 

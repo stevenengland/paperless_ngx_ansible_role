@@ -44,6 +44,7 @@ paperless_ngx_conf_media_root: "{{ paperless_ngx_dir_runtime_data }}/media"
 paperless_ngx_conf_filename_format:
 paperless_ngx_conf_filename_format_remove_none: false
 paperless_ngx_conf_logging_dir: "{{ paperless_ngx_dir_runtime_data }}/log"
+paperless_ngx_conf_nltk_dir: /usr/share/nltk_data
 ## Hosting & Security
 paperless_ngx_conf_url: http://localhost:8000
 paperless_ngx_conf_secret_key: "{{ lookup('password', 'pngx_instances/' + inventory_hostname + '/pnx_secret_key.secret') }}"

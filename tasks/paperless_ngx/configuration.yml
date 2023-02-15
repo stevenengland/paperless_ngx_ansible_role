@@ -48,6 +48,8 @@
       line: PAPERLESS_FILENAME_FORMAT_REMOVE_NONE={{ paperless_ngx_conf_filename_format_remove_none }}
     - regexp: PAPERLESS_LOGGING_DIR
       line: PAPERLESS_LOGGING_DIR={{ paperless_ngx_conf_logging_dir }}
+    - regexp: PAPERLESS_NLTK_DIR
+      line: PAPERLESS_NLTK_DIR={{ paperless_ngx_conf_nltk_dir }}
   tags: pngx_conf_folders
 
 - name: Write pngx config (hosting and security)
