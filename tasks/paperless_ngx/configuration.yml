@@ -34,8 +34,6 @@
     # Paths and folders
     - regexp: PAPERLESS_CONSUMPTION_DIR
       line: PAPERLESS_CONSUMPTION_DIR={{ paperless_ngx_conf_consumption_dir }}
-    - regexp: PAPERLESS_EXPORT_DIR
-      line: PAPERLESS_EXPORT_DIR={{ paperless_ngx_conf_export_dir }}
     - regexp: PAPERLESS_DATA_DIR
       line: PAPERLESS_DATA_DIR={{ paperless_ngx_conf_data_dir }}
     - regexp: PAPERLESS_TRASH_DIR

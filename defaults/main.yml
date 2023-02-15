@@ -39,7 +39,6 @@ paperless_ngx_conf_dbsslmode: prefer
 ## Paths and folders
 paperless_ngx_conf_consumption_dir: "{{ paperless_ngx_dir_runtime_data }}/consumption"
 paperless_ngx_conf_data_dir: "{{ paperless_ngx_dir_runtime_data }}/data"
-paperless_ngx_conf_export_dir: "{{ paperless_ngx_dir_runtime_data }}/export"
 paperless_ngx_conf_trash_dir: "{{ paperless_ngx_dir_runtime_data }}/trash"
 paperless_ngx_conf_media_root: "{{ paperless_ngx_dir_runtime_data }}/media"
 paperless_ngx_conf_filename_format:

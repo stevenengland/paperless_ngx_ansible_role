@@ -77,7 +77,6 @@ To save reading space a few abbreviations are used in the tables down below:
 | -------------- | ------------- |---|---|---|
 | `paperless_ngx_conf_consumption_dir` | "{{ paperless_ngx_dir_runtime_data }}/consumption" | Y | Y |   |
 | `paperless_ngx_conf_data_dir` | "{{ paperless_ngx_dir_runtime_data }}/data" | Y | Y |   |
-| `paperless_ngx_conf_export_dir` | "{{ paperless_ngx_dir_runtime_data }}/export" | Y | Y |   |
 | `paperless_ngx_conf_trash_dir` | "{{ paperless_ngx_dir_runtime_data }}/trash" | Y | Y |   |
 | `paperless_ngx_conf_media_root` | "{{ paperless_ngx_dir_runtime_data }}/media" | Y | Y |   |
 | `paperless_ngx_conf_staticdir` | ../static | Y | N |   |
