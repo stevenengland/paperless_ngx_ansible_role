@@ -39,11 +39,12 @@ paperless_ngx_conf_dbsslmode: prefer
 ## Paths and folders
 paperless_ngx_conf_consumption_dir: "{{ paperless_ngx_dir_runtime_data }}/consumption"
 paperless_ngx_conf_data_dir: "{{ paperless_ngx_dir_runtime_data }}/data"
-paperless_ngx_conf_export_dir: "{{ paperless_ngx_dir_runtime_data }}/export"
 paperless_ngx_conf_trash_dir: "{{ paperless_ngx_dir_runtime_data }}/trash"
 paperless_ngx_conf_media_root: "{{ paperless_ngx_dir_runtime_data }}/media"
 paperless_ngx_conf_filename_format:
+paperless_ngx_conf_filename_format_remove_none: false
 paperless_ngx_conf_logging_dir: "{{ paperless_ngx_dir_runtime_data }}/log"
+paperless_ngx_conf_nltk_dir: /usr/share/nltk_data
 ## Hosting & Security
 paperless_ngx_conf_url: http://localhost:8000
 paperless_ngx_conf_secret_key: "{{ lookup('password', 'pngx_instances/' + inventory_hostname + '/pnx_secret_key.secret') }}"
@@ -75,10 +76,6 @@ paperless_ngx_conf_tika_gotenberg_endpoint: http://localhost:3000
 paperless_ngx_conf_time_zone: Europe/London
 # paperless_ngx_conf_optimize_thumbnails: true # option seems to not exist
 # paperless_ngx_conf_pre_consume_script: # option seems to not exist
-paperless_ngx_conf_post_consume_script:
-paperless_ngx_conf_filename_date_order:
-paperless_ngx_conf_thumbnail_font_name: /usr/share/fonts/liberation/LiberationSerif-Regular.ttf
-paperless_ngx_conf_ignore_dates: ""
 paperless_ngx_conf_email_task_cron: "*/10 * * * *"
 paperless_ngx_conf_train_task_cron: "5 */1 * * *"
 paperless_ngx_conf_index_task_cron: "0 0 * * *"
@@ -91,8 +88,14 @@ paperless_ngx_conf_consumer_polling_delay: 5
 paperless_ngx_conf_consumer_delete_duplicates: false
 paperless_ngx_conf_consumer_recursive: false
 paperless_ngx_conf_consumer_subdirs_as_tags: false
+paperless_ngx_conf_consumer_enable_asn_barcode: false
+paperless_ngx_conf_consumer_asn_barcode_prefix: ASN
 paperless_ngx_conf_convert_memory_limit: 0
 paperless_ngx_conf_convert_tmpdir:
+paperless_ngx_conf_post_consume_script:
+paperless_ngx_conf_filename_date_order:
+paperless_ngx_conf_thumbnail_font_name: /usr/share/fonts/liberation/LiberationSerif-Regular.ttf
+paperless_ngx_conf_ignore_dates: ""
 ## Docker (bare metal) specific options
 paperless_ngx_conf_usermap_uid: "{{ default(omit) }}"
 paperless_ngx_conf_usermap_gid: "{{ default(omit) }}"
