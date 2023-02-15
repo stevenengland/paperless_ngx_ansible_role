@@ -170,7 +170,9 @@ To save reading space a few abbreviations are used in the tables down below:
 | `paperless_ngx_conf_consumer_subdirs_as_tags` | false | Y | Y |   |   |
 | `paperless_ngx_conf_consumer_enable_barcodes` |  | N |   |   |   |
 | `paperless_ngx_conf_consumer_barcode_tiff_support` |  | N |   |   |   |
-| `paperless_ngx_conf_consumer_enable_asn_barcode` |  | N |   |   | 1.12 |
+| `paperless_ngx_conf_consumer_barcode_string` |  | N |   |   |   |
+| `paperless_ngx_conf_consumer_enable_asn_barcode` | false | Y | Y |   | 1.12 |
+| `paperless_ngx_conf_consumer_asn_barcode_prefix` | ASN | Y | Y |   | 1.12 |
 | `paperless_ngx_conf_convert_memory_limit` | 0 | Y | Y |   |   |
 | `paperless_ngx_conf_convert_tmpdir` | "" | Y | Y |   |   |
 | `paperless_ngx_conf_post_consume_script` | "" | Y | Y |   |   |

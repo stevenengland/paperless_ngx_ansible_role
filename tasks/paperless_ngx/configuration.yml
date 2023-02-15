@@ -134,28 +134,10 @@
     # Software tweaks
     - regexp: PAPERLESS_TIME_ZONE
       line: PAPERLESS_TIME_ZONE={{ paperless_ngx_conf_time_zone }}
-    - regexp: PAPERLESS_CONSUMER_DELETE_DUPLICATES
-      line: PAPERLESS_CONSUMER_DELETE_DUPLICATES={{ paperless_ngx_conf_consumer_delete_duplicates }}
-    - regexp: PAPERLESS_CONSUMER_RECURSIVE
-      line: PAPERLESS_CONSUMER_RECURSIVE={{ paperless_ngx_conf_consumer_recursive }}
-    - regexp: PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS
-      line: PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS={{ paperless_ngx_conf_consumer_subdirs_as_tags }}
-    - regexp: PAPERLESS_CONVERT_MEMORY_LIMIT
-      line: PAPERLESS_CONVERT_MEMORY_LIMIT={{ paperless_ngx_conf_convert_memory_limit }}
-    - regexp: PAPERLESS_CONVERT_TMPDIR
-      line: PAPERLESS_CONVERT_TMPDIR={{ paperless_ngx_conf_convert_tmpdir }}
     # - regexp: PAPERLESS_OPTIMIZE_THUMBNAILS
     #   line: PAPERLESS_OPTIMIZE_THUMBNAILS={{ paperless_ngx_conf_optimize_thumbnails }}
     # - regexp: PAPERLESS_PRE_CONSUME_SCRIPT
     #   line: PAPERLESS_PRE_CONSUME_SCRIPT={{ paperless_ngx_conf_pre_consume_script }}
-    - regexp: PAPERLESS_POST_CONSUME_SCRIPT
-      line: PAPERLESS_POST_CONSUME_SCRIPT={{ paperless_ngx_conf_post_consume_script }}
-    - regexp: PAPERLESS_FILENAME_DATE_ORDER
-      line: PAPERLESS_FILENAME_DATE_ORDER={{ paperless_ngx_conf_filename_date_order }}
-    - regexp: PAPERLESS_THUMBNAIL_FONT_NAME
-      line: PAPERLESS_THUMBNAIL_FONT_NAME={{ paperless_ngx_conf_thumbnail_font_name }}
-    - regexp: PAPERLESS_IGNORE_DATES
-      line: PAPERLESS_IGNORE_DATES={{ paperless_ngx_conf_ignore_dates }}
     - regexp: PAPERLESS_EMAIL_TASK_CRON
       line: PAPERLESS_EMAIL_TASK_CRON={{ paperless_ngx_conf_email_task_cron }}
     - regexp: PAPERLESS_TRAIN_TASK_CRON
@@ -181,6 +163,38 @@
     - regexp: PAPERLESS_CONSUMER_POLLING_DELAY
       line: PAPERLESS_CONSUMER_POLLING_DELAY={{ paperless_ngx_conf_consumer_polling_delay }}
   tags: pngx_conf_polling
+
+- name: Write pngx config (iNotify)
+  become: true
+  ansible.builtin.lineinfile:
+    path: "{{ paperless_ngx_config_file_template }}"
+    regexp: ^#?{{ item.regexp }}=
+    line: "{{ item.line }}"
+  with_items:
+    # iNotify
+    - regexp: PAPERLESS_CONSUMER_DELETE_DUPLICATES
+      line: PAPERLESS_CONSUMER_DELETE_DUPLICATES={{ paperless_ngx_conf_consumer_delete_duplicates }}
+    - regexp: PAPERLESS_CONSUMER_RECURSIVE
+      line: PAPERLESS_CONSUMER_RECURSIVE={{ paperless_ngx_conf_consumer_recursive }}
+    - regexp: PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS
+      line: PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS={{ paperless_ngx_conf_consumer_subdirs_as_tags }}
+    - regexp: PAPERLESS_CONVERT_MEMORY_LIMIT
+      line: PAPERLESS_CONVERT_MEMORY_LIMIT={{ paperless_ngx_conf_convert_memory_limit }}
+    - regexp: PAPERLESS_CONVERT_TMPDIR
+      line: PAPERLESS_CONVERT_TMPDIR={{ paperless_ngx_conf_convert_tmpdir }}
+    - regexp: PAPERLESS_CONSUMER_ENABLE_ASN_BARCODE
+      line: PAPERLESS_CONSUMER_ENABLE_ASN_BARCODE={{ paperless_ngx_conf_consumer_enable_asn_barcode }}
+    - regexp: PAPERLESS_CONSUMER_ASN_BARCODE_PREFIX
+      line: PAPERLESS_CONSUMER_ASN_BARCODE_PREFIX={{ paperless_ngx_conf_consumer_asn_barcode_prefix }}
+    - regexp: PAPERLESS_POST_CONSUME_SCRIPT
+      line: PAPERLESS_POST_CONSUME_SCRIPT={{ paperless_ngx_conf_post_consume_script }}
+    - regexp: PAPERLESS_FILENAME_DATE_ORDER
+      line: PAPERLESS_FILENAME_DATE_ORDER={{ paperless_ngx_conf_filename_date_order }}
+    - regexp: PAPERLESS_THUMBNAIL_FONT_NAME
+      line: PAPERLESS_THUMBNAIL_FONT_NAME={{ paperless_ngx_conf_thumbnail_font_name }}
+    - regexp: PAPERLESS_IGNORE_DATES
+      line: PAPERLESS_IGNORE_DATES={{ paperless_ngx_conf_ignore_dates }}
+  tags: pngx_conf_inotify
 
 - name: Write pngx config (update checking)
   become: true
