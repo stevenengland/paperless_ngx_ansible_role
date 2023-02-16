@@ -15,6 +15,10 @@
   when: _paperless_ngx_installation_strategy_upgrade
 
 - name: Pre configuration
+  when: >-
+    _paperless_ngx_installation_strategy_upgrade
+    or
+    _paperless_ngx_installation_strategy_fresh
   block:
     - name: Get paperless-ngx release files
       ansible.builtin.include_tasks:
@@ -29,10 +33,6 @@
         apply:
           tags: venv
       tags: venv
-  when: >-
-    _paperless_ngx_installation_strategy_upgrade
-    or
-    _paperless_ngx_installation_strategy_fresh
 
 - name: Configure paperless-ngx
   ansible.builtin.include_tasks:
@@ -42,6 +42,10 @@
   tags: configuration
 
 - name: Post configuration
+  when: >-
+    _paperless_ngx_installation_strategy_upgrade
+    or
+    _paperless_ngx_installation_strategy_fresh
   block:
     - name: Initialize and upgrade paperless-ngx release
       ansible.builtin.include_tasks:
@@ -63,7 +67,3 @@
         apply:
           tags: finish
       tags: finish
-  when: >-
-    _paperless_ngx_installation_strategy_upgrade
-    or
-    _paperless_ngx_installation_strategy_fresh

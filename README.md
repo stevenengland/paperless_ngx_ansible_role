@@ -10,7 +10,7 @@ Installs and configures paperless-ngx EDMS on Debian/Ubuntu systems.
 Requirements
 ------------
 
-No special system requirements. Ansible 2.8 or newer is required.
+No special system requirements. `ansible_version_minimum: "2.11"` or newer is required.
 
 Role Variables
 --------------
@@ -46,7 +46,7 @@ Additional variables available in this role are listed below, along with default
 | `paperless_ngx_superuser_password` | "" | The superuser password. If not defined by the user, a random password will be generated -> see section below about passwords. |
 | `paperless_ngx_webserver_listen_address` | 127.0.0.1 | The webservers address. |
 | `paperless_ngx_webserver_listen_port` | 8000 | The webservers port. |
-| `paperless_ngx_version` | latest | Sofware version to install. Use `latest` or any specific version in the format `'1.10.0'`. Only versions >= 1.10.x supported. |
+| `paperless_ngx_version` | latest | Sofware version to install. Use `latest` or any specific version in the format `'1.10.0'`. Only `paperless_ngx_version_minimum: '1.10.0'` and higher supported. |
 | `` |  |  |
 
 ### paperless-ngx configuration variables
