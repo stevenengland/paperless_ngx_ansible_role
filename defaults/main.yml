@@ -85,17 +85,30 @@ paperless_ngx_conf_consumer_polling: 0
 paperless_ngx_conf_consumer_polling_retry_count: 5
 paperless_ngx_conf_consumer_polling_delay: 5
 ## iNotify
+paperless_ngx_conf_consumer_inotify_delay: 0.5
 paperless_ngx_conf_consumer_delete_duplicates: false
 paperless_ngx_conf_consumer_recursive: false
 paperless_ngx_conf_consumer_subdirs_as_tags: false
+paperless_ngx_conf_consumer_enable_barcodes: false
+paperless_ngx_conf_consumer_barcode_tiff_support: false
+paperless_ngx_conf_consumer_barcode_string: 'PATCHT'
 paperless_ngx_conf_consumer_enable_asn_barcode: false
 paperless_ngx_conf_consumer_asn_barcode_prefix: ASN
 paperless_ngx_conf_convert_memory_limit: 0
 paperless_ngx_conf_convert_tmpdir:
 paperless_ngx_conf_post_consume_script:
 paperless_ngx_conf_filename_date_order:
+paperless_ngx_conf_number_of_suggested_dates: 3
 paperless_ngx_conf_thumbnail_font_name: /usr/share/fonts/liberation/LiberationSerif-Regular.ttf
 paperless_ngx_conf_ignore_dates: ""
+paperless_ngx_conf_date_order: "DMY"
+paperless_ngx_conf_consumer_ignore_patterns:
+  - ".DS_STORE/*"
+  - "._*"
+  - ".stfolder/*"
+  - ".stversions/*"
+  - ".localized/*"
+  - "desktop.ini"
 ## Docker (bare metal) specific options
 paperless_ngx_conf_usermap_uid:
 paperless_ngx_conf_usermap_gid:

@@ -100,12 +100,16 @@
       role_var: "{{ paperless_ngx_conf_time_zone }}"
     - pngx_var: PAPERLESS_EMAIL_TASK_CRON
       role_var: "{{ paperless_ngx_conf_email_task_cron }}"
+      since_version: '1.12.0'
     - pngx_var: PAPERLESS_TRAIN_TASK_CRON
       role_var: "{{ paperless_ngx_conf_train_task_cron }}"
+      since_version: '1.12.0'
     - pngx_var: PAPERLESS_INDEX_TASK_CRON
       role_var: "{{ paperless_ngx_conf_index_task_cron }}"
+      since_version: '1.12.0'
     - pngx_var: PAPERLESS_SANITY_TASK_CRON
       role_var: "{{ paperless_ngx_conf_sanity_task_cron }}"
+      since_version: '1.12.0'
     # Polling
     - pngx_var: PAPERLESS_CONSUMER_POLLING
       role_var: "{{ paperless_ngx_conf_consumer_polling }}"
@@ -114,29 +118,44 @@
     - pngx_var: PAPERLESS_CONSUMER_POLLING_DELAY
       role_var: "{{ paperless_ngx_conf_consumer_polling_delay }}"
     # iNotify
+    - pngx_var: PAPERLESS_CONSUMER_INOTIFY_DELAY
+      role_var: "{{ paperless_ngx_conf_consumer_inotify_delay }}"
     - pngx_var: PAPERLESS_CONSUMER_DELETE_DUPLICATES
       role_var: "{{ paperless_ngx_conf_consumer_delete_duplicates }}"
     - pngx_var: PAPERLESS_CONSUMER_RECURSIVE
       role_var: "{{ paperless_ngx_conf_consumer_recursive }}"
     - pngx_var: PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS
       role_var: "{{ paperless_ngx_conf_consumer_subdirs_as_tags }}"
+    - pngx_var: PAPERLESS_CONSUMER_ENABLE_BARCODES
+      role_var: "{{ paperless_ngx_conf_consumer_enable_barcodes }}"
+    - pngx_var: PAPERLESS_CONSUMER_BARCODE_TIFF_SUPPORT
+      role_var: "{{ paperless_ngx_conf_consumer_barcode_tiff_support }}"
+    - pngx_var: PAPERLESS_CONSUMER_BARCODE_STRING
+      role_var: "{{ paperless_ngx_conf_consumer_barcode_string }}"
+    - pngx_var: PAPERLESS_CONSUMER_ENABLE_ASN_BARCODE
+      role_var: "{{ paperless_ngx_conf_consumer_enable_asn_barcode }}"
+      since_version: '1.12.0'
+    - pngx_var: PAPERLESS_CONSUMER_ASN_BARCODE_PREFIX
+      role_var: "{{ paperless_ngx_conf_consumer_asn_barcode_prefix }}"
+      since_version: '1.12.0'
     - pngx_var: PAPERLESS_CONVERT_MEMORY_LIMIT
       role_var: "{{ paperless_ngx_conf_convert_memory_limit }}"
     - pngx_var: PAPERLESS_CONVERT_TMPDIR
       role_var: "{{ paperless_ngx_conf_convert_tmpdir }}"
-    - pngx_var: PAPERLESS_CONSUMER_ENABLE_ASN_BARCODE
-      role_var: "{{ paperless_ngx_conf_consumer_enable_asn_barcode }}"
-    - pngx_var: PAPERLESS_CONSUMER_ASN_BARCODE_PREFIX
-      role_var: "{{ paperless_ngx_conf_consumer_asn_barcode_prefix }}"
-      since_version: '1.12.0'
     - pngx_var: PAPERLESS_POST_CONSUME_SCRIPT
       role_var: "{{ paperless_ngx_conf_post_consume_script }}"
     - pngx_var: PAPERLESS_FILENAME_DATE_ORDER
       role_var: "{{ paperless_ngx_conf_filename_date_order }}"
+    - pngx_var: PAPERLESS_NUMBER_OF_SUGGESTED_DATES
+      role_var: "{{ paperless_ngx_conf_number_of_suggested_dates }}"
     - pngx_var: PAPERLESS_THUMBNAIL_FONT_NAME
       role_var: "{{ paperless_ngx_conf_thumbnail_font_name }}"
     - pngx_var: PAPERLESS_IGNORE_DATES
       role_var: "{{ paperless_ngx_conf_ignore_dates }}"
+    - pngx_var: PAPERLESS_DATE_ORDER
+      role_var: "{{ paperless_ngx_conf_date_order }}"
+    - pngx_var: PAPERLESS_CONSUMER_IGNORE_PATTERNS
+      role_var: "{{ paperless_ngx_conf_consumer_ignore_patterns | to_json }}"
     # Update checking
     - pngx_var: PAPERLESS_ENABLE_UPDATE_CHECK
       role_var: "{{ paperless_ngx_conf_enable_update_check }}"

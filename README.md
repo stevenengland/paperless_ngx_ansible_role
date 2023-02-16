@@ -164,24 +164,24 @@ To save reading space a few abbreviations are used in the tables down below:
 
 | Name           | Default Value | I | O | H | V |
 | -------------- | ------------- |---|---|---|---|
-| `paperless_ngx_conf_consumer_inotify_delay` |  | N |   |   |   |
+| `paperless_ngx_conf_consumer_inotify_delay` | 0.5 | Y | Y |   |   |
 | `paperless_ngx_conf_consumer_delete_duplicates` | false | Y | Y |   |   |
 | `paperless_ngx_conf_consumer_recursive` | false | Y | Y |   |   |
 | `paperless_ngx_conf_consumer_subdirs_as_tags` | false | Y | Y |   |   |
-| `paperless_ngx_conf_consumer_enable_barcodes` |  | N |   |   |   |
-| `paperless_ngx_conf_consumer_barcode_tiff_support` |  | N |   |   |   |
-| `paperless_ngx_conf_consumer_barcode_string` |  | N |   |   |   |
+| `paperless_ngx_conf_consumer_enable_barcodes` | false | Y | Y |   |   |
+| `paperless_ngx_conf_consumer_barcode_tiff_support` | false | Y | Y |   |   |
+| `paperless_ngx_conf_consumer_barcode_string` | 'PATCHT' | Y | Y |   |   |
 | `paperless_ngx_conf_consumer_enable_asn_barcode` | false | Y | Y |   | 1.12 |
 | `paperless_ngx_conf_consumer_asn_barcode_prefix` | ASN | Y | Y |   | 1.12 |
 | `paperless_ngx_conf_convert_memory_limit` | 0 | Y | Y |   |   |
 | `paperless_ngx_conf_convert_tmpdir` | "" | Y | Y |   |   |
 | `paperless_ngx_conf_post_consume_script` | "" | Y | Y |   |   |
 | `paperless_ngx_conf_filename_date_order` | "" | Y | Y |   |   |
-| `paperless_ngx_conf_number_of_suggested_dates` |  | N |   |   |   |
+| `paperless_ngx_conf_number_of_suggested_dates` | 3 | Y | Y |   |   |
 | `paperless_ngx_conf_thumbnail_font_name` | /usr/share/fonts/liberation/LiberationSerif-Regular.ttf | Y | Y |   |   |
 | `paperless_ngx_conf_ignore_dates` | "" | Y | Y |   |   |
-| `paperless_ngx_conf_date_order` |  | N |   |   |   |
-| `paperless_ngx_conf_consumer_ignore_patterns` |  | N |   |   |   |
+| `paperless_ngx_conf_date_order` | "DMY" | Y | Y |   |   |
+| `paperless_ngx_conf_consumer_ignore_patterns` | [".DS_STORE/*", "._*", ".stfolder/*", ".stversions/*", ".localized/*", "desktop.ini"] | Y | Y |   |   |
 
 #### Binaries
 
