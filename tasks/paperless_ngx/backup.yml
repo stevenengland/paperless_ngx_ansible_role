@@ -7,3 +7,4 @@
     dest: "{{ paperless_ngx_dir_installation }}-backup-{{ ansible_date_time.iso8601 }}/"
     owner: "{{ paperless_ngx_system_user }}"
     group: "{{ paperless_ngx_system_group }}"
+    mode: 0600

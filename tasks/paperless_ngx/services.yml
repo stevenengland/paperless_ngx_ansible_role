@@ -3,6 +3,8 @@
   become: true
   community.general.ini_file:
     path: "{{ paperless_ngx_dir_installation }}/scripts/{{ item[0] }}"
+    create: false
+    preserve: true
     section: Service
     option: "{{ item[1].option }}"
     value: "{{ item[1].value }}"
@@ -20,6 +22,8 @@
   become: true
   community.general.ini_file:
     path: "{{ paperless_ngx_dir_installation }}/scripts/{{ item.service_name }}"
+    create: false
+    preservce: true
     section: Service
     option: ExecStart
     value: "{{ item.exec_start }}"
@@ -37,6 +41,8 @@
   become: true
   community.general.ini_file:
     path: "{{ paperless_ngx_dir_installation }}/scripts/{{ item }}"
+    create: false
+    preservce: true
     section: Unit
     option: Requires
     value: redis.service
@@ -50,6 +56,7 @@
     src: "{{ paperless_ngx_dir_installation }}/scripts/{{ item }}"
     remote_src: true
     dest: /etc/systemd/system/{{ item }}
+    mode: 0640
   loop: "{{ paperless_ngx_services_list }}"
   notify: Restart paperless completely
 

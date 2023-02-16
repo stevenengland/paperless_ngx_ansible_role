@@ -23,11 +23,15 @@
   register: _install_tempdir_state
 
 - name: Create temporary directory if not exists
+  when: _install_tempdir_state.matched == 0
   block:
     - name: Create temporary directorys root path
       ansible.builtin.file:
         path: "{{ paperless_ngx_dir_tmp }}"
         state: directory
+        owner: "{{ paperless_ngx_system_user }}"
+        group: "{{ paperless_ngx_system_group }}"
+        mode: "750"
 
     - name: Create target temporary directory
       ansible.builtin.tempfile:
@@ -35,7 +39,6 @@
         path: "{{ paperless_ngx_dir_tmp }}/"
         suffix: tempgit_pngx
       register: _install_tempdir_created
-  when: _install_tempdir_state.matched == 0
 
 - name: Determine temporary directory to use  # noqa jinja[spacing]
   ansible.builtin.set_fact:
@@ -87,6 +90,7 @@
     dest: "{{ paperless_ngx_config_file_template }}"
     owner: "{{ paperless_ngx_system_user }}"
     group: "{{ paperless_ngx_system_group }}"
+    mode: 0640
 
 - name: Delete paperless-ngx configuration from installation dir
   become: true
