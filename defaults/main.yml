@@ -98,6 +98,7 @@ paperless_ngx_conf_convert_memory_limit: 0
 paperless_ngx_conf_convert_tmpdir:
 paperless_ngx_conf_post_consume_script:
 paperless_ngx_conf_filename_date_order:
+paperless_ngx_conf_number_of_suggested_dates: 3
 paperless_ngx_conf_thumbnail_font_name: /usr/share/fonts/liberation/LiberationSerif-Regular.ttf
 paperless_ngx_conf_ignore_dates: ""
 ## Docker (bare metal) specific options

@@ -146,6 +146,8 @@
       role_var: "{{ paperless_ngx_conf_post_consume_script }}"
     - pngx_var: PAPERLESS_FILENAME_DATE_ORDER
       role_var: "{{ paperless_ngx_conf_filename_date_order }}"
+    - pngx_var: PAPERLESS_NUMBER_OF_SUGGESTED_DATES
+      role_var: "{{ paperless_ngx_conf_number_of_suggested_dates }}"
     - pngx_var: PAPERLESS_THUMBNAIL_FONT_NAME
       role_var: "{{ paperless_ngx_conf_thumbnail_font_name }}"
     - pngx_var: PAPERLESS_IGNORE_DATES
