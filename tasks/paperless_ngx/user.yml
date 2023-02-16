@@ -3,13 +3,13 @@
   become: true
   ansible.builtin.group:
     name: "{{ paperless_ngx_system_group }}"
-    gid: "{{ paperless_ngx_conf_usermap_gid | default(omit) }}"
+    gid: "{{ omit if paperless_ngx_conf_usermap_gid in (None, omit) }}"
 
 - name: Create paperless system user
   become: true
   ansible.builtin.user:
     name: "{{ paperless_ngx_system_user }}"
-    uid: "{{ paperless_ngx_conf_usermap_uid | default(omit) }}"
+    uid: "{{ omit if paperless_ngx_conf_usermap_uid in (None, omit) }}"
     groups:
       - "{{ paperless_ngx_system_group }}"
     shell: /usr/sbin/nologin
