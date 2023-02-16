@@ -4,7 +4,6 @@
   community.general.ini_file:
     path: "{{ paperless_ngx_dir_installation }}/scripts/{{ item[0] }}"
     create: false
-    preserve: true
     section: Service
     option: "{{ item[1].option }}"
     value: "{{ item[1].value }}"
@@ -23,7 +22,6 @@
   community.general.ini_file:
     path: "{{ paperless_ngx_dir_installation }}/scripts/{{ item.service_name }}"
     create: false
-    preservce: true
     section: Service
     option: ExecStart
     value: "{{ item.exec_start }}"
@@ -42,7 +40,6 @@
   community.general.ini_file:
     path: "{{ paperless_ngx_dir_installation }}/scripts/{{ item }}"
     create: false
-    preservce: true
     section: Unit
     option: Requires
     value: redis.service
