@@ -22,7 +22,7 @@ no_scenario = [x for x in scenarios_enabled if x not in scenarios]
 
 if (scenarios == scenarios_enabled):
     print("\n")
-    print(f"{Fore.GREEN}All available scenarios are activated{Style.RESET_ALL}")
+    print(f"{Fore.GREEN}[PASS] All available scenarios are activated{Style.RESET_ALL}")
     print(*scenarios, sep = "\n")
 else:
     if len(not_enabled) > 0:

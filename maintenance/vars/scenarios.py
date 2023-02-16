@@ -86,6 +86,10 @@ def print_scenario_result(a_name: str, a: list, b_name: str, b: list, result1: l
     if len(result1) > 0:
         print(f"[ERROR] Found {len(result1)} entries that are present in {a_name} but not in {b_name}")
         print(*result1, sep = "\n")
+    else:
+        print(f"[PASS] All entries in {a_name} are also available in {b_name}")
     if not result2 is None and len(result2) > 0:
         print(f"[ERROR] Found {len(result2)} entries that are present in {b_name} but not in {a_name}")
         print(*result2, sep = "\n")
+    else:
+        print(f"[PASS] All entries in {b_name} are also available in {a_name}")
