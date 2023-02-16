@@ -130,6 +130,8 @@
       role_var: "{{ paperless_ngx_conf_consumer_enable_barcodes }}"
     - pngx_var: PAPERLESS_CONSUMER_BARCODE_TIFF_SUPPORT
       role_var: "{{ paperless_ngx_conf_consumer_barcode_tiff_support }}"
+    - pngx_var: PAPERLESS_CONSUMER_BARCODE_STRING
+      role_var: "{{ paperless_ngx_conf_consumer_barcode_string }}"
     - pngx_var: PAPERLESS_CONSUMER_ENABLE_ASN_BARCODE
       role_var: "{{ paperless_ngx_conf_consumer_enable_asn_barcode }}"
       since_version: '1.12.0'
