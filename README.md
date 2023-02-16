@@ -181,7 +181,7 @@ To save reading space a few abbreviations are used in the tables down below:
 | `paperless_ngx_conf_thumbnail_font_name` | /usr/share/fonts/liberation/LiberationSerif-Regular.ttf | Y | Y |   |   |
 | `paperless_ngx_conf_ignore_dates` | "" | Y | Y |   |   |
 | `paperless_ngx_conf_date_order` | "DMY" | Y | Y |   |   |
-| `paperless_ngx_conf_consumer_ignore_patterns` |  | N |   |   |   |
+| `paperless_ngx_conf_consumer_ignore_patterns` | [".DS_STORE/*", "._*", ".stfolder/*", ".stversions/*", ".localized/*", "desktop.ini"] | Y | Y |   |   |
 
 #### Binaries
 

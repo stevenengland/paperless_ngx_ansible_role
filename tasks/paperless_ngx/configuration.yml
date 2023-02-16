@@ -154,6 +154,8 @@
       role_var: "{{ paperless_ngx_conf_ignore_dates }}"
     - pngx_var: PAPERLESS_DATE_ORDER
       role_var: "{{ paperless_ngx_conf_date_order }}"
+    - pngx_var: PAPERLESS_CONSUMER_IGNORE_PATTERNS
+      role_var: "{{ paperless_ngx_conf_consumer_ignore_patterns | to_json }}"
     # Update checking
     - pngx_var: PAPERLESS_ENABLE_UPDATE_CHECK
       role_var: "{{ paperless_ngx_conf_enable_update_check }}"
