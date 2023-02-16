@@ -128,16 +128,18 @@
       role_var: "{{ paperless_ngx_conf_consumer_subdirs_as_tags }}"
     - pngx_var: PAPERLESS_CONSUMER_ENABLE_BARCODES
       role_var: "{{ paperless_ngx_conf_consumer_enable_barcodes }}"
-    - pngx_var: PAPERLESS_CONVERT_MEMORY_LIMIT
-      role_var: "{{ paperless_ngx_conf_convert_memory_limit }}"
-    - pngx_var: PAPERLESS_CONVERT_TMPDIR
-      role_var: "{{ paperless_ngx_conf_convert_tmpdir }}"
+    - pngx_var: PAPERLESS_CONSUMER_BARCODE_TIFF_SUPPORT
+      role_var: "{{ paperless_ngx_conf_consumer_barcode_tiff_support }}"
     - pngx_var: PAPERLESS_CONSUMER_ENABLE_ASN_BARCODE
       role_var: "{{ paperless_ngx_conf_consumer_enable_asn_barcode }}"
       since_version: '1.12.0'
     - pngx_var: PAPERLESS_CONSUMER_ASN_BARCODE_PREFIX
       role_var: "{{ paperless_ngx_conf_consumer_asn_barcode_prefix }}"
       since_version: '1.12.0'
+    - pngx_var: PAPERLESS_CONVERT_MEMORY_LIMIT
+      role_var: "{{ paperless_ngx_conf_convert_memory_limit }}"
+    - pngx_var: PAPERLESS_CONVERT_TMPDIR
+      role_var: "{{ paperless_ngx_conf_convert_tmpdir }}"
     - pngx_var: PAPERLESS_POST_CONSUME_SCRIPT
       role_var: "{{ paperless_ngx_conf_post_consume_script }}"
     - pngx_var: PAPERLESS_FILENAME_DATE_ORDER
