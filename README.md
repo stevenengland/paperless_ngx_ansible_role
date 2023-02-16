@@ -168,7 +168,7 @@ To save reading space a few abbreviations are used in the tables down below:
 | `paperless_ngx_conf_consumer_delete_duplicates` | false | Y | Y |   |   |
 | `paperless_ngx_conf_consumer_recursive` | false | Y | Y |   |   |
 | `paperless_ngx_conf_consumer_subdirs_as_tags` | false | Y | Y |   |   |
-| `paperless_ngx_conf_consumer_enable_barcodes` |  | N |   |   |   |
+| `paperless_ngx_conf_consumer_enable_barcodes` | false | Y | Y |   |   |
 | `paperless_ngx_conf_consumer_barcode_tiff_support` |  | N |   |   |   |
 | `paperless_ngx_conf_consumer_barcode_string` |  | N |   |   |   |
 | `paperless_ngx_conf_consumer_enable_asn_barcode` | false | Y | Y |   | 1.12 |

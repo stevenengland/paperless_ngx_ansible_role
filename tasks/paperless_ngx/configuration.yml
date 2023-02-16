@@ -126,6 +126,8 @@
       role_var: "{{ paperless_ngx_conf_consumer_recursive }}"
     - pngx_var: PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS
       role_var: "{{ paperless_ngx_conf_consumer_subdirs_as_tags }}"
+    - pngx_var: PAPERLESS_CONSUMER_ENABLE_BARCODES
+      role_var: "{{ paperless_ngx_conf_consumer_enable_barcodes }}"
     - pngx_var: PAPERLESS_CONVERT_MEMORY_LIMIT
       role_var: "{{ paperless_ngx_conf_convert_memory_limit }}"
     - pngx_var: PAPERLESS_CONVERT_TMPDIR
