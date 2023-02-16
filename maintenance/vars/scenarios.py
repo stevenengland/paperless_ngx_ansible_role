@@ -1,6 +1,13 @@
 from list_comparer import *
 from var_collector import *
 
+no_conf_var_list = [
+    "paperless_ngx_conf_usermap_uid",
+    "paperless_ngx_conf_usermap_gid",
+    "paperless_ngx_conf_ocr_languages",
+    "paperless_ngx_conf_dbengine"
+    ]
+
 #############################################
 # DOCS vs README
 # - What:   Do not miss a new feature or deprecated variable. Every var in DOCS should be present in README (_conf_) and vice versa.
@@ -37,6 +44,22 @@ def readme_vs_all_vars():
     vars_all = vars_in_defaults + vars_in_vars
     in_readme_but_not_in_all_vars = [item for item in in_a_but_not_in_b(vars_in_readme_all, vars_all, True)]
     print_scenario_result("README", vars_in_readme_all, "DEFAULTS/* & VARS/*", vars_all, in_readme_but_not_in_all_vars)
+
+#############################################
+# VARS (conf in defaults and vars) vs CONFIGURATION TASK
+# - What:   Every conf var in in either defaults/main.yml should have a correspondant or CONFIGURATION TASK file
+# - How:    Compare VARS defaults/main.yml + vars/main.yml with roles CONFIGURATION TASK file complete var set.
+#############################################
+def all_conf_vars_vs_configuration_task_file():
+    conf_vars_in_configuration_task_file = get_role_configuration_tasks_file_vars(r'role_var: "\{\{.*?(paperless_ngx_conf_[a-z0-9_]*).*?\}\}"')
+    conf_vars_in_configuration_task_file = list(set(conf_vars_in_configuration_task_file))
+    conf_vars_in_defaults = get_role_defaults_vars(r'^(paperless_ngx_conf_.*?):')
+    conf_vars_in_vars = get_role_vars_vars(r'^(paperless_ngx_conf_.*?):')
+    conf_vars_all = conf_vars_in_defaults + conf_vars_in_vars
+    conf_vars_all = [x for x in conf_vars_all if x not in no_conf_var_list]
+    in_all_conf_vars_but_not_in_configuration_task_file = [item for item in in_a_but_not_in_b(conf_vars_all, conf_vars_in_configuration_task_file, True)]
+    in_configuration_task_file_but_not_in_all_conf_vars = [item for item in in_a_but_not_in_b(conf_vars_in_configuration_task_file, conf_vars_all, True)]
+    print_scenario_result("CONF VARS", conf_vars_all, "CONF TASK FILE", conf_vars_in_configuration_task_file, in_all_conf_vars_but_not_in_configuration_task_file, in_configuration_task_file_but_not_in_all_conf_vars)
 
 def print_scenario_result(a_name: str, a: list, b_name: str, b: list, result1: list, result2: list | None = None):
     titles = ['name', 'count']

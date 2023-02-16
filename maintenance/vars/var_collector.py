@@ -1,3 +1,4 @@
+import glob
 import os
 import re
 from urllib.request import urlopen
@@ -20,5 +21,10 @@ def get_role_defaults_vars(pattern: str) -> list:
 
 def get_role_vars_vars(pattern: str) -> list:
     file_path = os.path.dirname(__file__) + '/../../vars/main.yml'
+    content = Path(file_path).read_text()
+    return re.findall( pattern, content, re.MULTILINE)
+
+def get_role_configuration_tasks_file_vars(pattern: str) -> list:
+    file_path = os.path.dirname(__file__) + '/../../tasks/paperless_ngx/configuration.yml'
     content = Path(file_path).read_text()
     return re.findall( pattern, content)
