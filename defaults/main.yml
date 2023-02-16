@@ -85,6 +85,7 @@ paperless_ngx_conf_consumer_polling: 0
 paperless_ngx_conf_consumer_polling_retry_count: 5
 paperless_ngx_conf_consumer_polling_delay: 5
 ## iNotify
+paperless_ngx_conf_consumer_inotify_delay: 0.5
 paperless_ngx_conf_consumer_delete_duplicates: false
 paperless_ngx_conf_consumer_recursive: false
 paperless_ngx_conf_consumer_subdirs_as_tags: false

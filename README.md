@@ -164,7 +164,7 @@ To save reading space a few abbreviations are used in the tables down below:
 
 | Name           | Default Value | I | O | H | V |
 | -------------- | ------------- |---|---|---|---|
-| `paperless_ngx_conf_consumer_inotify_delay` |  | N |   |   |   |
+| `paperless_ngx_conf_consumer_inotify_delay` | 0.5 | Y | Y |   |   |
 | `paperless_ngx_conf_consumer_delete_duplicates` | false | Y | Y |   |   |
 | `paperless_ngx_conf_consumer_recursive` | false | Y | Y |   |   |
 | `paperless_ngx_conf_consumer_subdirs_as_tags` | false | Y | Y |   |   |
