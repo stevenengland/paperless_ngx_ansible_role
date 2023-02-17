@@ -144,7 +144,7 @@ To save reading space a few abbreviations are used in the tables down below:
 | `paperless_ngx_conf_task_workers` | 1 | Y | Y |   |   |
 | `paperless_ngx_conf_threads_per_worker` | paperless_ngx_conf_task_workers | N | Y | Y |   |
 | `paperless_ngx_conf_worker_timeout` | 1800 | Y | Y |   |   |
-| `paperless_ngx_conf_worker_retry` | paperless_ngx_conf_worker_timeout + 10 | N |   |   |   |
+| `paperless_ngx_conf_worker_retry` | 1810 | N |   |   |   |
 | `paperless_ngx_conf_time_zone` | Europe/London | Y | Y |   |   |
 | `paperless_ngx_conf_enable_nltk` | 1 | Y | Y |   |   |
 | `paperless_ngx_conf_email_task_cron` | "*/10 * * * *" | Y | Y |   | 1.12 |
