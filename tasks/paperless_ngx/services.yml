@@ -33,7 +33,7 @@
     - { service_name: paperless-task-queue.service,
         exec_start: "{{ paperless_ngx_dir_virtualenv }}/bin/celery --app paperless worker --loglevel INFO" }
     - { service_name: paperless-webserver.service,
-        exec_start: "{{ paperless_ngx_dir_virtualenv }}/bin/gunicorn -c {{ paperless_ngx_dir_installation }}/gunicorn.conf.py paperless.asgi:application" }
+        exec_start: "{{ paperless_ngx_dir_virtualenv }}/bin/gunicorn -c {{ paperless_ngx_config_path }}/gunicorn.conf.py paperless.asgi:application" }
 
 - name: Remove redis from service units if external
   become: true

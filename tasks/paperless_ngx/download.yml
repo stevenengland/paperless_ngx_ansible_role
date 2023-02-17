@@ -10,8 +10,8 @@
   ansible.builtin.file:
     path: "{{ paperless_ngx_config_path }}"
     state: directory
-    owner: root
-    group: root
+    owner: "{{ paperless_ngx_system_user }}"
+    group: "{{ paperless_ngx_system_group }}"
     mode: "0744"
 
 - name: Create paperless-ngx app directories and set permissions
@@ -121,6 +121,23 @@
   ansible.builtin.file:
     path: "{{ paperless_ngx_dir_installation }}/paperless.conf"
     state: absent
+
+- name: Check if gunicorn configuration file already exists
+  become: true
+  ansible.builtin.stat:
+    path: "{{ paperless_ngx_config_path }}/gunicorn.conf.py"
+  register: _gunicorn_config_exists
+
+- name: Copy gunicorn configuration file to {{ paperless_ngx_config_path }}
+  become: true
+  ansible.builtin.copy:
+    src: "{{ paperless_ngx_dir_installation }}/gunicorn.conf.py"
+    remote_src: true
+    dest: "{{ paperless_ngx_config_path }}/gunicorn.conf.py"
+    owner: "{{ paperless_ngx_system_user }}"
+    group: "{{ paperless_ngx_system_group }}"
+    mode: 0640
+  when: not _gunicorn_config_exists.stat.exists
 
 - name: Remove temporary directory
   become: true

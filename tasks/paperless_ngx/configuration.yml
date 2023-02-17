@@ -189,7 +189,7 @@
 - name: Configure gunicorn web server
   become: true
   ansible.builtin.lineinfile:
-    path: "{{ paperless_ngx_dir_installation }}/gunicorn.conf.py"
+    path: "{{ paperless_ngx_config_path }}/gunicorn.conf.py"
     regexp: "^bind = "
     line: bind = '{{ paperless_ngx_webserver_listen_address }}:{{ paperless_ngx_webserver_listen_port }}'
   tags: pngx_conf_gunicorn
