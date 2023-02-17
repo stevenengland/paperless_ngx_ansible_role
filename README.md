@@ -70,7 +70,7 @@ To save reading space a few abbreviations are used in the tables down below:
 | `paperless_ngx_conf_dbuser` | paperlessngx | Y | Y | |   |
 | `paperless_ngx_conf_dbpass` | "" | Y | Y | The db password. If not defined by the user, a random password will be generated -> see section below about passwords. |   |
 | `paperless_ngx_conf_dbsslmode` | prefer | Y | Y | |   |
-| `paperless_ngx_conf_db_timeout` |  | N |   |   |   |
+| `paperless_ngx_conf_db_timeout` |  | Y | Y |   |   |
 
 #### Path and folders
 

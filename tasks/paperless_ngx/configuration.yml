@@ -48,6 +48,8 @@
     - pngx_var: PAPERLESS_DBSSLMODE
       role_var: "{{ paperless_ngx_conf_dbsslmode }}"
       condition: "{{ paperless_ngx_db_type == 'postgresql' }}"
+    - pngx_var: PAPERLESS_DB_TIMEOUT
+      role_var: "{{ paperless_ngx_conf_db_timeout }}"
     # Paths and folders
     - pngx_var: PAPERLESS_CONSUMPTION_DIR
       role_var: "{{ paperless_ngx_conf_consumption_dir }}"
