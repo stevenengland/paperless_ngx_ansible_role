@@ -165,7 +165,7 @@
     - item.condition | default(true)
     - (item.since_version | default('0.0.1')) is ansible.builtin.version(paperless_ngx_version, '<=', version_type='semver')
 
-- name: Deploy paperless-ngx configuration to /etc/
+- name: Deploy paperless-ngx configuration to {{ paperless_ngx_config_path }}
   become: true
   ansible.builtin.copy:
     src: "{{ paperless_ngx_config_file_template }}"

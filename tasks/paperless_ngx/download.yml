@@ -5,7 +5,16 @@
     path: "{{ paperless_ngx_dir_installation }}/"
     state: absent
 
-- name: Create paperless-ngx directories and set permissions
+- name: Create paperless-ngx conf directory and set permissions
+  become: true
+  ansible.builtin.file:
+    path: "{{ paperless_ngx_config_path }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0744"
+
+- name: Create paperless-ngx app directories and set permissions
   become: true
   ansible.builtin.file:
     path: "{{ item }}"
@@ -87,6 +96,15 @@
     group: "{{ paperless_ngx_system_group }}"
     mode: preserve
     directory_mode: preserve
+
+- name: Create paperless config file if it does not exist
+  become: true
+  ansible.builtin.file:
+    path: "{{ paperless_ngx_dir_installation }}/paperless.conf"
+    state: touch
+    mode: 0640
+    modification_time: preserve
+    access_time: preserve
 
 - name: Make the config file the template file
   become: true
