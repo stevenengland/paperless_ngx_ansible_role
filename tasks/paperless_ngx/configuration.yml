@@ -29,6 +29,8 @@
     # Logging
     - pngx_var: PAPERLESS_LOGROTATE_MAX_SIZE
       role_var: "{{ paperless_ngx_conf_logrotate_max_size }}"
+    - pngx_var: PAPERLESS_LOGROTATE_MAX_BACKUPS
+      role_var: "{{ paperless_ngx_conf_logrotate_max_backups }}"
     # Required services
     - pngx_var: PAPERLESS_REDIS
       role_var: "{{ paperless_ngx_conf_redis }}"
@@ -91,6 +93,8 @@
       role_var: "{{ paperless_ngx_conf_ocr_pages }}"
     - pngx_var: PAPERLESS_OCR_IMAGE_DPI
       role_var: "{{ paperless_ngx_conf_ocr_image_dpi }}"
+    - pngx_var: PAPERLESS_OCR_MAX_IMAGE_PIXELS
+      role_var: "{{ paperless_ngx_conf_ocr_max_image_pixels }}"
     - pngx_var: PAPERLESS_OCR_USER_ARGS
       role_var: "{{ paperless_ngx_conf_ocr_user_args | combine({'jbig2_lossy': true} if paperless_ngx_jbig2enc_lossy else {}) | to_json }}"
     # Tika settings

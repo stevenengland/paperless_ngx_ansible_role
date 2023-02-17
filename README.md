@@ -91,7 +91,7 @@ To save reading space a few abbreviations are used in the tables down below:
 | Name           | Default Value | I | O | H | V |
 | -------------- | ------------- |---|---|---|---|
 | `paperless_ngx_conf_logrotate_max_size` | 1024 * 1024 | Y | Y |   |   |
-| `paperless_ngx_conf_logrotate_max_backups` |  | N |   |   |   |
+| `paperless_ngx_conf_logrotate_max_backups` | 20 | Y | Y |   |   |
 
 #### Hosting & Security
 
@@ -126,7 +126,7 @@ To save reading space a few abbreviations are used in the tables down below:
 | `paperless_ngx_conf_ocr_output_type` | pdfa | Y | Y |   |   |
 | `paperless_ngx_conf_ocr_pages` | 0 | Y | Y |   |   |
 | `paperless_ngx_conf_ocr_image_dpi` | "" | Y | Y |   |   |
-| `paperless_ngx_conf_ocr_max_image_pixels` | | N |   |   |   |
+| `paperless_ngx_conf_ocr_max_image_pixels` | | Y | Y |   |   |
 | `paperless_ngx_conf_ocr_user_args` | [optimize=1] | Y | Y |   |   |
 
 #### Tika settings
