@@ -26,6 +26,17 @@
       role_var: "{{ paperless_ngx_conf_enable_http_remote_user }}"
     - pngx_var: PAPERLESS_URL
       role_var: "{{ paperless_ngx_conf_url }}"
+    - pngx_var: PAPERLESS_CSRF_TRUSTED_ORIGINS
+      role_var: "{{ paperless_ngx_conf_csrf_trusted_origins }}"
+    - pngx_var: PAPERLESS_HTTP_REMOTE_USER_HEADER_NAME
+      role_var: "{{ paperless_ngx_conf_http_remote_user_header_name }}"
+    - pngx_var: PAPERLESS_LOGOUT_REDIRECT_URL
+      role_var: "{{ paperless_ngx_conf_logout_redirect_url }}"
+    # Logging
+    - pngx_var: PAPERLESS_LOGROTATE_MAX_SIZE
+      role_var: "{{ paperless_ngx_conf_logrotate_max_size }}"
+    - pngx_var: PAPERLESS_LOGROTATE_MAX_BACKUPS
+      role_var: "{{ paperless_ngx_conf_logrotate_max_backups }}"
     # Required services
     - pngx_var: PAPERLESS_REDIS
       role_var: "{{ paperless_ngx_conf_redis }}"
@@ -48,6 +59,8 @@
     - pngx_var: PAPERLESS_DBSSLMODE
       role_var: "{{ paperless_ngx_conf_dbsslmode }}"
       condition: "{{ paperless_ngx_db_type == 'postgresql' }}"
+    - pngx_var: PAPERLESS_DB_TIMEOUT
+      role_var: "{{ paperless_ngx_conf_db_timeout }}"
     # Paths and folders
     - pngx_var: PAPERLESS_CONSUMPTION_DIR
       role_var: "{{ paperless_ngx_conf_consumption_dir }}"
@@ -86,6 +99,8 @@
       role_var: "{{ paperless_ngx_conf_ocr_pages }}"
     - pngx_var: PAPERLESS_OCR_IMAGE_DPI
       role_var: "{{ paperless_ngx_conf_ocr_image_dpi }}"
+    - pngx_var: PAPERLESS_OCR_MAX_IMAGE_PIXELS
+      role_var: "{{ paperless_ngx_conf_ocr_max_image_pixels }}"
     - pngx_var: PAPERLESS_OCR_USER_ARGS
       role_var: "{{ paperless_ngx_conf_ocr_user_args | combine({'jbig2_lossy': true} if paperless_ngx_jbig2enc_lossy else {}) | to_json }}"
     # Tika settings
@@ -96,8 +111,18 @@
     - pngx_var: PAPERLESS_TIKA_GOTENBERG_ENDPOINT
       role_var: "{{ paperless_ngx_conf_tika_gotenberg_endpoint }}"
     # Software tweaks
+    - pngx_var: PAPERLESS_TASK_WORKERS
+      role_var: "{{ paperless_ngx_conf_task_workers }}"
+    - pngx_var: PAPERLESS_THREADS_PER_WORKER
+      role_var: "{{ paperless_ngx_conf_threads_per_worker }}"
+    - pngx_var: PAPERLESS_WORKER_TIMEOUT
+      role_var: "{{ paperless_ngx_conf_worker_timeout }}"
+    - pngx_var: PAPERLESS_WORKER_RETRY
+      role_var: "{{ paperless_ngx_conf_worker_retry }}"
     - pngx_var: PAPERLESS_TIME_ZONE
       role_var: "{{ paperless_ngx_conf_time_zone }}"
+    - pngx_var: PAPERLESS_ENABLE_NLTK
+      role_var: "{{ paperless_ngx_conf_enable_nltk }}"
     - pngx_var: PAPERLESS_EMAIL_TASK_CRON
       role_var: "{{ paperless_ngx_conf_email_task_cron }}"
       since_version: '1.12.0'
@@ -156,6 +181,11 @@
       role_var: "{{ paperless_ngx_conf_date_order }}"
     - pngx_var: PAPERLESS_CONSUMER_IGNORE_PATTERNS
       role_var: "{{ paperless_ngx_conf_consumer_ignore_patterns | to_json }}"
+    # Binary
+    - pngx_var: PAPERLESS_CONVERT_BINARY
+      role_var: "{{ paperless_ngx_conf_convert_binary }}"
+    - pngx_var: PAPERLESS_GS_BINARY
+      role_var: "{{ paperless_ngx_conf_gs_binary }}"
     # Update checking
     - pngx_var: PAPERLESS_ENABLE_UPDATE_CHECK
       role_var: "{{ paperless_ngx_conf_enable_update_check }}"

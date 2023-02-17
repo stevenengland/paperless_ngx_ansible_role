@@ -70,7 +70,7 @@ To save reading space a few abbreviations are used in the tables down below:
 | `paperless_ngx_conf_dbuser` | paperlessngx | Y | Y | |   |
 | `paperless_ngx_conf_dbpass` | "" | Y | Y | The db password. If not defined by the user, a random password will be generated -> see section below about passwords. |   |
 | `paperless_ngx_conf_dbsslmode` | prefer | Y | Y | |   |
-| `paperless_ngx_conf_db_timeout` |  | N |   |   |   |
+| `paperless_ngx_conf_db_timeout` |  | Y | Y |   |   |
 
 #### Path and folders
 
@@ -90,8 +90,8 @@ To save reading space a few abbreviations are used in the tables down below:
 
 | Name           | Default Value | I | O | H | V |
 | -------------- | ------------- |---|---|---|---|
-| `paperless_ngx_conf_logrotate_max_size` |  | N |   |   |   |
-| `paperless_ngx_conf_logrotate_max_backups` |  | N |   |   |   |
+| `paperless_ngx_conf_logrotate_max_size` | 1024 * 1024 | Y | Y |   |   |
+| `paperless_ngx_conf_logrotate_max_backups` | 20 | Y | Y |   |   |
 
 #### Hosting & Security
 
@@ -99,7 +99,7 @@ To save reading space a few abbreviations are used in the tables down below:
 | -------------- | ------------- |---|---|---|---|
 | `paperless_ngx_conf_secret_key` | "" | Y | Y | If not defined by the user, a random password will be generated -> see section below about passwords. |   |
 | `paperless_ngx_conf_url` | http://localhost:8000 | Y | Y |   |   |
-| `paperless_ngx_conf_csrf_trusted_origins` |  | N |   |   |   |
+| `paperless_ngx_conf_csrf_trusted_origins` |  | Y | Y |   |   |
 | `paperless_ngx_conf_allowed_hosts` | "*" | Y | Y |   |   |
 | `paperless_ngx_conf_cors_allowed_hosts` | http://localhost:8000 | Y | Y |   |   |
 | `paperless_ngx_conf_force_script_name` | "" | Y | Y |   |   |
@@ -110,8 +110,8 @@ To save reading space a few abbreviations are used in the tables down below:
 | `paperless_ngx_conf_admin_password` |  | N |   |   |   |
 | `paperless_ngx_conf_cookie_prefix` | "" | Y | Y |   |   |
 | `paperless_ngx_conf_enable_http_remote_user` | "" | Y | Y |   |   |
-| `paperless_ngx_conf_http_remote_user_header_name` |  | N |   |   |   |
-| `paperless_ngx_conf_logout_redirect_url` |  | N |   |   |   |
+| `paperless_ngx_conf_http_remote_user_header_name` | HTTP_REMOTE_USER | Y | Y |   |   |
+| `paperless_ngx_conf_logout_redirect_url` |  | Y | Y |   |   |
 
 #### OCR settings
 
@@ -126,7 +126,7 @@ To save reading space a few abbreviations are used in the tables down below:
 | `paperless_ngx_conf_ocr_output_type` | pdfa | Y | Y |   |   |
 | `paperless_ngx_conf_ocr_pages` | 0 | Y | Y |   |   |
 | `paperless_ngx_conf_ocr_image_dpi` | "" | Y | Y |   |   |
-| `paperless_ngx_conf_ocr_max_image_pixels` | | N |   |   |   |
+| `paperless_ngx_conf_ocr_max_image_pixels` | | Y | Y |   |   |
 | `paperless_ngx_conf_ocr_user_args` | [optimize=1] | Y | Y |   |   |
 
 #### Tika settings
@@ -141,12 +141,12 @@ To save reading space a few abbreviations are used in the tables down below:
 
 | Name           | Default Value | I | O | H | V |
 | -------------- | ------------- |---|---|---|---|
-| `paperless_ngx_conf_task_workers` |  | N |   |   |   |
-| `paperless_ngx_conf_threads_per_worker` |  | N |   |   |   |
-| `paperless_ngx_conf_worker_timeout` |  | N |   |   |   |
-| `paperless_ngx_conf_worker_retry` |  | N |   |   |   |
+| `paperless_ngx_conf_task_workers` | 1 | Y | Y |   |   |
+| `paperless_ngx_conf_threads_per_worker` | paperless_ngx_conf_task_workers | N | Y | Y |   |
+| `paperless_ngx_conf_worker_timeout` | 1800 | Y | Y |   |   |
+| `paperless_ngx_conf_worker_retry` | 1810 | N |   |   |   |
 | `paperless_ngx_conf_time_zone` | Europe/London | Y | Y |   |   |
-| `paperless_ngx_conf_enable_nltk` |  | N |   |   |   |
+| `paperless_ngx_conf_enable_nltk` | 1 | Y | Y |   |   |
 | `paperless_ngx_conf_email_task_cron` | "*/10 * * * *" | Y | Y |   | 1.12 |
 | `paperless_ngx_conf_train_task_cron` | "5 */1 * * *" | Y | Y |   | 1.12 |
 | `paperless_ngx_conf_index_task_cron` | "0 0 * * *" | Y | Y |   | 1.12 |
@@ -187,8 +187,8 @@ To save reading space a few abbreviations are used in the tables down below:
 
 | Name           | Default Value | I | O | H | V |
 | -------------- | ------------- |---|---|---|---|
-| `paperless_ngx_conf_convert_binary` |  | N |   |   |   |
-| `paperless_ngx_conf_gs_binary` |  | N |   |   |   |
+| `paperless_ngx_conf_convert_binary` | convert | Y | Y |   |   |
+| `paperless_ngx_conf_gs_binary` | gs | Y | Y |   |   |
 
 #### Docker specicif options
 
