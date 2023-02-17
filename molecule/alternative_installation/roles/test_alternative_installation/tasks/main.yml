@@ -36,3 +36,11 @@
           - "'tesseract-ocr-ces' in ansible_facts.packages"
         success_msg: "All OCR languages installed."
         fail_msg: "At least one OCR language is not installed."
+
+- name: Check Flower state
+  block:
+    - name: Is Flower listening for incoming connections?
+      ansible.builtin.uri:
+        url: http://localhost:5555
+        status_code: [200, 302]
+        return_content: true

@@ -16,10 +16,17 @@ paperless_ngx_dir_force_permission_include:
   - "{{ paperless_ngx_conf_logging_dir }}"
 paperless_ngx_dir_tmp: /tmp/paperless-ngx
 paperless_ngx_services_list:
-  - paperless-consumer.service
-  - paperless-scheduler.service
-  - paperless-webserver.service
-  - paperless-task-queue.service
+  - name: paperless-consumer.service
+    enabled: true
+  - name: paperless-scheduler.service
+    enabled: true
+  - name: paperless-webserver.service
+    enabled: true
+  - name: paperless-task-queue.service
+    enabled: true
+  - name: paperless-flower.service
+    enabled: "{{ paperless_ngx_conf_enable_flower }}"
+
 paperless_ngx_version_minimum: '1.10.0'
 
 ## Vars with reference to the paperless-ngx docs

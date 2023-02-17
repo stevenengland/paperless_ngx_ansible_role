@@ -139,6 +139,31 @@
     mode: 0640
   when: not _gunicorn_config_exists.stat.exists
 
+- name: Check if flower configuration file already exists
+  become: true
+  ansible.builtin.stat:
+    path: "{{ paperless_ngx_config_path }}/flowerconfig.py"
+  register: _flower_config_exists
+
+- name: Copy flower configuration file to {{ paperless_ngx_config_path }}
+  become: true
+  ansible.builtin.template:
+    src: "flowerconfig.py.j2"
+    dest: "{{ paperless_ngx_config_path }}/flowerconfig.py"
+    owner: "{{ paperless_ngx_system_user }}"
+    group: "{{ paperless_ngx_system_group }}"
+    mode: 0640
+  when: not _flower_config_exists.stat.exists
+
+- name: Copy flower systemd service file apps scripts folder
+  become: true
+  ansible.builtin.template:
+    src: "paperless-flower.service.j2"
+    dest: "{{ paperless_ngx_dir_installation }}/scripts/paperless-flower.service"
+    owner: "{{ paperless_ngx_system_user }}"
+    group: "{{ paperless_ngx_system_group }}"
+    mode: 0640
+
 - name: Remove temporary directory
   become: true
   ansible.builtin.file:
