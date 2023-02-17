@@ -75,6 +75,7 @@ paperless_ngx_conf_tika_gotenberg_endpoint: http://localhost:3000
 ## Software tweaks
 paperless_ngx_conf_task_workers: 1
 paperless_ngx_conf_threads_per_worker: "{{ paperless_ngx_conf_task_workers }}"
+paperless_ngx_conf_worker_timeout: 1800
 paperless_ngx_conf_time_zone: Europe/London
 paperless_ngx_conf_enable_nltk: 1
 # paperless_ngx_conf_optimize_thumbnails: true # option seems to not exist
