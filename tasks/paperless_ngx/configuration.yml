@@ -169,6 +169,8 @@
     # Binary
     - pngx_var: PAPERLESS_CONVERT_BINARY
       role_var: "{{ paperless_ngx_conf_convert_binary }}"
+    - pngx_var: PAPERLESS_GS_BINARY
+      role_var: "{{ paperless_ngx_conf_gs_binary }}"
     # Update checking
     - pngx_var: PAPERLESS_ENABLE_UPDATE_CHECK
       role_var: "{{ paperless_ngx_conf_enable_update_check }}"

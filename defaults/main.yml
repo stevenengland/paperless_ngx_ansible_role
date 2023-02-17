@@ -115,6 +115,7 @@ paperless_ngx_conf_consumer_ignore_patterns:
   - "desktop.ini"
 ## Binaries
 paperless_ngx_conf_convert_binary: "convert"
+paperless_ngx_conf_gs_binary: "gs"
 ## Docker (bare metal) specific options
 paperless_ngx_conf_usermap_uid:
 paperless_ngx_conf_usermap_gid:
