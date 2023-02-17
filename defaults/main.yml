@@ -118,5 +118,6 @@ paperless_ngx_conf_ocr_languages:
   - fra
   - ita
   - spa
+paperless_ngx_conf_enable_flower: false
 ## Update checking
 paperless_ngx_conf_enable_update_check: enable

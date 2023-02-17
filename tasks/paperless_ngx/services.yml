@@ -2,7 +2,7 @@
 - name: Configure systemd services (common values)
   become: true
   community.general.ini_file:
-    path: "{{ paperless_ngx_dir_installation }}/scripts/{{ item[0] }}"
+    path: "{{ paperless_ngx_dir_installation }}/scripts/{{ item[0].name }}"
     create: false
     section: Service
     option: "{{ item[1].option }}"
@@ -34,11 +34,13 @@
         exec_start: "{{ paperless_ngx_dir_virtualenv }}/bin/celery --app paperless worker --loglevel INFO" }
     - { service_name: paperless-webserver.service,
         exec_start: "{{ paperless_ngx_dir_virtualenv }}/bin/gunicorn -c {{ paperless_ngx_config_path }}/gunicorn.conf.py paperless.asgi:application" }
+    - { service_name: paperless-flower.service,
+        exec_start: "{{ paperless_ngx_dir_virtualenv }}/bin/celery --app paperless flower --conf={{ paperless_ngx_config_path }}/flowerconfig.py" }
 
 - name: Remove redis from service units if external
   become: true
   community.general.ini_file:
-    path: "{{ paperless_ngx_dir_installation }}/scripts/{{ item }}"
+    path: "{{ paperless_ngx_dir_installation }}/scripts/{{ item.name }}"
     create: false
     section: Unit
     option: Requires
@@ -50,9 +52,9 @@
 - name: Copy systemd services
   become: true
   ansible.builtin.copy:
-    src: "{{ paperless_ngx_dir_installation }}/scripts/{{ item }}"
+    src: "{{ paperless_ngx_dir_installation }}/scripts/{{ item.name }}"
     remote_src: true
-    dest: /etc/systemd/system/{{ item }}
+    dest: /etc/systemd/system/{{ item.name }}
     mode: 0640
   loop: "{{ paperless_ngx_services_list }}"
   notify: Restart paperless completely
@@ -60,8 +62,9 @@
 - name: Enable pngx services
   become: true
   ansible.builtin.systemd:
-    name: "{{ item }}"
+    name: "{{ item.name }}"
     enabled: true
     masked: false
     state: started
   loop: "{{ paperless_ngx_services_list }}"
+  when: item.enabled
