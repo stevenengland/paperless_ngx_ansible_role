@@ -166,6 +166,9 @@
       role_var: "{{ paperless_ngx_conf_date_order }}"
     - pngx_var: PAPERLESS_CONSUMER_IGNORE_PATTERNS
       role_var: "{{ paperless_ngx_conf_consumer_ignore_patterns | to_json }}"
+    # Binary
+    - pngx_var: PAPERLESS_CONVERT_BINARY
+      role_var: "{{ paperless_ngx_conf_convert_binary }}"
     # Update checking
     - pngx_var: PAPERLESS_ENABLE_UPDATE_CHECK
       role_var: "{{ paperless_ngx_conf_enable_update_check }}"

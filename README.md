@@ -187,7 +187,7 @@ To save reading space a few abbreviations are used in the tables down below:
 
 | Name           | Default Value | I | O | H | V |
 | -------------- | ------------- |---|---|---|---|
-| `paperless_ngx_conf_convert_binary` |  | N |   |   |   |
+| `paperless_ngx_conf_convert_binary` | convert | Y | Y |   |   |
 | `paperless_ngx_conf_gs_binary` |  | N |   |   |   |
 
 #### Docker specicif options
