@@ -102,6 +102,8 @@
       role_var: "{{ paperless_ngx_conf_task_workers }}"
     - pngx_var: PAPERLESS_WORKER_TIMEOUT
       role_var: "{{ paperless_ngx_conf_worker_timeout }}"
+    - pngx_var: PAPERLESS_WORKER_RETRY
+      role_var: "{{ paperless_ngx_conf_worker_retry }}"
     - pngx_var: PAPERLESS_TIME_ZONE
       role_var: "{{ paperless_ngx_conf_time_zone }}"
     - pngx_var: PAPERLESS_ENABLE_NLTK
