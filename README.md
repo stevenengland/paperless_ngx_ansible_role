@@ -99,7 +99,7 @@ To save reading space a few abbreviations are used in the tables down below:
 | -------------- | ------------- |---|---|---|---|
 | `paperless_ngx_conf_secret_key` | "" | Y | Y | If not defined by the user, a random password will be generated -> see section below about passwords. |   |
 | `paperless_ngx_conf_url` | http://localhost:8000 | Y | Y |   |   |
-| `paperless_ngx_conf_csrf_trusted_origins` |  | N |   |   |   |
+| `paperless_ngx_conf_csrf_trusted_origins` |  | Y | Y |   |   |
 | `paperless_ngx_conf_allowed_hosts` | "*" | Y | Y |   |   |
 | `paperless_ngx_conf_cors_allowed_hosts` | http://localhost:8000 | Y | Y |   |   |
 | `paperless_ngx_conf_force_script_name` | "" | Y | Y |   |   |

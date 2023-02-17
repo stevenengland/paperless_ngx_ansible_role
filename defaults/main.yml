@@ -52,6 +52,7 @@ paperless_ngx_conf_logrotate_max_backups: 20
 ## Hosting & Security
 paperless_ngx_conf_url: http://localhost:8000
 paperless_ngx_conf_secret_key: "{{ lookup('password', 'pngx_instances/' + inventory_hostname + '/pnx_secret_key.secret') }}"
+paperless_ngx_conf_csrf_trusted_origins:
 paperless_ngx_conf_allowed_hosts: "*"
 paperless_ngx_conf_cors_allowed_hosts: http://localhost:8000
 paperless_ngx_conf_force_script_name:
