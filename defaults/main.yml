@@ -60,6 +60,7 @@ paperless_ngx_conf_static_url: /static/
 paperless_ngx_conf_auto_login_username:
 paperless_ngx_conf_cookie_prefix: ""
 paperless_ngx_conf_enable_http_remote_user: false
+paperless_ngx_conf_logout_redirect_url:
 ## OCR
 paperless_ngx_conf_ocr_language: eng
 paperless_ngx_conf_ocr_mode: skip
