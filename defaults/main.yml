@@ -74,6 +74,7 @@ paperless_ngx_conf_tika_endpoint: http://localhost:9998
 paperless_ngx_conf_tika_gotenberg_endpoint: http://localhost:3000
 ## Software tweaks
 paperless_ngx_conf_time_zone: Europe/London
+paperless_ngx_conf_enable_nltk: 1
 # paperless_ngx_conf_optimize_thumbnails: true # option seems to not exist
 # paperless_ngx_conf_pre_consume_script: # option seems to not exist
 paperless_ngx_conf_email_task_cron: "*/10 * * * *"

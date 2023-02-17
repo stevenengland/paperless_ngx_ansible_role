@@ -5,7 +5,8 @@ no_conf_var_list = [
     "paperless_ngx_conf_usermap_uid",
     "paperless_ngx_conf_usermap_gid",
     "paperless_ngx_conf_ocr_languages",
-    "paperless_ngx_conf_dbengine"
+    "paperless_ngx_conf_dbengine",
+    "paperless_ngx_conf_enable_flower"
     ]
 
 #############################################

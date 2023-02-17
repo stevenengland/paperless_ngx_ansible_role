@@ -98,6 +98,8 @@
     # Software tweaks
     - pngx_var: PAPERLESS_TIME_ZONE
       role_var: "{{ paperless_ngx_conf_time_zone }}"
+    - pngx_var: PAPERLESS_ENABLE_NLTK
+      role_var: "{{ paperless_ngx_conf_enable_nltk }}"
     - pngx_var: PAPERLESS_EMAIL_TASK_CRON
       role_var: "{{ paperless_ngx_conf_email_task_cron }}"
       since_version: '1.12.0'
