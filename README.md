@@ -142,7 +142,7 @@ To save reading space a few abbreviations are used in the tables down below:
 | Name           | Default Value | I | O | H | V |
 | -------------- | ------------- |---|---|---|---|
 | `paperless_ngx_conf_task_workers` | 1 | Y | Y |   |   |
-| `paperless_ngx_conf_threads_per_worker` |  | N |   |   |   |
+| `paperless_ngx_conf_threads_per_worker` | paperless_ngx_conf_task_workers | N | Y | Y |   |
 | `paperless_ngx_conf_worker_timeout` |  | N |   |   |   |
 | `paperless_ngx_conf_worker_retry` |  | N |   |   |   |
 | `paperless_ngx_conf_time_zone` | Europe/London | Y | Y |   |   |
