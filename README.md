@@ -90,7 +90,7 @@ To save reading space a few abbreviations are used in the tables down below:
 
 | Name           | Default Value | I | O | H | V |
 | -------------- | ------------- |---|---|---|---|
-| `paperless_ngx_conf_logrotate_max_size` |  | N |   |   |   |
+| `paperless_ngx_conf_logrotate_max_size` | 1024 * 1024 | Y | Y |   |   |
 | `paperless_ngx_conf_logrotate_max_backups` |  | N |   |   |   |
 
 #### Hosting & Security

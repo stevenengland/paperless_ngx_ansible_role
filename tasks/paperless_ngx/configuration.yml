@@ -26,6 +26,9 @@
       role_var: "{{ paperless_ngx_conf_enable_http_remote_user }}"
     - pngx_var: PAPERLESS_URL
       role_var: "{{ paperless_ngx_conf_url }}"
+    # Logging
+    - pngx_var: PAPERLESS_LOGROTATE_MAX_SIZE
+      role_var: "{{ paperless_ngx_conf_logrotate_max_size }}"
     # Required services
     - pngx_var: PAPERLESS_REDIS
       role_var: "{{ paperless_ngx_conf_redis }}"
