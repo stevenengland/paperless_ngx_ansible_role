@@ -110,7 +110,7 @@ To save reading space a few abbreviations are used in the tables down below:
 | `paperless_ngx_conf_admin_password` |  | N |   |   |   |
 | `paperless_ngx_conf_cookie_prefix` | "" | Y | Y |   |   |
 | `paperless_ngx_conf_enable_http_remote_user` | "" | Y | Y |   |   |
-| `paperless_ngx_conf_http_remote_user_header_name` |  | N |   |   |   |
+| `paperless_ngx_conf_http_remote_user_header_name` | HTTP_REMOTE_USER | Y | Y |   |   |
 | `paperless_ngx_conf_logout_redirect_url` |  | Y | Y |   |   |
 
 #### OCR settings

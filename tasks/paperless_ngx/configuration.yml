@@ -28,6 +28,8 @@
       role_var: "{{ paperless_ngx_conf_url }}"
     - pngx_var: PAPERLESS_CSRF_TRUSTED_ORIGINS
       role_var: "{{ paperless_ngx_conf_csrf_trusted_origins }}"
+    - pngx_var: PAPERLESS_HTTP_REMOTE_USER_HEADER_NAME
+      role_var: "{{ paperless_ngx_conf_http_remote_user_header_name }}"
     - pngx_var: PAPERLESS_LOGOUT_REDIRECT_URL
       role_var: "{{ paperless_ngx_conf_logout_redirect_url }}"
     # Logging
