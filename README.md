@@ -41,9 +41,6 @@ Additional variables available in this role are listed below, along with default
 | `paperless_ngx_redis_port` | 6379 | Redis port |
 | `paperless_ngx_system_group` | paperlessngx | The group to which the system user belongs. |
 | `paperless_ngx_system_user` | paperlessngx | The user that will execute the services and own the data. |
-| `paperless_ngx_superuser_name` | paperlessngx | The superuser username. Will be setup during installation. |
-| `paperless_ngx_superuser_email` | paperlessngx@example.com | The superuser mail. |
-| `paperless_ngx_superuser_password` | "" | The superuser password. If not defined by the user, a random password will be generated -> see section below about passwords. |
 | `paperless_ngx_version` | latest | Sofware version to install. Use `latest` or any specific version in the format `'1.10.0'`. Only `paperless_ngx_version_minimum: '1.10.0'` and higher supported. |
 | `` |  |  |
 
@@ -103,9 +100,9 @@ To save reading space a few abbreviations are used in the tables down below:
 | `paperless_ngx_conf_force_script_name` | "" | Y | Y |   |   |
 | `paperless_ngx_conf_static_url` | /static/ | Y | Y |   |   |
 | `paperless_ngx_conf_auto_login_username` | "" | Y | Y |   |   |
-| `paperless_ngx_conf_admin_user` |  | N |   |   |   |
-| `paperless_ngx_conf_admin_mail` |  | N |   |   |   |
-| `paperless_ngx_conf_admin_password` |  | N |   |   |   |
+| `paperless_ngx_conf_admin_user` | admin | Y | Y |   |   |
+| `paperless_ngx_conf_admin_mail` | root@localhost | Y | Y |   |   |
+| `paperless_ngx_conf_admin_password` |  | Y | Y | The superuser password. If not defined by the user, a random password will be generated -> see section below about passwords. |   |
 | `paperless_ngx_conf_cookie_prefix` | "" | Y | Y |   |   |
 | `paperless_ngx_conf_enable_http_remote_user` | "" | Y | Y |   |   |
 | `paperless_ngx_conf_http_remote_user_header_name` | HTTP_REMOTE_USER | Y | Y |   |   |

@@ -19,9 +19,6 @@ paperless_ngx_redis_port: 6379
 ## paperless-ngx user
 paperless_ngx_system_group: paperlessngx
 paperless_ngx_system_user: paperlessngx
-paperless_ngx_superuser_name: paperlessngx
-paperless_ngx_superuser_email: paperlessngx@example.com
-paperless_ngx_superuser_password: "{{ lookup('password', 'pngx_instances/' + inventory_hostname + '/pnx_superuser_password.secret') }}"
 ## paperless meta data
 paperless_ngx_version: latest
 
@@ -55,6 +52,9 @@ paperless_ngx_conf_cors_allowed_hosts: http://localhost:8000
 paperless_ngx_conf_force_script_name:
 paperless_ngx_conf_static_url: /static/
 paperless_ngx_conf_auto_login_username:
+paperless_ngx_conf_admin_user: admin
+paperless_ngx_conf_admin_mail: root@localhost
+paperless_ngx_conf_admin_password: "{{ lookup('password', 'pngx_instances/' + inventory_hostname + '/pnx_superuser_password.secret') }}"
 paperless_ngx_conf_cookie_prefix: ""
 paperless_ngx_conf_enable_http_remote_user: false
 paperless_ngx_conf_http_remote_user_header_name: HTTP_REMOTE_USER
