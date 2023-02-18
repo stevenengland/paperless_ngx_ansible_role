@@ -3,8 +3,7 @@ name: Changelog Updating
 
 "on":
   release:
-    types:
-      - released
+    types: [released]
 
 jobs:
   update:
