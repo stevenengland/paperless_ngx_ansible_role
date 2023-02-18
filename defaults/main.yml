@@ -24,9 +24,6 @@ paperless_ngx_superuser_email: paperlessngx@example.com
 paperless_ngx_superuser_password: "{{ lookup('password', 'pngx_instances/' + inventory_hostname + '/pnx_superuser_password.secret') }}"
 ## paperless meta data
 paperless_ngx_version: latest
-## Webserver
-paperless_ngx_webserver_listen_address: 127.0.0.1
-paperless_ngx_webserver_listen_port: 8000
 
 # paperless-ngx configuration variables
 ## Required services
@@ -126,6 +123,9 @@ paperless_ngx_conf_consumer_ignore_patterns:
 paperless_ngx_conf_convert_binary: "convert"
 paperless_ngx_conf_gs_binary: "gs"
 ## Docker (bare metal) specific options
+paperless_ngx_conf_webserver_workers: 1
+paperless_ngx_conf_bind_addr: "[::]"
+paperless_ngx_conf_port: 8000
 paperless_ngx_conf_usermap_uid:
 paperless_ngx_conf_usermap_gid:
 paperless_ngx_conf_ocr_languages:

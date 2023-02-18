@@ -186,6 +186,13 @@
       role_var: "{{ paperless_ngx_conf_convert_binary }}"
     - pngx_var: PAPERLESS_GS_BINARY
       role_var: "{{ paperless_ngx_conf_gs_binary }}"
+    # Docker specific options
+    - pngx_var: PAPERLESS_WEBSERVER_WORKERS
+      role_var: "{{ paperless_ngx_conf_webserver_workers }}"
+    - pngx_var: PAPERLESS_BIND_ADDR
+      role_var: "{{ paperless_ngx_conf_bind_addr }}"
+    - pngx_var: PAPERLESS_PORT
+      role_var: "{{ paperless_ngx_conf_port }}"
     # Update checking
     - pngx_var: PAPERLESS_ENABLE_UPDATE_CHECK
       role_var: "{{ paperless_ngx_conf_enable_update_check }}"
@@ -195,7 +202,7 @@
     - item.condition | default(true)
     - (item.since_version | default('0.0.1')) is ansible.builtin.version(paperless_ngx_version, '<=', version_type='semver')
 
-- name: Deploy paperless-ngx configuration to {{ paperless_ngx_config_path }}
+- name: Deploy paperless-ngx configuration file
   become: true
   ansible.builtin.copy:
     src: "{{ paperless_ngx_config_file_template }}"
@@ -215,12 +222,3 @@
     backrefs: true
   tags: pngx_conf_gs
   notify: Restart paperless completely
-
-- name: Configure gunicorn web server
-  become: true
-  ansible.builtin.lineinfile:
-    path: "{{ paperless_ngx_config_path }}/gunicorn.conf.py"
-    regexp: "^bind = "
-    line: bind = '{{ paperless_ngx_webserver_listen_address }}:{{ paperless_ngx_webserver_listen_port }}'
-  tags: pngx_conf_gunicorn
-  notify: Restart webserver

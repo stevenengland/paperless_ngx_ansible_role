@@ -15,3 +15,4 @@
         paperless_ngx_conf_usermap_gid: 1001
         paperless_ngx_conf_ocr_languages: [tur, ces]
         paperless_ngx_conf_enable_flower: true
+        paperless_ngx_conf_port: 8001

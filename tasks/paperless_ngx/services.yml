@@ -7,6 +7,7 @@
     section: Service
     option: "{{ item[1].option }}"
     value: "{{ item[1].value }}"
+    no_extra_spaces: true
   with_nested:
     - "{{ paperless_ngx_services_list }}"
     - - { option: User, value: "{{ paperless_ngx_system_user }}" }
@@ -16,6 +17,7 @@
       - { option: NoNewPrivileges, value: "true" }
       - { option: PrivateUsers, value: "true" }
       - { option: PrivateDevices, value: "true" }
+      - { option: EnvironmentFile, value: "{{ paperless_ngx_config_file }}"}
 
 - name: Configure systemd services (exec start)
   become: true
@@ -25,6 +27,7 @@
     section: Service
     option: ExecStart
     value: "{{ item.exec_start }}"
+    no_extra_spaces: true
   loop:
     - { service_name: paperless-consumer.service,
         exec_start: "{{ paperless_ngx_dir_virtualenv }}/bin/python3 manage.py document_consumer" }
