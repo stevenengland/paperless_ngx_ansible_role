@@ -44,3 +44,11 @@
         url: http://localhost:5555
         status_code: [200, 302]
         return_content: true
+
+- name: Check webserver
+  block:
+    - name: Is webserver listening for incoming connections?
+      ansible.builtin.uri:
+        url: http://localhost:8001
+        status_code: [200, 302]
+        return_content: true

@@ -44,8 +44,6 @@ Additional variables available in this role are listed below, along with default
 | `paperless_ngx_superuser_name` | paperlessngx | The superuser username. Will be setup during installation. |
 | `paperless_ngx_superuser_email` | paperlessngx@example.com | The superuser mail. |
 | `paperless_ngx_superuser_password` | "" | The superuser password. If not defined by the user, a random password will be generated -> see section below about passwords. |
-| `paperless_ngx_webserver_listen_address` | 127.0.0.1 | The webservers address. |
-| `paperless_ngx_webserver_listen_port` | 8000 | The webservers port. |
 | `paperless_ngx_version` | latest | Sofware version to install. Use `latest` or any specific version in the format `'1.10.0'`. Only `paperless_ngx_version_minimum: '1.10.0'` and higher supported. |
 | `` |  |  |
 
@@ -194,9 +192,9 @@ To save reading space a few abbreviations are used in the tables down below:
 
 | Name           | Default Value | I | O | H | V |
 | -------------- | ------------- |---|---|---|---|
-| `paperless_ngx_conf_webserver_workers` |  | N |   |   |   |
-| `paperless_ngx_conf_bind_addr` |  | N |   |   |   |
-| `paperless_ngx_conf_port` |  | N |   |   |   |
+| `paperless_ngx_conf_webserver_workers` | 1 | Y | Y |   |   |
+| `paperless_ngx_conf_bind_addr` | "[::]" | Y | Y |   |   |
+| `paperless_ngx_conf_port` | 8000 | Y | Y |   |   |
 | `paperless_ngx_conf_usermap_uid` |  | Y | Y | System users id |   |
 | `paperless_ngx_conf_usermap_gid` |  | Y | Y | System users gid |   |
 | `paperless_ngx_conf_ocr_languages` | [eng,deu,fra,ita,spa] | Y | Y |   |   |

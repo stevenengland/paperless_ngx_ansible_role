@@ -9,7 +9,7 @@
   tasks:
     - name: Check if webserver is up
       ansible.builtin.uri:
-        url: http://{{ paperless_ngx_webserver_listen_address }}:{{ paperless_ngx_webserver_listen_port }}
+        url: http://localhost:{{ paperless_ngx_conf_port }}
         status_code: [200, 302]
         return_content: true
       register: _landingpage
@@ -22,7 +22,7 @@
 
     - name: Check if document posting works
       ansible.builtin.uri:
-        url: http://{{ paperless_ngx_webserver_listen_address }}:{{ paperless_ngx_webserver_listen_port }}/api/documents/post_document/
+        url: http://localhost:{{ paperless_ngx_conf_port }}/api/documents/post_document/
         method: POST
         body_format: form-multipart
         body:
@@ -43,7 +43,7 @@
 
     - name: Verify uploaded document has been accepted
       ansible.builtin.uri:
-        url: http://{{ paperless_ngx_webserver_listen_address }}:{{ paperless_ngx_webserver_listen_port }}/api/logs/paperless/
+        url: http://localhost:{{ paperless_ngx_conf_port }}/api/logs/paperless/
         headers:
           Authorization: Basic {{ (paperless_ngx_superuser_name + ":" + paperless_ngx_superuser_password) | b64encode }}
         return_content: true
@@ -61,7 +61,7 @@
 
     - name: Verify uploaded document has been consumed
       ansible.builtin.uri:
-        url: http://{{ paperless_ngx_webserver_listen_address }}:{{ paperless_ngx_webserver_listen_port }}/api/logs/paperless/
+        url: http://localhost:{{ paperless_ngx_conf_port }}/api/logs/paperless/
         headers:
           Authorization: Basic {{ (paperless_ngx_superuser_name + ":" + paperless_ngx_superuser_password) | b64encode }}
         return_content: true
@@ -70,7 +70,7 @@
 
     - name: Get documents
       ansible.builtin.uri:
-        url: http://{{ paperless_ngx_webserver_listen_address }}:{{ paperless_ngx_webserver_listen_port }}/api/documents/
+        url: http://localhost:{{ paperless_ngx_conf_port }}/api/documents/
         headers:
           Authorization: Basic {{ (paperless_ngx_superuser_name + ":" + paperless_ngx_superuser_password) | b64encode }}
         return_content: true
@@ -82,7 +82,7 @@
 
     - name: Verify uploaded document is avaiable
       ansible.builtin.uri:
-        url: http://{{ paperless_ngx_webserver_listen_address }}:{{ paperless_ngx_webserver_listen_port }}/api/documents/{{ index }}/
+        url: http://localhost:{{ paperless_ngx_conf_port }}/api/documents/{{ index }}/
         headers:
           Authorization: Basic {{ (paperless_ngx_superuser_name + ":" + paperless_ngx_superuser_password) | b64encode }}
         return_content: true
@@ -91,7 +91,7 @@
 
     - name: Check if deleting uploaded document works
       ansible.builtin.uri:
-        url: http://{{ paperless_ngx_webserver_listen_address }}:{{ paperless_ngx_webserver_listen_port }}/api/documents/bulk_edit/
+        url: http://localhost:{{ paperless_ngx_conf_port }}/api/documents/bulk_edit/
         method: POST
         body_format: json
         body:
