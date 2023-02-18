@@ -122,12 +122,6 @@
     path: "{{ paperless_ngx_dir_installation }}/paperless.conf"
     state: absent
 
-- name: Check if gunicorn configuration file already exists
-  become: true
-  ansible.builtin.stat:
-    path: "{{ paperless_ngx_config_path }}/gunicorn.conf.py"
-  register: _gunicorn_config_exists
-
 - name: Copy gunicorn configuration file to {{ paperless_ngx_config_path }}
   become: true
   ansible.builtin.copy:
@@ -137,7 +131,6 @@
     owner: "{{ paperless_ngx_system_user }}"
     group: "{{ paperless_ngx_system_group }}"
     mode: 0640
-  when: not _gunicorn_config_exists.stat.exists
 
 - name: Check if flower configuration file already exists
   become: true
