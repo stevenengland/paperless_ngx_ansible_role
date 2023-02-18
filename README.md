@@ -145,6 +145,7 @@ To save reading space a few abbreviations are used in the tables down below:
 | `paperless_ngx_conf_train_task_cron` | "5 */1 * * *" | Y | Y |   | 1.12 |
 | `paperless_ngx_conf_index_task_cron` | "0 0 * * *" | Y | Y |   | 1.12 |
 | `paperless_ngx_conf_sanity_task_cron` | "30 0 * * sun" | N |   |   | 1.12 |
+| `paperless_ngx_conf_enable_compression` | true | Y | Y |   | 1.13 |
 
 #### Polling
 

@@ -133,6 +133,9 @@
     - pngx_var: PAPERLESS_SANITY_TASK_CRON
       role_var: "{{ paperless_ngx_conf_sanity_task_cron }}"
       since_version: '1.12.0'
+    - pngx_var: PAPERLESS_ENABLE_COMPRESSION
+      role_var: "{{ paperless_ngx_conf_enable_compression }}"
+      since_version: '1.13.0'
     # Polling
     - pngx_var: PAPERLESS_CONSUMER_POLLING
       role_var: "{{ paperless_ngx_conf_consumer_polling }}"
