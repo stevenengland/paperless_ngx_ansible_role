@@ -30,7 +30,7 @@
             content: "{{ content }}"
             filename: "{{ filename }}.txt"
         headers:
-          Authorization: Basic {{ (paperless_ngx_superuser_name + ":" + paperless_ngx_superuser_password) | b64encode }}
+          Authorization: Basic {{ (paperless_ngx_conf_admin_user + ":" + paperless_ngx_conf_admin_password) | b64encode }}
           Content-Type: text/plain
         return_content: true
       register: _post_document
@@ -45,7 +45,7 @@
       ansible.builtin.uri:
         url: http://localhost:{{ paperless_ngx_conf_port }}/api/logs/paperless/
         headers:
-          Authorization: Basic {{ (paperless_ngx_superuser_name + ":" + paperless_ngx_superuser_password) | b64encode }}
+          Authorization: Basic {{ (paperless_ngx_conf_admin_user + ":" + paperless_ngx_conf_admin_password) | b64encode }}
         return_content: true
       register: _logs
       failed_when: ('Consuming ' + filename + '.txt') not in _logs.content
@@ -63,7 +63,7 @@
       ansible.builtin.uri:
         url: http://localhost:{{ paperless_ngx_conf_port }}/api/logs/paperless/
         headers:
-          Authorization: Basic {{ (paperless_ngx_superuser_name + ":" + paperless_ngx_superuser_password) | b64encode }}
+          Authorization: Basic {{ (paperless_ngx_conf_admin_user + ":" + paperless_ngx_conf_admin_password) | b64encode }}
         return_content: true
       register: _logs
       failed_when: filename + ' consumption finished' not in _logs.content
@@ -72,7 +72,7 @@
       ansible.builtin.uri:
         url: http://localhost:{{ paperless_ngx_conf_port }}/api/documents/
         headers:
-          Authorization: Basic {{ (paperless_ngx_superuser_name + ":" + paperless_ngx_superuser_password) | b64encode }}
+          Authorization: Basic {{ (paperless_ngx_conf_admin_user + ":" + paperless_ngx_conf_admin_password) | b64encode }}
         return_content: true
       register: _documents
 
@@ -84,7 +84,7 @@
       ansible.builtin.uri:
         url: http://localhost:{{ paperless_ngx_conf_port }}/api/documents/{{ index }}/
         headers:
-          Authorization: Basic {{ (paperless_ngx_superuser_name + ":" + paperless_ngx_superuser_password) | b64encode }}
+          Authorization: Basic {{ (paperless_ngx_conf_admin_user + ":" + paperless_ngx_conf_admin_password) | b64encode }}
         return_content: true
       register: _document
       failed_when: "'Not found.' in _document.content or content not in _document.json['content']"
@@ -99,6 +99,6 @@
           method: delete
           parameters: {}
         headers:
-          Authorization: Basic {{ (paperless_ngx_superuser_name + ":" + paperless_ngx_superuser_password) | b64encode }}
+          Authorization: Basic {{ (paperless_ngx_conf_admin_user + ":" + paperless_ngx_conf_admin_password) | b64encode }}
       register: _delete_document
       failed_when: "'OK' not in _delete_document.json['result']"
