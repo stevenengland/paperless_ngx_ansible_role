@@ -79,7 +79,7 @@ To save reading space a few abbreviations are used in the tables down below:
 | `paperless_ngx_conf_filename_format` | "" | Y | Y |   |   |
 | `paperless_ngx_conf_filename_format_remove_none` | false | Y | Y |   |   |
 | `paperless_ngx_conf_logging_dir` | "{{ paperless_ngx_dir_runtime_data }}/log" |   |   |   |   |
-| `paperless_ngx_conf_nltk_dir` | /usr/share/nltk_data | Y | Y |   |   |
+| `paperless_ngx_conf_nltk_dir` | /usr/share/nltk_data | Y | Y |   | 1.11 |
 
 #### Logging
 
@@ -140,7 +140,7 @@ To save reading space a few abbreviations are used in the tables down below:
 | `paperless_ngx_conf_threads_per_worker` | paperless_ngx_conf_task_workers | N | Y | Y |   |
 | `paperless_ngx_conf_worker_timeout` | 1800 | Y | Y |   |   |
 | `paperless_ngx_conf_time_zone` | Europe/London | Y | Y |   |   |
-| `paperless_ngx_conf_enable_nltk` | 1 | Y | Y |   |   |
+| `paperless_ngx_conf_enable_nltk` | 1 | Y | Y |   | 1.11 |
 | `paperless_ngx_conf_email_task_cron` | "*/10 * * * *" | Y | Y |   | 1.12 |
 | `paperless_ngx_conf_train_task_cron` | "5 */1 * * *" | Y | Y |   | 1.12 |
 | `paperless_ngx_conf_index_task_cron` | "0 0 * * *" | Y | Y |   | 1.12 |
