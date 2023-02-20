@@ -10,7 +10,7 @@ Installs and configures paperless-ngx EDMS on Debian/Ubuntu systems.
 Requirements
 ------------
 
-No special system requirements. `ansible_version_minimum: "2.11"` or newer is required.
+No special system requirements. `ansible_version_minimum: "4.0.0"` or newer is required.
 
 Role Variables
 --------------
