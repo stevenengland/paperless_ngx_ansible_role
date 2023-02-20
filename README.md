@@ -195,7 +195,7 @@ To save reading space a few abbreviations are used in the tables down below:
 | `paperless_ngx_conf_usermap_uid` |  | Y | Y | System users id |   |
 | `paperless_ngx_conf_usermap_gid` |  | Y | Y | System users gid |   |
 | `paperless_ngx_conf_ocr_languages` | [eng,deu,fra,ita,spa] | Y | Y |   |   |
-| `paperless_ngx_conf_enable_flower` | false | Y | Y | Whether to start flower or not. See [using flower](docs/USING_FLOWER.md) for more information |   |
+| `paperless_ngx_conf_enable_flower` | false | Y | Y | Whether to start flower or not. See [using flower](docs/USING_FLOWER.md) for more information | 1.10 |
 
 #### Update Checking
 
