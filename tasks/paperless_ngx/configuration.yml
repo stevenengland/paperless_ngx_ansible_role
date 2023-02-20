@@ -80,6 +80,7 @@
       role_var: "{{ paperless_ngx_conf_logging_dir }}"
     - pngx_var: PAPERLESS_NLTK_DIR
       role_var: "{{ paperless_ngx_conf_nltk_dir }}"
+      since_version: '1.11.0'
     # OCR settings
     - pngx_var: PAPERLESS_OCR_LANGUAGE
       role_var: "{{ paperless_ngx_conf_ocr_language }}"
@@ -121,6 +122,7 @@
       role_var: "{{ paperless_ngx_conf_time_zone }}"
     - pngx_var: PAPERLESS_ENABLE_NLTK
       role_var: "{{ paperless_ngx_conf_enable_nltk }}"
+      since_version: '1.11.0'
     - pngx_var: PAPERLESS_EMAIL_TASK_CRON
       role_var: "{{ paperless_ngx_conf_email_task_cron }}"
       since_version: '1.12.0'
