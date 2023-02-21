@@ -51,7 +51,7 @@ To save reading space a few abbreviations are used in the tables down below:
 * I - Implemented in this role? [Y/N]
 * O - Variable is meant to be overridden? [Y/N] If No it should not be altered.
 * H - Hint
-* V - Version of paperless-ngx since this var was introduced
+* V - Version of paperless-ngx that introduced this var. 
 
 #### Required services
 
@@ -137,14 +137,14 @@ To save reading space a few abbreviations are used in the tables down below:
 | Name           | Default Value | I | O | H | V |
 | -------------- | ------------- |---|---|---|---|
 | `paperless_ngx_conf_task_workers` | 1 | Y | Y |   |   |
-| `paperless_ngx_conf_threads_per_worker` | paperless_ngx_conf_task_workers | N | Y | Y |   |
+| `paperless_ngx_conf_threads_per_worker` | paperless_ngx_conf_task_workers | Y | Y |  |   |
 | `paperless_ngx_conf_worker_timeout` | 1800 | Y | Y |   |   |
 | `paperless_ngx_conf_time_zone` | Europe/London | Y | Y |   |   |
 | `paperless_ngx_conf_enable_nltk` | 1 | Y | Y |   | 1.11 |
 | `paperless_ngx_conf_email_task_cron` | "*/10 * * * *" | Y | Y |   | 1.12 |
 | `paperless_ngx_conf_train_task_cron` | "5 */1 * * *" | Y | Y |   | 1.12 |
 | `paperless_ngx_conf_index_task_cron` | "0 0 * * *" | Y | Y |   | 1.12 |
-| `paperless_ngx_conf_sanity_task_cron` | "30 0 * * sun" | N |   |   | 1.12 |
+| `paperless_ngx_conf_sanity_task_cron` | "30 0 * * sun" | Y | Y |   | 1.12 |
 | `paperless_ngx_conf_enable_compression` | true | Y | Y |   | 1.13 |
 
 #### Polling
