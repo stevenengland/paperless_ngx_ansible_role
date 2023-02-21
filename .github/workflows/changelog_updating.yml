@@ -33,4 +33,3 @@ jobs:
           body: Update changelog to reflect release changes
           branch: docs-changelog_update
           delete-branch: true
-          base: ${{ github.event.release.target_commitish }}
