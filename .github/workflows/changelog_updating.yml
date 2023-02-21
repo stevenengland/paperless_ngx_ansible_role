@@ -9,6 +9,7 @@ jobs:
   update_changelog:
     permissions:
       contents: write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -22,11 +23,14 @@ jobs:
           latest-version: ${{ github.event.release.tag_name }}
           release-notes: ${{ github.event.release.body }}
 
-      - name: Commit updated CHANGELOG
-        uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
         with:
-          branch: ${{ github.event.release.target_commitish }}
-          commit_message: 'docs(changelog): update changelog'
-          file_pattern: CHANGELOG.md
-          token: ${{ secrets.REPO_RELEASE_TOKEN }}
-          push_options: --force
+          add-paths: |
+            CHANGELOG.md
+          commit-message: 'docs(changelog): update changelog'
+          title: 'docs(changelog): update changelog'
+          body: Update changelog to reflect release changes
+          branch: docs-changelog_update
+          delete-branch: true
+          base: ${{ github.event.release.target_commitish }}
