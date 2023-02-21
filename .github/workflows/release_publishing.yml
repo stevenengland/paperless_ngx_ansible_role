@@ -10,7 +10,6 @@ name: Release Publishing
 
 jobs:
   release:
-    name: Release
     permissions:
       contents: write
     runs-on: ubuntu-latest
@@ -66,4 +65,4 @@ jobs:
           config-name: release_drafting_config.yml
           disable-autolabeler: true
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.REPO_RELEASE_TOKEN }}

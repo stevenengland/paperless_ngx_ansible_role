@@ -6,8 +6,7 @@ name: Changelog Updating
     types: [released]
 
 jobs:
-  update:
-    name: Update Changelog
+  update_changelog:
     permissions:
       contents: write
     runs-on: ubuntu-latest
@@ -29,3 +28,5 @@ jobs:
           branch: ${{ github.event.release.target_commitish }}
           commit_message: 'docs(changelog): update changelog'
           file_pattern: CHANGELOG.md
+          token: ${{ secrets.REPO_RELEASE_TOKEN }}
+          push_options: --force
