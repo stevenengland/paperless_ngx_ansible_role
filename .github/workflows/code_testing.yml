@@ -30,6 +30,9 @@ jobs:
           reconfigure,
           upgrade
         ]
+        include:
+          - molecule_scenario: default
+            ansible_version_minimum: "4.0.0"
 
     name: Molecule Test
     runs-on: ubuntu-latest
@@ -62,6 +65,13 @@ jobs:
           python3 -m pip install --constraint=.github/workflows/constraints.txt ansible molecule[docker] docker
           molecule --version
           docker --version
+          ansible-galaxy collection list
+
+      - if: ${{ matrix.ansible_version_minimum }}
+        run: |
+          python3 -m pip install --force-reinstall ansible==${{ matrix.ansible_version_minimum }}
+          molecule --version
+          ansible-galaxy collection list
 
       - name: Run Molecule tests
         run: molecule test --scenario-name ${{ matrix.molecule_scenario }}

@@ -4,10 +4,17 @@ import os
 from pathlib import Path
 import re
 
-types = ('/../../**/*.yml', '/../../**/*.yaml', '/../../**/*.md') # the tuple of file types
+types = (
+    '**/*.yml', 
+    '**/*.yaml', 
+    '**/*.md'
+    ) # the tuple of file types
 files = []
 for type in types:
-    files.extend(glob.glob(os.path.dirname(__file__) + type, recursive=True))
+    files.extend(glob.glob(os.path.dirname(__file__) + "/../../" + type, recursive=True))
+    files.extend(glob.glob(os.path.dirname(__file__) + "/../../." + type, recursive=True))
+    files.extend(glob.glob(os.path.dirname(__file__) + "/../../.**/" + type, recursive=True))
+    #files.extend(glob.iglob(os.path.dirname(__file__) + type, recursive=True, include_hidden = True)) # ToDo: python 11 feature
 
 ansible_versions = []
 ansible_versions_files = []
