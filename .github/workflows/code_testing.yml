@@ -20,9 +20,6 @@ name: Code Testing
     - cron: "0 7 * * 5"  # At 07:00 on Friday
 
 jobs:
-  linting:
-    uses: ./.github/workflows/code_linting.yml
-
   molecule_test:
     strategy:
       matrix:
@@ -40,9 +37,6 @@ jobs:
 
     name: Molecule Test
     runs-on: ubuntu-latest
-    needs:
-      - linting
-
     steps:
       - name: Check out the repository
         uses: actions/checkout@v3
