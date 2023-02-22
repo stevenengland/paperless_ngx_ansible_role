@@ -1,4 +1,7 @@
-[![Tests](https://github.com/stevenengland/paperless_ngx_ansible_role/actions/workflows/tests.yml/badge.svg)](https://github.com/stevenengland/paperless_ngx_ansible_role/actions/workflows/tests.yml)
+| Status | Event |
+|---|---|
+| [![Code Testing](https://github.com/stevenengland/paperless_ngx_ansible_role/actions/workflows/code_testing.yml/badge.svg?event=schedule)](https://github.com/stevenengland/paperless_ngx_ansible_role/actions/workflows/code_testing.yml) | Weekly schedule |
+| [![Code Testing](https://github.com/stevenengland/paperless_ngx_ansible_role/actions/workflows/code_testing.yml/badge.svg?event=pull_request)](https://github.com/stevenengland/paperless_ngx_ansible_role/actions/workflows/code_testing.yml) | Last PR |
 
 Ansible Role: paperless-ngx
 =========
@@ -16,12 +19,13 @@ Role Variables
 --------------
 
 Most configuration variables from paperless-ngx itself are available and accept their respective arguments.
-Every **'PAPERLESS_*'** configuration variable is lowercased and instead prefixed with **'paperless_ngx_conf_*'** in **defaults/main.yml**.
+Every `PAPERLESS_*` configuration variable is lowercased and instead prefixed with `paperless_ngx_conf_*` in `defaults/main.yml`.
 
 For a full listing including explanations and allowed values, see the current [documentation](https://docs.paperless-ngx.com/configuration/).
 
-Additional variables available in this role are listed below, along with default values:
-```paperless_ngx_version: latest```
+The following sections are devided into:
+* Role specific variables
+* Original paperless-ngx configuration variables
 
 ### Role specific variables
 
