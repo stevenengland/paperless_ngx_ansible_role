@@ -204,6 +204,7 @@
     - item.role_var is defined and item.role_var not in (None, omit)
     - item.condition | default(true)
     - (item.since_version | default('0.0.1')) is ansible.builtin.version(paperless_ngx_version, '<=', version_type='semver')
+  tags: pngx_conf
 
 - name: Deploy paperless-ngx configuration file
   become: true
@@ -214,6 +215,7 @@
     owner: root
     group: root
     mode: "0644"
+  tags: pngx_conf
   notify: Restart paperless completely
 
 - name: Configure ghostscript for PDF

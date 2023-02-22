@@ -1,5 +1,5 @@
 ---
-- name: Determine version infos
+- name: Determine target version infos
   when:
     - paperless_ngx_version == "latest"
   delegate_to: localhost
