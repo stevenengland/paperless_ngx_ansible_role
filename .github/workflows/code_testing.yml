@@ -13,6 +13,7 @@ name: Code Testing
       - ".github/**"
       - "!.github/**/*test*.yml"
       - "!.github/**/*constraints*.txt"
+      - "!.github/**/*requirements*.txt"
       - "!.github/**/*env*.txt"
       # - "!.github/**/*release*.yml"
   schedule:
@@ -65,7 +66,7 @@ jobs:
 
       - name: Install test dependencies
         run: |
-          python3 -m pip install --constraint=.github/workflows/constraints.txt ansible molecule[docker] docker
+          python3 -m pip install -r .github/workflows/requirements.txt -c .github/workflows/constraints.txt
           molecule --version
           docker --version
           ansible-galaxy install -r requirements.yml

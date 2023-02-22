@@ -10,13 +10,29 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      ## Source: https://github.com/marketplace/actions/yaml-lint
-      - name: Run yaml-lint
-        uses: ibiqlik/action-yamllint@v3
+      - name: Load environment vars
+        id: dotenv
+        uses: falti/dotenv-action@v1.0.2
         with:
-          config_file: .yamllint.yml
-          format: github
+          path: .github/workflows/env_vars.txt
+          log-variables: true
 
-      ## Source: https://github.com/marketplace/actions/ansible-lint
-      - name: Run ansible-lint
-        uses: ansible-community/ansible-lint-action@v6
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ steps.dotenv.outputs.PYTHON_SETUP_VERSION }}
+
+      - name: Upgrade pip
+        run: |
+          python3 -m pip install --constraint=.github/workflows/constraints.txt pip
+          python3 -m pip --version
+
+      - name: Install test dependencies
+        run: |
+          python3 -m pip install -r .github/workflows/requirements.txt -c .github/workflows/constraints.txt
+
+      - name: Run linter
+        run: |
+          yamllint --list-files .
+          yamllint -c=.yamllint.yml .
+          ansible-lint -c .ansible-lint
