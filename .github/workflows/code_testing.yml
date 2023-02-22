@@ -29,6 +29,7 @@ jobs:
           alternative_installation,
           check_fails,
           default,
+          postgresql_db,
           reconfigure,
           upgrade
         ]
@@ -67,6 +68,7 @@ jobs:
           python3 -m pip install --constraint=.github/workflows/constraints.txt ansible molecule[docker] docker
           molecule --version
           docker --version
+          ansible-galaxy install -r requirements.yml
           ansible-galaxy collection list
 
       - if: ${{ matrix.ansible_version_minimum }}
