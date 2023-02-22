@@ -6,16 +6,16 @@
       tags: vars
   tags: vars
 
-- name: Gather infos about the operating system
+- name: Set & check infos about the underlying platform (os & packages)
   ansible.builtin.include_tasks:
-    file: os.yml
+    file: platform.yml
     apply:
-      tags: os
-  tags: os
+      tags: platform
+  tags: platform
 
-- name: Gather infos about paperless-ngx versions
+- name: Set & check infos about paperless-ngx release
   ansible.builtin.include_tasks:
-    file: version.yml
+    file: pngx_release.yml
     apply:
-      tags: version
-  tags: version
+      tags: pngx_release
+  tags: pngx_release

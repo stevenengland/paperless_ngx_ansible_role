@@ -1,10 +1,10 @@
 ---
-- name: Add paperless-ngx user(s) and group(s)
+- name: Add paperless-ngx system user(s) and group(s)
   ansible.builtin.include_tasks:
-    file: user.yml
+    file: system_user.yml
     apply:
-      tags: user
-  tags: user
+      tags: system_user
+  tags: system_user
 
 - name: Backup existing installation
   ansible.builtin.include_tasks:
@@ -22,10 +22,10 @@
   block:
     - name: Get paperless-ngx release files
       ansible.builtin.include_tasks:
-        file: download.yml
+        file: release_files.yml
         apply:
-          tags: download
-      tags: download
+          tags: release_files
+      tags: release_files
 
     - name: Prepare paperless-ngx virtual environment
       ansible.builtin.include_tasks:
@@ -34,7 +34,7 @@
           tags: venv
       tags: venv
 
-- name: Configure paperless-ngx
+- name: Configure paperless-ngx and dependencies
   ansible.builtin.include_tasks:
     file: configuration.yml
     apply:
@@ -47,23 +47,23 @@
     or
     _paperless_ngx_installation_strategy_fresh
   block:
-    - name: Initialize and upgrade paperless-ngx release
+    - name: Initialize and upgrade paperless-ngx database
       ansible.builtin.include_tasks:
-        file: upgrade.yml
+        file: database.yml
         apply:
-          tags: upgrade
-      tags: upgrade
+          tags: database
+      tags: database
 
-    - name: Deploy systemd services
+    - name: Deploy and activate systemd service units
       ansible.builtin.include_tasks:
-        file: services.yml
+        file: systemd_services.yml
         apply:
-          tags: services
-      tags: services
+          tags: systemd_services
+      tags: systemd_services
 
-    - name: Finish paperless-ngx release
+    - name: Finalize paperless-ngx installation
       ansible.builtin.include_tasks:
-        file: finish.yml
+        file: finalize.yml
         apply:
-          tags: finish
-      tags: finish
+          tags: finalize
+      tags: finalize
