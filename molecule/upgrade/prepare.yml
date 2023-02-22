@@ -3,7 +3,11 @@
   hosts: all
   any_errors_fatal: true
   tasks:
-    - name: "Install an older than latest version of pngx"
+    - name: Prepare the installation with default preparation
+      ansible.builtin.include_tasks:
+        file: ../default_preparation.yml
+
+    - name: Install an older than latest version of pngx
       ansible.builtin.include_role:
         name: "stevenengland.paperless_ngx"
       vars:
