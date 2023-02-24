@@ -61,9 +61,9 @@
           tags: systemd_services
       tags: systemd_services
 
-    - name: Finalize paperless-ngx installation
-      ansible.builtin.include_tasks:
-        file: finalize.yml
-        apply:
-          tags: finalize
+- name: Finalize paperless-ngx installation
+  ansible.builtin.include_tasks:
+    file: finalize.yml
+    apply:
       tags: finalize
+  tags: finalize
