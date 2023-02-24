@@ -47,11 +47,6 @@
       until: _release_download_uri_response.status == 200
       retries: 5
 
-    - name: Check probes return code
-      ansible.builtin.assert:
-        that: _release_download_uri_response.status == 200
-        msg: 'paperless-ngx version v{{ paperless_ngx_version }} has no downloadable release file (used {{ _release__download_url }}).'
-
 - name: Check for existing paperless-ngx version file
   become: true
   ansible.builtin.stat:
