@@ -2,12 +2,14 @@
 - name: Verify operating system
   ansible.builtin.assert:
     that: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
-    msg: Sorry, only Debian and Ubuntu supported at the moment.
+    fail_msg: Sorry, only Debian and Ubuntu supported at the moment.
+    success_msg: "Found distribution: {{ ansible_distribution }}"
 
 - name: Assert usage of systemd as an init system
   ansible.builtin.assert:
     that: ansible_service_mgr == 'systemd'
-    msg: "This role only works with systemd"
+    fail_msg: "This role only works with systemd"
+    success_msg: "systemd found"
 
 - name: Verify Ansible meets version requirements
   block:
