@@ -192,7 +192,8 @@ To save reading space a few abbreviations are used in the tables down below:
 | `paperless_ngx_conf_convert_binary` | convert | Y | Y |   |   |
 | `paperless_ngx_conf_gs_binary` | gs | Y | Y |   |   |
 
-#### Docker specicif options
+#### Docker specific options
+Note: These settings are called Docker specific in the paperless-ngx docs but in case of this role they are also applied for bare metal/lxc installations. Some of them would have been better placed under other sections (like webserver workers would have been better placed under hosting settings). But to keep aligned with the paperless-ngx docs they are written down here.
 
 | Name           | Default Value | I | O | H | V |
 | -------------- | ------------- |---|---|---|---|
