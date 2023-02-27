@@ -1,3 +1,5 @@
+> **ATTENTION:** :construction_worker_woman: This project will be assimilated into the official [paperless-ngx repo](https://github.com/paperless-ngx/ansible) very soon. 
+
 | Status | Event |
 |---|---|
 | [![Code Testing](https://github.com/stevenengland/paperless_ngx_ansible_role/actions/workflows/code_testing.yml/badge.svg?event=schedule)](https://github.com/stevenengland/paperless_ngx_ansible_role/actions/workflows/code_testing.yml) | Weekly schedule |
