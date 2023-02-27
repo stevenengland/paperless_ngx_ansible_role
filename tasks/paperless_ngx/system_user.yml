@@ -15,3 +15,10 @@
     shell: /usr/sbin/nologin
     # GNUPG_HOME required due to paperless db.py
     create_home: true
+
+- name: Adding secondary group(s) to system user
+  become: true
+  ansible.builtin.user:
+    name: "{{ paperless_ngx_system_user }}"
+    groups: "{{ paperless_ngx_system_user_additional_groups }}"
+    append: true
