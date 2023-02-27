@@ -234,9 +234,8 @@ Example Playbooks
 
 ```
 - hosts: all
-    become: yes
     roles:
-        - { role: stevenengland.paperless_ngx,  tags: ["paperless"] }
+        - { role: stevenengland.paperless_ngx }
     vars:
         var1:
         var2:
